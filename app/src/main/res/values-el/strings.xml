@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EatMe</string>
+    <string name="favorites">Αγαπημένα</string>
+    <string name="grocery_list">Λίστα Αγοράς</string>
+    <string name="inventory">Προμήθειες</string>
+    <string name="inventoryActivityName">Προμήθειες</string>
+    <string name="recipes">Συνταγές</string>
+    <string name="searchHintEnglish">Αναζήτηση Συστατικών</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="langselection">Γλώσσα</string>
+</resources>
