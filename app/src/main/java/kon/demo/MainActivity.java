@@ -34,4 +34,22 @@ public class MainActivity extends AppCompatActivity {
         Intent settings=new Intent(this, settingsActivity.class);
         startActivity(settings);
     }
+
+    public void RecipesActivity(View view) {
+        Log.d(LOG_TAG, "recipes loading!");
+        Intent recipes= new Intent(this, recipesActivity.class);
+        startActivity(recipes);
+    }
+
+    public void GroceryActivity(View view) {
+        Log.d(LOG_TAG, "groceries loading!");
+        Intent groceries= new Intent(this, groceryActivity.class);
+        startActivity(groceries);
+    }
+
+    public void FavoritesActivity(View view) {
+        Log.d(LOG_TAG, "favorites loading!");
+        Intent favorites= new Intent(this, favoritesActivity.class);
+        startActivity(favorites);
+    }
 }

@@ -46,7 +46,8 @@
         tools:layout_editor_absoluteX="16dp"
         android:layout_alignTop="@+id/inventoryButton"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp" />
+        android:layout_marginEnd="24dp"
+        android:onClick="RecipesActivity"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,7 +72,8 @@
         tools:layout_editor_absoluteX="16dp"
         android:layout_below="@+id/inventoryText"
         android:layout_alignStart="@+id/inventoryButton"
-        android:layout_marginTop="33dp" />
+        android:layout_marginTop="33dp"
+        android:onClick="GroceryActivity"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,7 +97,8 @@
         tools:layout_editor_absoluteY="16dp"
         tools:layout_editor_absoluteX="16dp"
         android:layout_alignTop="@+id/shoppingButton"
-        android:layout_alignStart="@+id/recipeButton" />
+        android:layout_alignStart="@+id/recipeButton"
+        android:onClick="FavoritesActivity"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
