@@ -6,4 +6,21 @@
     android:layout_height="match_parent"
     tools:context="kon.demo.groceryActivity">
 
+    <EditText
+        android:id="@+id/searchGrocery"
+        android:layout_width="fill_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/searchHintEnglish"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="6dp" />
+
 </android.support.constraint.ConstraintLayout>

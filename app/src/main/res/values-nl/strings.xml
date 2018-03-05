@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EatMe</string>
-    <string name="inventoryActivityName">Inventaris</string>
+    <string name="inventoryActivityName">Voorraad</string>
     <string name="landscapeMenuBoXSize" translatable="false"></string>
     <string name="searchHintEnglish">Zoek Ingrediënten</string>
     <string name="favorites">Favorieten</string>
-    <string name="grocery_list">Boodschappenlijstje</string>
-    <string name="inventory">Inventaris</string>
-    <string name="recipes">recepten</string>
+    <string name="grocery_list">Boodschappenlijst</string>
+    <string name="inventory">Voorraad</string>
+    <string name="recipes">Recepten</string>
     <string name="settings">Instellingen</string>
     <string name="langselection">Taal</string>
+    <string name="searchHintRecipesEnglish">Zoek Recept</string>
 </resources>

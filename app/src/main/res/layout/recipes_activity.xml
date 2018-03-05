@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="kon.demo.recipesActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:layout_marginTop="5dp"
+        android:id="@+id/searchText"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/searchHintRecipesEnglish"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="6dp" />
+
+</RelativeLayout>
