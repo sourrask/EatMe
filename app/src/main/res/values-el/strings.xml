@@ -10,4 +10,6 @@
     <string name="settings">Ρυθμίσεις</string>
     <string name="langselection">Γλώσσα</string>
     <string name="searchHintRecipesEnglish">Αναζήτηση Συνταγης</string>
+    <string name="addIngredients">Προσθήκη Υλικών</string>
+    <string name="removeIgredients">Αφαίρεση Υλικών</string>
 </resources>

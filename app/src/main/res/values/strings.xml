@@ -12,11 +12,8 @@
     <string name="settings">Settings</string>
     <string name="langselection">Language</string>
     <string name="searchHintRecipesEnglish">Search Recipe Here</string>
+    <string name="addIngredients">Add Ingredients</string>
+    <string name="removeIgredients">Remove Ingredients</string>
 
-    <string-array name="lang_select">
-        <item>English</item>
-        <item>Dutch</item>
-        <item>Greek</item>
-    </string-array>
 </resources>
 

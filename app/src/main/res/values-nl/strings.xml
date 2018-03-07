@@ -2,7 +2,6 @@
 <resources>
     <string name="app_name">EatMe</string>
     <string name="inventoryActivityName">Voorraad</string>
-    <string name="landscapeMenuBoXSize" translatable="false"></string>
     <string name="searchHintEnglish">Zoek Ingrediënten</string>
     <string name="favorites">Favorieten</string>
     <string name="grocery_list">Boodschappenlijst</string>
@@ -11,4 +10,6 @@
     <string name="settings">Instellingen</string>
     <string name="langselection">Taal</string>
     <string name="searchHintRecipesEnglish">Zoek Recept</string>
+    <string name="addIngredients">" ingrediënten toevoegen"</string>
+    <string name="removeIgredients">Verwijder Ingrediënten</string>
 </resources>
