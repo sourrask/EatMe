@@ -14,6 +14,8 @@
     <string name="searchHintRecipesEnglish">Search Recipe Here</string>
     <string name="addIngredients">Add Ingredients</string>
     <string name="removeIgredients">Remove Ingredients</string>
+    <string name="AddRecipe">Add Recipe</string>
+    <string name="RemoveRecipe">Remove Recipe</string>
 
 </resources>
 

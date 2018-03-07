@@ -10,6 +10,8 @@
     <string name="settings">Instellingen</string>
     <string name="langselection">Taal</string>
     <string name="searchHintRecipesEnglish">Zoek Recept</string>
-    <string name="addIngredients">" ingrediënten toevoegen"</string>
+    <string name="addIngredients">Ingrediënten Toevoegen</string>
     <string name="removeIgredients">Verwijder Ingrediënten</string>
+    <string name="AddRecipe">Toevoegen</string>
+    <string name="RemoveRecipe">Verwijderen</string>
 </resources>

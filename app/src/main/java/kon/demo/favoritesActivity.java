@@ -11,4 +11,9 @@ public class favoritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
         //// TODO: 04-Mar-18 search bar as in inventory if every1 agrees (searches different data)
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+    }
 }

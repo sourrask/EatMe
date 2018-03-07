@@ -10,7 +10,9 @@
         android:id="@+id/searchFavorites"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
         android:background="@drawable/rounded"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -22,5 +24,26 @@
         android:textStyle="italic"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="6dp" />
+
+    <Button
+        android:layout_width="205dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/addRecipe"
+        android:textSize="15sp"
+        android:background="@drawable/roundedblue"
+        android:text="@string/AddRecipe"/>
+
+    <Button
+        android:layout_width="205dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:textSize="15sp"
+        android:text="@string/RemoveRecipe"
+        android:layout_toEndOf="@+id/addRecipe"
+        android:id="@+id/removeRecipe"
+        android:background="@drawable/roundedred" />
 
 </RelativeLayout>

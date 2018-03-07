@@ -1,5 +1,6 @@
 package kon.demo;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,8 +32,8 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         initViews();
         setListeners();
         loadLocale();
-
     }
+
 
 
 
@@ -65,12 +66,12 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
     public void changeLocale(String lang) {
         if (lang.equalsIgnoreCase(""))
             return;
-        myLocale = new Locale(lang);//Set Selected Locale
-        saveLocale(lang);//Save the selected locale
-        Locale.setDefault(myLocale);//set new locale as default
-        Configuration config = new Configuration();//get Configuration
+        myLocale = new Locale(lang);
+        saveLocale(lang);
+        Locale.setDefault(myLocale);
+        Configuration config = new Configuration();
         config.locale = myLocale;//set config locale as selected locale
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the config
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the configuration
 
     }
     //Save locale method in preferences
@@ -85,6 +86,7 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         changeLocale(language);
     }
 
+    @SuppressLint("CommitPrefEdits")
     private void initViews() {
         sharedPreferences=getSharedPreferences(Locale_Preference, Activity.MODE_PRIVATE);
         editor=sharedPreferences.edit();

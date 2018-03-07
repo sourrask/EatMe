@@ -1,5 +1,6 @@
 package kon.demo;
 
+import android.app.LoaderManager;
 import android.content.Intent;
 //import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,11 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+    @Override
+    public LoaderManager getLoaderManager() {
+        return super.getLoaderManager();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

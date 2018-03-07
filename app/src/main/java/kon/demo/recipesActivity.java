@@ -11,4 +11,9 @@ public class recipesActivity extends AppCompatActivity {
         setContentView(R.layout.recipes_activity);
         //// TODO: 04-Mar-18 search bar as in inventory if every1 agrees 
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+    }
 }
