@@ -36,4 +36,7 @@ public class inventoryActivity extends AppCompatActivity {
 
     public void AddIngredient(View view) {
     }
+
+    public void RemoveIngredient(View view) {
+    }
 }

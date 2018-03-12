@@ -1,143 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/mainActivity"
-    android:background="@color/background"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="kon.demo.MainActivity">
 
 
     <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
         android:id="@+id/inventoryButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintBottom_toTopOf="@id/hor2"
+        app:layout_constraintTop_toBottomOf="@id/hor1"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:onClick="inventoryActivity"
+        android:scaleType="fitXY"
         android:src="@drawable/inventory"
-        tools:layout_editor_absoluteY="16dp"
         tools:layout_editor_absoluteX="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:onClick="inventoryActivity"/>
+        tools:layout_editor_absoluteY="16dp" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inventory"
         android:id="@+id/inventoryText"
-        android:layout_below="@+id/inventoryButton"
-        android:layout_alignEnd="@+id/inventoryButton"
-        android:layout_marginEnd="45dp"
-        android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
-        tools:layout_editor_absoluteX="60dp" />
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
-        android:id="@+id/recipeButton"
-        android:src="@drawable/recipe2"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_alignTop="@+id/inventoryButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="24dp"
-        android:onClick="RecipesActivity"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/recipes"
-        android:id="@+id/recipeText"
-        android:layout_below="@+id/recipeButton"
-        android:layout_alignEnd="@+id/recipeButton"
-        android:layout_marginEnd="45dp"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        app:layout_constraintBottom_toTopOf="@id/hor3"
+        app:layout_constraintTop_toBottomOf="@id/hor2"
+        android:text="@string/inventory"
         android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
-        tools:layout_editor_absoluteX="60dp" />
-
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
-        android:id="@+id/shoppingButton"
-        android:src="@drawable/shopping3"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_below="@+id/inventoryText"
-        android:layout_alignStart="@+id/inventoryButton"
-        android:layout_marginTop="33dp"
-        android:onClick="GroceryActivity"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/grocery_list"
-        android:id="@+id/shoppingText"
-        android:layout_below="@+id/shoppingButton"
-        android:layout_alignEnd="@+id/shoppingButton"
-        android:layout_marginEnd="40dp"
-        android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
-        tools:layout_editor_absoluteX="60dp" />
-
-    <ImageButton
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
-        android:id="@+id/favoritesButton"
-        android:src="@drawable/favorites3"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_alignTop="@+id/shoppingButton"
-        android:layout_alignStart="@+id/recipeButton"
-        android:onClick="FavoritesActivity"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/favorites"
-        android:id="@+id/favoritesText"
-        android:layout_below="@+id/favoritesButton"
-        android:layout_alignEnd="@+id/favoritesButton"
-        android:layout_marginEnd="45dp"
-        android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
-        tools:layout_editor_absoluteX="60dp" />
-
-    <ImageButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
-        android:id="@+id/settingsButton"
-        android:src="@drawable/settings1"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_below="@+id/favoritesText"
-        android:layout_centerHorizontal="true"
-        android:onClick="settingsActivity"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/settings"
-        android:id="@+id/settingsText"
-        android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
         tools:layout_editor_absoluteX="60dp"
-        android:layout_below="@+id/settingsButton"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageButton
+        android:id="@+id/recipeButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintBottom_toTopOf="@id/hor2"
+        app:layout_constraintTop_toBottomOf="@id/hor1"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:onClick="RecipesActivity"
+        android:scaleType="fitXY"
+        android:src="@drawable/recipe2"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/recipeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        app:layout_constraintBottom_toTopOf="@id/hor3"
+        app:layout_constraintTop_toBottomOf="@id/hor2"
+        android:text="@string/recipes"
+        android:textColor="@color/TextColor"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageButton
+        android:id="@+id/shoppingButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintBottom_toTopOf="@id/hor4"
+        app:layout_constraintTop_toBottomOf="@id/hor3"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        android:layout_alignStart="@+id/inventoryButton"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:onClick="GroceryActivity"
+        android:scaleType="fitXY"
+        android:src="@drawable/shopping3"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/shoppingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        app:layout_constraintBottom_toTopOf="@id/hor5"
+        app:layout_constraintTop_toBottomOf="@id/hor4"
+        android:text="@string/grocery_list"
+        android:textColor="@color/TextColor"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageButton
+        android:id="@+id/favoritesButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintBottom_toTopOf="@id/hor4"
+        app:layout_constraintTop_toBottomOf="@id/hor3"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:onClick="FavoritesActivity"
+        android:scaleType="fitXY"
+        android:src="@drawable/favorites3"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/favoritesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        app:layout_constraintBottom_toTopOf="@id/hor5"
+        app:layout_constraintTop_toBottomOf="@id/hor4"
+        android:text="@string/favorites"
+        android:textColor="@color/TextColor"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/ver5"
+        app:layout_constraintBottom_toTopOf="@id/hor6"
+        app:layout_constraintTop_toBottomOf="@id/hor5"
+        app:layout_constraintEnd_toStartOf="@id/ver6"
         android:layout_centerHorizontal="true"
-        />
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:onClick="settingsActivity"
+        android:scaleType="fitXY"
+        android:src="@drawable/settings1"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/settingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ver5"
+        app:layout_constraintEnd_toStartOf="@id/ver6"
+        app:layout_constraintBottom_toTopOf="@id/hor7"
+        app:layout_constraintTop_toBottomOf="@id/hor6"
+        android:layout_centerHorizontal="true"
+        android:text="@string/settings"
+        android:textColor="@color/TextColor"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.475" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.525" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.325" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.375" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.675" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.725" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
 
 
-
-
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
