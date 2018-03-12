@@ -25,6 +25,8 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
 
+    //todo onStop() / i na valw fnish meta to patima koubiou gia na kleisei i kai restart
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,5 +99,9 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         greek=(Button) findViewById(R.id.greek);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

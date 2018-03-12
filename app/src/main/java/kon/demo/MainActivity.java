@@ -14,6 +14,7 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+    //todo performance on android
     @Override
     public LoaderManager getLoaderManager() {
         return super.getLoaderManager();

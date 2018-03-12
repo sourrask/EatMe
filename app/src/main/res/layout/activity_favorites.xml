@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kon.demo.favoritesActivity">
+    tools:context="kon.demo.favoritesActivity"
+    tools:layout_editor_absoluteY="81dp">
+
+
 
     <EditText
         android:id="@+id/searchFavorites"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/guideline6"
+        app:layout_constraintBottom_toTopOf="@+id/topHorizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/rounded"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -20,30 +24,70 @@
         android:imeOptions="actionSearch"
         android:inputType="text"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textSize="23sp"
         android:textStyle="italic"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="6dp" />
 
     <Button
-        android:layout_width="205dp"
-        android:layout_height="100dp"
+        android:id="@+id/addRecipe"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/addRecipe"
-        android:textSize="15sp"
         android:background="@drawable/roundedblue"
-        android:text="@string/AddRecipe"/>
+        android:text="@string/AddRecipe"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
+        app:layout_constraintEnd_toStartOf="@id/midVertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="502dp" />
 
     <Button
-        android:layout_width="205dp"
-        android:layout_height="100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="8dp"
-        android:textSize="15sp"
-        android:text="@string/RemoveRecipe"
-        android:layout_toEndOf="@+id/addRecipe"
         android:id="@+id/removeRecipe"
-        android:background="@drawable/roundedred" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/botHorizontal"
+        android:background="@drawable/roundedred"
+        android:text="@string/RemoveRecipe"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toRightOf="@id/midVertical"
+        app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="205dp"
+        tools:layout_editor_absoluteY="502dp" />
 
-</RelativeLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/midVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/topHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.09286899" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/botHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.83250415" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+</android.support.constraint.ConstraintLayout>

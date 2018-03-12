@@ -1,48 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".settingsActivity">
 
 
     <TextView
         android:id="@+id/languageText"
-        android:layout_width="fill_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:foregroundGravity="center"
+        android:gravity="center"
         android:shadowColor="@color/TextColor"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
         android:text="@string/langselection"
-        android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="center" android:paddingTop="25sp"/>
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/topSetting2"
+        app:layout_constraintEnd_toEndOf="@id/verticalbutton3"
+        app:layout_constraintStart_toStartOf="@id/verticalbutton1"
+        app:layout_constraintTop_toTopOf="@+id/topSetting" />
 
 
     <Button
-        android:layout_width="100dp"
-        android:layout_height="60dp"
         android:id="@+id/english"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
         android:text="English"
         android:textColor="@color/TextColor"
-        android:layout_below="@+id/languageText"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="27dp" />
+        app:layout_constraintEnd_toStartOf="@id/verticalbutton1"
+        app:layout_constraintRight_toLeftOf="@+id/verticalbutton1"
+        app:layout_constraintBottom_toTopOf="@id/topSetting3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topSetting2" />
 
     <Button
         android:id="@+id/dutch"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="Nederlands"
         android:textColor="@color/TextColor"
-        android:layout_marginEnd="24dp"
-        android:layout_below="@+id/languageText"
-        android:layout_toStartOf="@+id/greek" />
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:id="@+id/greek"
-        android:text="Ελληνικά"
-        android:textColor="@color/TextColor"
-        android:layout_below="@+id/languageText"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="19dp" />
+        app:layout_constraintBottom_toTopOf="@+id/topSetting3"
+        app:layout_constraintEnd_toStartOf="@+id/verticalbutton3"
+        app:layout_constraintStart_toStartOf="@id/verticalbutton1"
+        app:layout_constraintTop_toBottomOf="@+id/topSetting2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/greek"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/languageText"
+        android:text="Ελληνικά"
+        app:layout_constraintStart_toStartOf="@id/verticalbutton3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topSetting2"
+        app:layout_constraintBottom_toTopOf="@+id/topSetting3"
+        android:textColor="@color/TextColor"
+        tools:layout_editor_absoluteX="311dp"
+        tools:layout_editor_absoluteY="46dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/topSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.013266998" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/topSetting2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/verticalbutton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.27" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/verticalbutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/verticalbutton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/topSetting3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+</android.support.constraint.ConstraintLayout>
