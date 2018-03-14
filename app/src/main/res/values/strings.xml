@@ -16,6 +16,9 @@
     <string name="removeIgredients">Remove Ingredients</string>
     <string name="AddRecipe">Add Recipe</string>
     <string name="RemoveRecipe">Remove Recipe</string>
+    <string name="english">English</string>
+    <string name="nederlands">Nederlands</string>
+    <string name="greek">Ελληνικά</string>
 
 </resources>
 
