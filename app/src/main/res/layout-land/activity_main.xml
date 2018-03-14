@@ -1,134 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/mainActivity"
-    android:background="@color/background"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context="kon.demo.MainActivity">
 
 
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
         android:id="@+id/inventoryButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:scaleType="fitXY"
         android:src="@drawable/inventory"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal2"
+        app:layout_constraintEnd_toStartOf="@id/vertical2"
+        app:layout_constraintStart_toStartOf="@id/vertical1"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal1"
         tools:layout_editor_absoluteX="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="inventoryActivity"/>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inventory"
         android:id="@+id/inventoryText"
-        android:layout_marginEnd="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vertical1"
+        app:layout_constraintBottom_toTopOf="@id/horizontal3"
+        app:layout_constraintEnd_toStartOf="@id/vertical2"
+        app:layout_constraintTop_toBottomOf="@id/horizontal2"
+        android:text="@string/inventory"
         android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
         tools:layout_editor_absoluteX="60dp"
-        android:layout_below="@+id/inventoryButton"
-        android:layout_alignEnd="@+id/inventoryButton" />
+        tools:layout_editor_absoluteY="166dp" />
+
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
         android:id="@+id/recipeButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:scaleType="fitXY"
         android:src="@drawable/recipe2"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal2"
+        app:layout_constraintEnd_toStartOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@id/vertical3"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal1"
         tools:layout_editor_absoluteX="16dp"
-        android:layout_alignTop="@+id/inventoryButton"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="RecipesActivity"/>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/recipes"
         android:id="@+id/recipeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vertical3"
+        app:layout_constraintBottom_toTopOf="@id/horizontal3"
+        app:layout_constraintEnd_toStartOf="@id/vertical4"
+        app:layout_constraintTop_toBottomOf="@id/horizontal2"
+        android:layout_centerHorizontal="true"
+        android:text="@string/recipes"
         android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
         tools:layout_editor_absoluteX="60dp"
-        android:layout_below="@+id/recipeButton"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="166dp"
+        />
 
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
         android:id="@+id/shoppingButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:scaleType="fitXY"
         android:src="@drawable/shopping3"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal2"
+        app:layout_constraintEnd_toStartOf="@id/vertical6"
+        app:layout_constraintStart_toStartOf="@id/vertical5"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal1"
         tools:layout_editor_absoluteX="16dp"
-        android:layout_alignTop="@+id/recipeButton"
-        android:layout_alignParentEnd="true" />
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="GroceryActivity"/>
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/grocery_list"
         android:id="@+id/shoppingText"
-        android:layout_marginEnd="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vertical5"
+        app:layout_constraintBottom_toTopOf="@id/horizontal3"
+        app:layout_constraintEnd_toStartOf="@id/vertical6"
+        app:layout_constraintTop_toBottomOf="@id/horizontal2"
+        android:text="@string/grocery_list"
         android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
         tools:layout_editor_absoluteX="60dp"
-        android:layout_below="@+id/shoppingButton"
-        android:layout_alignEnd="@+id/shoppingButton" />
+        tools:layout_editor_absoluteY="166dp" />
 
     <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:adjustViewBounds="true"
-        android:background="@color/background"
         android:id="@+id/favoritesButton"
-        android:src="@drawable/favorites3"
-        tools:layout_editor_absoluteY="16dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_below="@+id/inventoryText"
-        android:layout_toEndOf="@+id/inventoryButton" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/favorites"
-        android:id="@+id/favoritesText"
-        android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
-        tools:layout_editor_absoluteX="60dp"
-        android:layout_below="@+id/favoritesButton"
-        android:layout_toStartOf="@+id/recipeButton"
-        android:layout_marginEnd="19dp" />
-
-    <ImageButton
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
+        android:layout_width="0dp"
+        android:maxWidth="200dp"
+        android:maxHeight="200dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/vertical7"
+        app:layout_constraintEnd_toStartOf="@id/vertical8"
+        app:layout_constraintTop_toBottomOf="@id/horizontal3"
+        app:layout_constraintBottom_toTopOf="@id/horizontal4"
         android:adjustViewBounds="true"
         android:background="@color/background"
-        android:id="@+id/settingsButton"
-        android:src="@drawable/settings1"
-        tools:layout_editor_absoluteY="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/favorites3"
         tools:layout_editor_absoluteX="16dp"
-        android:layout_below="@+id/shoppingText"
-        android:layout_toStartOf="@+id/shoppingButton" />
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="FavoritesActivity"/>
+
     <TextView
+        android:id="@+id/favoritesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings"
-        android:id="@+id/settingsText"
+        app:layout_constraintStart_toStartOf="@id/vertical7"
+        app:layout_constraintBottom_toTopOf="@id/horizontal5"
+        app:layout_constraintEnd_toStartOf="@id/vertical8"
+        app:layout_constraintTop_toBottomOf="@id/horizontal4"
+        android:text="@string/favorites"
         android:textColor="@color/TextColor"
-        tools:layout_editor_absoluteY="166dp"
         tools:layout_editor_absoluteX="60dp"
-        android:layout_marginStart="30dp"
-        android:layout_below="@+id/settingsButton"
-        android:layout_toEndOf="@+id/recipeButton" />
+        tools:layout_editor_absoluteY="166dp" />
+
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/vertical9"
+        app:layout_constraintEnd_toStartOf="@id/vertical10"
+        app:layout_constraintTop_toBottomOf="@id/horizontal3"
+        app:layout_constraintBottom_toTopOf="@id/horizontal4"
+        android:adjustViewBounds="true"
+        android:background="@color/background"
+        android:scaleType="fitXY"
+        android:src="@drawable/settings1"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        android:onClick="settingsActivity"/>
+
+    <TextView
+        android:id="@+id/settingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/vertical9"
+        app:layout_constraintBottom_toTopOf="@id/horizontal5"
+        app:layout_constraintEnd_toStartOf="@id/vertical10"
+        app:layout_constraintTop_toBottomOf="@id/horizontal4"
+        android:text="@string/settings"
+        android:textColor="@color/TextColor"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.525" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontal5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55197656" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
 
-
-
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
