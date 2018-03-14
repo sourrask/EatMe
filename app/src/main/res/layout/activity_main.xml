@@ -13,15 +13,15 @@
         android:id="@+id/inventoryButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/ver1"
-        app:layout_constraintBottom_toTopOf="@id/hor2"
-        app:layout_constraintTop_toBottomOf="@id/hor1"
-        app:layout_constraintEnd_toStartOf="@id/ver2"
         android:adjustViewBounds="true"
         android:background="@color/background"
         android:onClick="inventoryActivity"
         android:scaleType="fitXY"
         android:src="@drawable/inventory"
+        app:layout_constraintBottom_toTopOf="@id/hor2"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintTop_toBottomOf="@id/hor1"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -29,12 +29,12 @@
         android:id="@+id/inventoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ver1"
-        app:layout_constraintEnd_toStartOf="@id/ver2"
-        app:layout_constraintBottom_toTopOf="@id/hor3"
-        app:layout_constraintTop_toBottomOf="@id/hor2"
         android:text="@string/inventory"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/hor3"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintTop_toBottomOf="@id/hor2"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
@@ -42,15 +42,15 @@
         android:id="@+id/recipeButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/ver3"
-        app:layout_constraintBottom_toTopOf="@id/hor2"
-        app:layout_constraintTop_toBottomOf="@id/hor1"
-        app:layout_constraintEnd_toStartOf="@id/ver4"
         android:adjustViewBounds="true"
         android:background="@color/background"
         android:onClick="RecipesActivity"
         android:scaleType="fitXY"
         android:src="@drawable/recipe2"
+        app:layout_constraintBottom_toTopOf="@id/hor2"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintTop_toBottomOf="@id/hor1"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -58,12 +58,12 @@
         android:id="@+id/recipeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ver3"
-        app:layout_constraintEnd_toStartOf="@id/ver4"
-        app:layout_constraintBottom_toTopOf="@id/hor3"
-        app:layout_constraintTop_toBottomOf="@id/hor2"
         android:text="@string/recipes"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/hor3"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintTop_toBottomOf="@id/hor2"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
@@ -71,16 +71,16 @@
         android:id="@+id/shoppingButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/ver1"
-        app:layout_constraintBottom_toTopOf="@id/hor4"
-        app:layout_constraintTop_toBottomOf="@id/hor3"
-        app:layout_constraintEnd_toStartOf="@id/ver2"
         android:layout_alignStart="@+id/inventoryButton"
         android:adjustViewBounds="true"
         android:background="@color/background"
         android:onClick="GroceryActivity"
         android:scaleType="fitXY"
         android:src="@drawable/shopping3"
+        app:layout_constraintBottom_toTopOf="@id/hor4"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintTop_toBottomOf="@id/hor3"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -88,12 +88,12 @@
         android:id="@+id/shoppingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ver1"
-        app:layout_constraintEnd_toStartOf="@id/ver2"
-        app:layout_constraintBottom_toTopOf="@id/hor5"
-        app:layout_constraintTop_toBottomOf="@id/hor4"
         android:text="@string/grocery_list"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/hor5"
+        app:layout_constraintEnd_toStartOf="@id/ver2"
+        app:layout_constraintStart_toStartOf="@id/ver1"
+        app:layout_constraintTop_toBottomOf="@id/hor4"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
@@ -101,15 +101,15 @@
         android:id="@+id/favoritesButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/ver3"
-        app:layout_constraintBottom_toTopOf="@id/hor4"
-        app:layout_constraintTop_toBottomOf="@id/hor3"
-        app:layout_constraintEnd_toStartOf="@id/ver4"
         android:adjustViewBounds="true"
         android:background="@color/background"
         android:onClick="FavoritesActivity"
         android:scaleType="fitXY"
         android:src="@drawable/favorites3"
+        app:layout_constraintBottom_toTopOf="@id/hor4"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintTop_toBottomOf="@id/hor3"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
 
@@ -117,43 +117,63 @@
         android:id="@+id/favoritesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ver3"
-        app:layout_constraintEnd_toStartOf="@id/ver4"
-        app:layout_constraintBottom_toTopOf="@id/hor5"
-        app:layout_constraintTop_toBottomOf="@id/hor4"
         android:text="@string/favorites"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/hor5"
+        app:layout_constraintEnd_toStartOf="@id/ver4"
+        app:layout_constraintStart_toStartOf="@id/ver3"
+        app:layout_constraintTop_toBottomOf="@id/hor4"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
+
+    <ToggleButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/shakeButton"
+        app:layout_constraintStart_toStartOf="@id/ver7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/hor7"
+        app:layout_constraintTop_toBottomOf="@id/hor8"
+        android:onClick="shake"/>
 
     <ImageButton
         android:id="@+id/settingsButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/ver5"
-        app:layout_constraintBottom_toTopOf="@id/hor6"
-        app:layout_constraintTop_toBottomOf="@id/hor5"
-        app:layout_constraintEnd_toStartOf="@id/ver6"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
         android:background="@color/background"
         android:onClick="settingsActivity"
         android:scaleType="fitXY"
         android:src="@drawable/settings1"
+        app:layout_constraintBottom_toTopOf="@id/hor6"
+        app:layout_constraintEnd_toStartOf="@id/ver6"
+        app:layout_constraintStart_toStartOf="@id/ver5"
+        app:layout_constraintTop_toBottomOf="@id/hor5"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shake"
+        app:layout_constraintTop_toBottomOf="@id/hor9"
+        app:layout_constraintBottom_toTopOf="@id/hor8"
+        app:layout_constraintStart_toStartOf="@id/ver7"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <TextView
         android:id="@+id/settingsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ver5"
-        app:layout_constraintEnd_toStartOf="@id/ver6"
-        app:layout_constraintBottom_toTopOf="@id/hor7"
-        app:layout_constraintTop_toBottomOf="@id/hor6"
         android:layout_centerHorizontal="true"
         android:text="@string/settings"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/hor7"
+        app:layout_constraintEnd_toStartOf="@id/ver6"
+        app:layout_constraintStart_toStartOf="@id/ver5"
+        app:layout_constraintTop_toBottomOf="@id/hor6"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
@@ -247,6 +267,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="1" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/hor9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/ver7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8004866" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -9,21 +9,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.Locale;
 
 public class settingsActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static Button english, dutch, greek;
-    private static TextView languageText;
-    private static Locale myLocale;
 
     //shared preferences
-    private static final String Locale_Preference = "Locale Preference";
-    private static final String Locale_KeyValue = "Saved Locale";
+    private static final String Locale_Preference = "LANGUAGE";
+    private static final String Locale_KeyValue = "LANGUAGE_KEY";
     private static SharedPreferences sharedPreferences;
-    private static SharedPreferences.Editor editor;
 
     //todo onStop() / i na valw fnish meta to patima koubiou gia na kleisei i kai restart
 
@@ -34,6 +30,7 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         initViews();
         setListeners();
         loadLocale();
+
     }
 
 
@@ -68,7 +65,7 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
     public void changeLocale(String lang) {
         if (lang.equalsIgnoreCase(""))
             return;
-        myLocale = new Locale(lang);
+        Locale myLocale = new Locale(lang);
         saveLocale(lang);
         Locale.setDefault(myLocale);
         Configuration config = new Configuration();
@@ -78,22 +75,25 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
     }
     //Save locale method in preferences
     public void saveLocale(String lang) {
+        SharedPreferences sharedPreferences = getSharedPreferences("LANGUAGE", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Locale_KeyValue, lang);
-        editor.commit();
+        editor.apply();
     }
 
     //Get locale method in preferences
     public void loadLocale() {
         String language = sharedPreferences.getString(Locale_KeyValue, "");
         changeLocale(language);
+
+
     }
 
     @SuppressLint("CommitPrefEdits")
     private void initViews() {
         sharedPreferences=getSharedPreferences(Locale_Preference, Activity.MODE_PRIVATE);
-        editor=sharedPreferences.edit();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        languageText=(TextView) findViewById(R.id.languageText);
         english=(Button) findViewById(R.id.english);
         dutch=(Button) findViewById(R.id.dutch);
         greek=(Button) findViewById(R.id.greek);
@@ -104,4 +104,5 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         super.onBackPressed();
         finish();
     }
+
 }
