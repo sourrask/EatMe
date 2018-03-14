@@ -8,15 +8,10 @@
     tools:layout_editor_absoluteY="81dp">
 
 
-
     <EditText
         android:id="@+id/searchFavorites"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/guideline6"
-        app:layout_constraintBottom_toTopOf="@+id/topHorizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/rounded"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -26,6 +21,10 @@
         android:textAlignment="center"
         android:textSize="23sp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/topHorizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline6"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="6dp" />
 
@@ -38,10 +37,10 @@
         android:background="@drawable/roundedblue"
         android:text="@string/AddRecipe"
         android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/midVertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="502dp" />
 
@@ -54,10 +53,10 @@
         android:background="@drawable/roundedred"
         android:text="@string/RemoveRecipe"
         android:textSize="15sp"
-        app:layout_constraintLeft_toRightOf="@id/midVertical"
-        app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/midVertical"
+        app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
         tools:layout_editor_absoluteX="205dp"
         tools:layout_editor_absoluteY="502dp" />
 
