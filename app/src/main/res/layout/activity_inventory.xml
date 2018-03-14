@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/searchText"
         android:textAlignment="center"
-        android:textSize="23sp"
+        android:textSize="30sp"
         android:textStyle="italic"
         android:background="@drawable/rounded"
         android:hint="@string/searchHintEnglish"
@@ -26,7 +26,7 @@
         android:focusableInTouchMode="true"
         android:focusable="true"
         android:imeOptions="actionSearch"
-        android:layout_marginTop="5dp"/>
+        />
 
 
     <ScrollView
