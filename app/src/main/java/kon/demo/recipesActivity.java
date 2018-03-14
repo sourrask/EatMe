@@ -9,7 +9,6 @@ public class recipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipes_activity);
-        //// TODO: 04-Mar-18 search bar as in inventory if every1 agrees 
     }
     @Override
     public void onBackPressed(){
