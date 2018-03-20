@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
 
-    //todo performance on android
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getCurrentLocale();
@@ -64,16 +61,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void shake(final View view) {
-        ToggleButton toggleButton = (ToggleButton) findViewById(R.id.shakeButton);
+        ToggleButton toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Snackbar.make(view, "shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
+                    Snackbar.make(view, "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
+                    Intent shake = new Intent(MainActivity.this,onShake.class);
+                    startService(shake);
 
                 } else {
+                    Snackbar.make(view, "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
 
-                    Snackbar.make(view, "shaking disenabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
                 }
             }
         });
