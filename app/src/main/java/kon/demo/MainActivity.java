@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * helloo
-     * @param view xD
+     * @param view xD j
      */
     public void shake(final View view) {
         ToggleButton toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
