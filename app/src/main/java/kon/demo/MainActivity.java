@@ -16,14 +16,17 @@ import android.widget.ToggleButton;
 
 import java.util.Locale;
 
-
+/*
+ * Activity class for the main activity. In this activity we display the homescreen for the app.
+ * The buttons we display will be clickable and guide the user to the other activities.
+ */
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
 
     //todo performance on android
 
-
+    // Gets the template for the main activity by setting the content view to the desired layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getCurrentLocale();
@@ -32,37 +35,43 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //
     public void inventoryActivity(View view) {
         Log.d(LOG_TAG, "Inventory Loading!");
         Intent inventory = new Intent(this, inventoryActivity.class);
         startActivity(inventory);
-
     }
 
+    //
     public void settingsActivity(View view) {
         Log.d(LOG_TAG, "Settings loading!");
         Intent settings = new Intent(this, settingsActivity.class);
         startActivity(settings);
     }
 
+    //
     public void RecipesActivity(View view) {
         Log.d(LOG_TAG, "Recipes loading!");
         Intent recipes = new Intent(this, recipesActivity.class);
         startActivity(recipes);
     }
 
+    //
     public void GroceryActivity(View view) {
         Log.d(LOG_TAG, "Groceries loading!");
         Intent groceries = new Intent(this, groceryActivity.class);
         startActivity(groceries);
     }
 
+    //
     public void FavoritesActivity(View view) {
         Log.d(LOG_TAG, "Favorites loading!");
         Intent favorites = new Intent(this, favoritesActivity.class);
         startActivity(favorites);
     }
 
+    // Shake method that uses enables an onShakeListener, when this is enabled and one shakes
+    // the phone they will get a random recipes from the database.
     public void shake(final View view) {
         ToggleButton toggleButton = (ToggleButton) findViewById(R.id.shakeButton);
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -70,9 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     Snackbar.make(view, "shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
-
                 } else {
-
                     Snackbar.make(view, "shaking disenabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
                 }
             }

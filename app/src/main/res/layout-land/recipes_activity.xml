@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--This file has the layout for the recipes activity (landscape layout). For the layout we use the
+    constraint layout, since it is responsive and can be easily adapted to our preferences. We use
+    this layout for the buttons and searchbar on this page.-->
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
