@@ -1,0 +1,5 @@
+- The ingredients in a recipe all have a amountHave, which serves no purpose to a recipe
+    may change the structure or let the recipe object make sure it is always 0
+
+- Recipe is not a list of ingredients itself, but has a variable for that
+    may need to change the structure to solve this, but couldn't think of a good solution

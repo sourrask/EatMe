@@ -1,0 +1,26 @@
+Spaghetti {
+tomatoes vegetable 4 none
+salt spice 3 grams
+minced_meat meat 500 grams
+basil spice 20 grams
+spaghetti pasta 320 grams
+leek vegetable 2 none
+onion vegetable 2 none
+paprika vegetable 3 none
+}
+
+Omelet {
+egg meat 2 none
+milk dairy 100 milliliters
+cheese dairy 1 none
+ham meat 1 none
+pepper spice 5 grams
+salt spice 5 grams
+}
+
+Pancakes {
+wheat grains 300 grams
+eggs meat 2 none
+milk dairy 500 milliliters
+salt spice 5 grams
+}
