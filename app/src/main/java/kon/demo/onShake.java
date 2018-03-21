@@ -2,14 +2,9 @@ package kon.demo;
 
 import android.app.Service;
 import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-
 import com.squareup.seismic.ShakeDetector;
 
 /**
@@ -37,6 +32,6 @@ public class onShake extends Service implements ShakeDetector.Listener {
     public void hearShake() {
         Intent random = new Intent(this,recipesActivity.class);
         startActivity(random); // for now
-
+        this.stopSelf();
     }
 }

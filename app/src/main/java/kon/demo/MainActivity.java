@@ -69,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(view, "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
                     Intent shake = new Intent(MainActivity.this,onShake.class);
                     startService(shake);
-
                 } else {
                     Snackbar.make(view, "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
+                    Intent shake = new Intent (MainActivity.this,onShake.class);
 
                 }
             }
