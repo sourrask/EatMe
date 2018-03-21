@@ -138,7 +138,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/hor7"
         app:layout_constraintTop_toBottomOf="@id/hor8"
-        android:onClick="shake"/>
+        />
 
     <ImageButton
         android:id="@+id/settingsButton"

@@ -1,7 +1,6 @@
 package kon.demo;
 
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,12 +12,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
-
 import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    ToggleButton toggleButton;
+    Intent shake;
 
 
     @Override
@@ -26,7 +26,30 @@ public class MainActivity extends AppCompatActivity {
         getCurrentLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
 
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
+                    shake = new Intent(MainActivity.this,onShake.class);
+                    startService(shake);
+                } else {
+                    Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
+                    //Intent shake = new Intent (MainActivity.this,onShake.class);
+                    stopService(shake);
+                }
+            }
+        });
+        toggleButton.setChecked(false);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        toggleButton.setChecked(false);
     }
 
     public void inventoryActivity(View view) {
@@ -61,21 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void shake(final View view) {
-        ToggleButton toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
-        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    Snackbar.make(view, "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
-                    Intent shake = new Intent(MainActivity.this,onShake.class);
-                    startService(shake);
-                } else {
-                    Snackbar.make(view, "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
-                    Intent shake = new Intent (MainActivity.this,onShake.class);
 
-                }
-            }
-        });
     }
 
     private void getCurrentLocale() {

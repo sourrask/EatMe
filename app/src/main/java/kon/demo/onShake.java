@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.ToggleButton;
+
 import com.squareup.seismic.ShakeDetector;
 
 /**
@@ -13,11 +16,14 @@ import com.squareup.seismic.ShakeDetector;
 
 public class onShake extends Service implements ShakeDetector.Listener {
 
+    ShakeDetector shakeDetector;
+    SensorManager manager;
+
     @Override
     public void onCreate(){
         super.onCreate();
-        ShakeDetector shakeDetector = new ShakeDetector(this);
-        SensorManager manager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        shakeDetector = new ShakeDetector(this);
+        manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         shakeDetector.start(manager);
 
     }
@@ -32,6 +38,12 @@ public class onShake extends Service implements ShakeDetector.Listener {
     public void hearShake() {
         Intent random = new Intent(this,recipesActivity.class);
         startActivity(random); // for now
-        this.stopSelf();
+
     }
+
+    @Override
+    public void onDestroy() {
+        shakeDetector.stop();
+    }
+
 }
