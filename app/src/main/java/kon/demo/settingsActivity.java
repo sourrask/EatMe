@@ -14,15 +14,17 @@ import java.util.Locale;
 
 public class settingsActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private static Button english, dutch, greek;
+    private static Button english, dutch, greek; //buttons for possible languages in the app
 
     //shared preferences
-    private static final String Locale_Preference = "LANGUAGE";
-    private static final String Locale_KeyValue = "LANGUAGE_KEY";
+    private static final String Locale_Preference = "LANGUAGE"; //saves the prefered language
+    private static final String Locale_KeyValue = "LANGUAGE_KEY"; //save the key of the prefered language
     private static SharedPreferences sharedPreferences;
 
     //todo onStop() / i na valw fnish meta to patima koubiou gia na kleisei i kai restart
 
+    // Gets the template for the settings activity by setting the content view to the desired layout
+    // Also sets the onClickListeners
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,16 +35,14 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
-
-
-
-
+    //Onclicklisteners for the buttons that change the language of the application.
     private void setListeners() {
         english.setOnClickListener(this);
         greek.setOnClickListener(this);
         dutch.setOnClickListener(this);
     }
 
+    //
     @Override
     public void onClick(View view){
         String lang="en";
@@ -51,10 +51,10 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
                 lang = "en";
                 break;
             case R.id.dutch:
-                lang="nl";
+                lang= "nl";
                 break;
             case R.id.greek:
-                lang="el";
+                lang= "el";
                 break;
         }
         changeLocale(lang);
@@ -63,16 +63,17 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         startActivity(refresh);
     }
     public void changeLocale(String lang) {
-        if (lang.equalsIgnoreCase(""))
+        if (lang.equalsIgnoreCase("")) {
             return;
+        }
         Locale myLocale = new Locale(lang);
         saveLocale(lang);
         Locale.setDefault(myLocale);
         Configuration config = new Configuration();
-        config.locale = myLocale;//set config locale as selected locale
+        config.locale = myLocale; //set config locale as selected locale
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());//Update the configuration
-
     }
+
     //Save locale method in preferences
     public void saveLocale(String lang) {
         SharedPreferences sharedPreferences = getSharedPreferences("LANGUAGE", Activity.MODE_PRIVATE);
