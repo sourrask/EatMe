@@ -60,10 +60,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(favorites);
     }
 
-    /**
-     * helloo
-     * @param view xD j
-     */
     public void shake(final View view) {
         ToggleButton toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
