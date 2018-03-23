@@ -8,12 +8,12 @@
     <string name="recipes">Συνταγές</string>
     <string name="searchHintEnglish">Αναζήτηση Συστατικών</string>
     <string name="settings">Ρυθμίσεις</string>
-    <string name="langselection">Γλωσσα</string>
+    <string name="langselection">Γλώσσα</string>
     <string name="searchHintRecipesEnglish">Αναζήτηση Συνταγής</string>
     <string name="removeIgredients">αφαιρεση υλικων</string>
     <string name="AddRecipe">προσθηκη</string>
     <string name="RemoveRecipe">αφαιρεση</string>
     <string name="addAllToInventory">Προσθηκη ολων στα συστατικα</string>
-    <string name="removeAllIgredients">διαγραφη λιστας αγορων</string>
+    <string name="removeAllIνgredients">διαγραφη λιστας αγορων</string>
     <string name="addIngredients">προσθηκη υλικων</string>
 </resources>

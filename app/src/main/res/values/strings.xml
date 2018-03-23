@@ -21,7 +21,7 @@
     <string name="greek" translatable="false">Ελληνικα</string>
     <string name="shake" translatable="false">Shake</string>
     <string name="addAllToInventory">Add all to inventory</string>
-    <string name="removeAllIgredients">Delete Grocery list</string>
+    <string name="removeAllIνgredients">Delete Grocery list</string>
 
 </resources>
 
