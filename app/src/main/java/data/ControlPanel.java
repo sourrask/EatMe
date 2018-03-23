@@ -3,6 +3,9 @@ package data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by s158270 on 14-3-2018.
  */
@@ -31,15 +34,46 @@ public class ControlPanel {
     /**
      * returns a list of ingredients where the amount < 0
      */
-    void getShoppingList() {
-
+    List<Ingredient> getShoppingList() {
+        List<Ingredient> sllist = new ArrayList<>();
+        for (Name i : ings) {
+            Ingredient ing = (Ingredient) i;
+            if (ing.amountNeed > 0) {
+                sllist.add(ing);
+            }
+        }
+        return sllist;
     }
 
     /**
-     * multiplies the amount of the ingredient by -1 if amount is negative
+     * adds an ingredient to the shopping list
      */
-    void shoppingListToInventory() {
+    void addIngredientToShoppingList(String name, String category, Double amount, String unit) {
+        ings.add(new Ingredient(name, category, amount, 0.0, unit));
+    }
+    //Only use when the ingredient already exists
+    void addIngredientToShoppingList(String name, Double amount) {
+        ings.add(new Ingredient(name, "x", amount, 0.0, "x"));
+    }
 
+
+    /**
+     * removes an ingredient to the shopping list (by changing amountNeed to 0)
+     * does NOT add it to the inventory
+     */
+    void removeIngredientFromShoppingList(String name) {
+        ((Ingredient)ings.get(name)).amountNeed = 0;
+    }
+
+    /**
+     * deletes all ingredients from the shopping list and adds them to the inventory
+     */
+
+    void removeAllIngredientFromShoppingList() {
+        for (Ingredient i : getShoppingList()) {
+            i.amountHave += i.amountNeed;
+            i.amountNeed = 0;
+        }
     }
 
     //----------------------------INVENTORY----------------------------
@@ -74,7 +108,7 @@ public class ControlPanel {
 
     }
 
-    ////----------------------------RECIPE----------------------------
+    //----------------------------RECIPE----------------------------
     /**
      * adds a new recipe. Does nothing if the recipe already exists
      */
@@ -96,5 +130,22 @@ public class ControlPanel {
      */
     void removeIngredientFromRecipe() {
 
+    }
+
+    //----------------------------RECOMMENDED----------------------------
+
+    List<Recipe> getRecommendedRecipes() {
+        List<Recipe> recrecs = new ArrayList<>();
+        for (Name r : recs) {
+            Recipe rec = (Recipe) r;
+            if (rec.recommended) {
+                recrecs.add(rec);
+            }
+        }
+        return recrecs;
+    }
+
+    void changeRecommended(String name) {
+        ((Recipe)recs.get(name)).changeRecommended();
     }
 }

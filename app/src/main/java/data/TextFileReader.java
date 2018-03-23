@@ -29,7 +29,7 @@ class TextFileReader {
         if (context != null) {
             try {
                 AssetManager am = context.getAssets();
-                InputStream inputStream = am.open("recipes.txt");
+                InputStream inputStream = am.open("recipes.txt"); //TODO change name to samplerecipes.txt (left like this to make tests work)
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
                 in = new BufferedReader(inputStreamReader);
