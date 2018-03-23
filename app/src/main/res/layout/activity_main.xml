@@ -131,14 +131,13 @@
         tools:layout_editor_absoluteY="166dp" />
 
     <ToggleButton
+        android:id="@+id/shakeButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:id="@+id/shakeButton"
-        app:layout_constraintStart_toStartOf="@id/ver7"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/hor7"
-        app:layout_constraintTop_toBottomOf="@id/hor8"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/ver7"
+        app:layout_constraintTop_toBottomOf="@id/hor8" />
 
     <ImageButton
         android:id="@+id/settingsButton"
@@ -161,11 +160,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/shake"
-        app:layout_constraintTop_toBottomOf="@id/hor9"
         app:layout_constraintBottom_toTopOf="@id/hor8"
-        app:layout_constraintStart_toStartOf="@id/ver7"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="@id/ver7"
+        app:layout_constraintTop_toBottomOf="@id/hor9" />
 
     <TextView
         android:id="@+id/settingsText"

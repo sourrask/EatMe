@@ -19,6 +19,7 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="@color/background"
+        android:onClick="inventoryActivity"
         android:scaleType="fitXY"
         android:src="@drawable/inventory"
         app:layout_constraintBottom_toTopOf="@+id/horizontal2"
@@ -26,19 +27,18 @@
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toBottomOf="@+id/horizontal1"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:onClick="inventoryActivity"/>
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/inventoryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/vertical1"
-        app:layout_constraintBottom_toTopOf="@id/horizontal3"
-        app:layout_constraintEnd_toStartOf="@id/vertical2"
-        app:layout_constraintTop_toBottomOf="@id/horizontal2"
         android:text="@string/inventory"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/horizontal3"
+        app:layout_constraintEnd_toStartOf="@id/vertical2"
+        app:layout_constraintStart_toStartOf="@id/vertical1"
+        app:layout_constraintTop_toBottomOf="@id/horizontal2"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
@@ -48,6 +48,7 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="@color/background"
+        android:onClick="RecipesActivity"
         android:scaleType="fitXY"
         android:src="@drawable/recipe2"
         app:layout_constraintBottom_toTopOf="@+id/horizontal2"
@@ -55,23 +56,21 @@
         app:layout_constraintStart_toStartOf="@id/vertical3"
         app:layout_constraintTop_toBottomOf="@+id/horizontal1"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:onClick="RecipesActivity"/>
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/recipeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/vertical3"
-        app:layout_constraintBottom_toTopOf="@id/horizontal3"
-        app:layout_constraintEnd_toStartOf="@id/vertical4"
-        app:layout_constraintTop_toBottomOf="@id/horizontal2"
         android:layout_centerHorizontal="true"
         android:text="@string/recipes"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/horizontal3"
+        app:layout_constraintEnd_toStartOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@id/vertical3"
+        app:layout_constraintTop_toBottomOf="@id/horizontal2"
         tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="166dp"
-        />
+        tools:layout_editor_absoluteY="166dp" />
 
     <ImageButton
         android:id="@+id/shoppingButton"
@@ -79,6 +78,7 @@
         android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:background="@color/background"
+        android:onClick="GroceryActivity"
         android:scaleType="fitXY"
         android:src="@drawable/shopping3"
         app:layout_constraintBottom_toTopOf="@+id/horizontal2"
@@ -86,50 +86,49 @@
         app:layout_constraintStart_toStartOf="@id/vertical5"
         app:layout_constraintTop_toBottomOf="@+id/horizontal1"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:onClick="GroceryActivity"/>
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/shoppingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/vertical5"
-        app:layout_constraintBottom_toTopOf="@id/horizontal3"
-        app:layout_constraintEnd_toStartOf="@id/vertical6"
-        app:layout_constraintTop_toBottomOf="@id/horizontal2"
         android:text="@string/grocery_list"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/horizontal3"
+        app:layout_constraintEnd_toStartOf="@id/vertical6"
+        app:layout_constraintStart_toStartOf="@id/vertical5"
+        app:layout_constraintTop_toBottomOf="@id/horizontal2"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
     <ImageButton
         android:id="@+id/favoritesButton"
         android:layout_width="0dp"
-        android:maxWidth="200dp"
-        android:maxHeight="200dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical7"
-        app:layout_constraintEnd_toStartOf="@id/vertical8"
-        app:layout_constraintTop_toBottomOf="@id/horizontal3"
-        app:layout_constraintBottom_toTopOf="@id/horizontal4"
         android:adjustViewBounds="true"
         android:background="@color/background"
+        android:maxHeight="200dp"
+        android:maxWidth="200dp"
+        android:onClick="FavoritesActivity"
         android:scaleType="fitXY"
         android:src="@drawable/favorites3"
+        app:layout_constraintBottom_toTopOf="@id/horizontal4"
+        app:layout_constraintEnd_toStartOf="@id/vertical8"
+        app:layout_constraintStart_toStartOf="@id/vertical7"
+        app:layout_constraintTop_toBottomOf="@id/horizontal3"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:onClick="FavoritesActivity"/>
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/favoritesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/vertical7"
-        app:layout_constraintBottom_toTopOf="@id/horizontal5"
-        app:layout_constraintEnd_toStartOf="@id/vertical8"
-        app:layout_constraintTop_toBottomOf="@id/horizontal4"
         android:text="@string/favorites"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/horizontal5"
+        app:layout_constraintEnd_toStartOf="@id/vertical8"
+        app:layout_constraintStart_toStartOf="@id/vertical7"
+        app:layout_constraintTop_toBottomOf="@id/horizontal4"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
 
@@ -137,30 +136,47 @@
         android:id="@+id/settingsButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical9"
-        app:layout_constraintEnd_toStartOf="@id/vertical10"
-        app:layout_constraintTop_toBottomOf="@id/horizontal3"
-        app:layout_constraintBottom_toTopOf="@id/horizontal4"
         android:adjustViewBounds="true"
         android:background="@color/background"
+        android:onClick="settingsActivity"
         android:scaleType="fitXY"
         android:src="@drawable/settings1"
+        app:layout_constraintBottom_toTopOf="@id/horizontal4"
+        app:layout_constraintEnd_toStartOf="@id/vertical10"
+        app:layout_constraintStart_toStartOf="@id/vertical9"
+        app:layout_constraintTop_toBottomOf="@id/horizontal3"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
-        android:onClick="settingsActivity"/>
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/settingsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/vertical9"
-        app:layout_constraintBottom_toTopOf="@id/horizontal5"
-        app:layout_constraintEnd_toStartOf="@id/vertical10"
-        app:layout_constraintTop_toBottomOf="@id/horizontal4"
         android:text="@string/settings"
         android:textColor="@color/TextColor"
+        app:layout_constraintBottom_toTopOf="@id/horizontal5"
+        app:layout_constraintEnd_toStartOf="@id/vertical10"
+        app:layout_constraintStart_toStartOf="@id/vertical9"
+        app:layout_constraintTop_toBottomOf="@id/horizontal4"
         tools:layout_editor_absoluteX="60dp"
         tools:layout_editor_absoluteY="166dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/shake"
+        app:layout_constraintBottom_toTopOf="@id/horizontalonCheck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vertical6"/>
+
+    <ToggleButton
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/shakeButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontalonCheck"
+        app:layout_constraintStart_toStartOf="@id/vertical6"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <android.support.constraint.Guideline
         android:id="@+id/vertical1"
@@ -266,6 +282,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/horizontalonCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
 
 
 </android.support.constraint.ConstraintLayout>

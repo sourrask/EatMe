@@ -2,6 +2,7 @@ package kon.demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 /*
  * Activity class for the Grocery activity. In this activity we display the shopping list of an user.
@@ -22,5 +23,17 @@ public class groceryActivity extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+    }
+
+    public void addToShoppingList(View view) {
+    }
+
+    public void addAllToInventory(View view) {
+    }
+
+    public void removeFromShoppingList(View view) {
+    }
+
+    public void deleteGroceryList(View view) {
     }
 }

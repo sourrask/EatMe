@@ -16,10 +16,12 @@
     <string name="removeIgredients">Remove Ingredients</string>
     <string name="AddRecipe">Add Recipe</string>
     <string name="RemoveRecipe">Remove Recipe</string>
-    <string name="english">English</string>
-    <string name="nederlands">Nederlands</string>
-    <string name="greek">Ελληνικά</string>
+    <string name="english" translatable="false">English</string>
+    <string name="nederlands" translatable="false">Nederlands</string>
+    <string name="greek" translatable="false">Ελληνικα</string>
     <string name="shake" translatable="false">Shake</string>
+    <string name="addAllToInventory">Add all to inventory</string>
+    <string name="removeAllIgredients">Delete Grocery list</string>
 
 </resources>
 
