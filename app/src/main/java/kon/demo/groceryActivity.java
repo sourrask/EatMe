@@ -6,7 +6,9 @@ import android.view.View;
 
 /*
  * Activity class for the Grocery activity. In this activity we display the shopping list of an user.
- * We also use the back button of the phone to return to the homescreen.
+ * We also use the back button of the phone to return to the homescreen. We added some functionality
+ * to modify the grocery list, adding/removing ingredients or adding them to your inventory after
+ * buying them.
  */
 public class groceryActivity extends AppCompatActivity {
 
@@ -25,15 +27,19 @@ public class groceryActivity extends AppCompatActivity {
         finish();
     }
 
+    // Method that adds ingredients to the shopping list.
     public void addToShoppingList(View view) {
     }
 
+    // Method that removes the ingredients from the shopping list and adds them all to the inventory
     public void addAllToInventory(View view) {
     }
 
+    // Method that removes ingredients from the shopping list.
     public void removeFromShoppingList(View view) {
     }
 
+    //Method that fully deletes the shopping list
     public void deleteGroceryList(View view) {
     }
 }
