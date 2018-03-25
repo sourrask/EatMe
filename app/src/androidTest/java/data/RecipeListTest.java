@@ -2,6 +2,7 @@ package data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -97,7 +98,7 @@ public class RecipeListTest extends TestUsingSP {
         //export the ingredient list and import it in another recipe list
         rl.exportSP();
         SharedPreferences sp = appContext.getSharedPreferences(spName, Context.MODE_PRIVATE);
-        assertEquals(3, sp.getInt("nr", 0));
+        assertEquals(3, sp.getInt("nr", 0)); //25 recipes in database
         RecipeList rl2 = new RecipeList(sp, new TextFileReader(appContext)); //constructor automatically imports
 
         //check two recipe names
@@ -126,6 +127,7 @@ public class RecipeListTest extends TestUsingSP {
 
         //test text file import
         assertEquals("leek", ((Recipe)rl2.get(3)).ingredients.get(5).name);
+        assertEquals(28, rl2.size());
 
     }
 
