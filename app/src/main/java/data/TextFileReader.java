@@ -29,7 +29,7 @@ class TextFileReader {
         if (context != null) {
             try {
                 AssetManager am = context.getAssets();
-                InputStream inputStream = am.open("recipes.txt"); //TODO change name to samplerecipes.txt (left like this to make tests work)
+                InputStream inputStream = am.open("database.txt");
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
                 in = new BufferedReader(inputStreamReader);
@@ -39,7 +39,7 @@ class TextFileReader {
                     } else if (line.contains("{")) {
                         String recName = "";
                         for (int i = 0; i < line.length(); i++) {
-                            if (line.charAt(i) == ' ' || line.charAt(i) == '{') {
+                            if (line.charAt(i) == '{') {
                                 recName = line.substring(0, i);
                                 break;
                             }
@@ -48,6 +48,14 @@ class TextFileReader {
                         while (!(line = in.readLine()).contains("}")) {
                             s = new Scanner(line);
                             String name = s.next();
+                            for (int i = 0; i < name.length(); i++) {
+                                if (name.substring(i, i+1).equals("_")) {
+                                    name =
+                                            name.substring(0, i) +
+                                            " " +
+                                            name.substring(i+1, name.length());
+                                }
+                            }
                             String cat = s.next();
                             Double amountNeed = Double.parseDouble(s.next());
                             String unit = s.next();
