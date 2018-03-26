@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by s158270 on 14-3-2018.
@@ -113,10 +114,31 @@ public class ControlPanel {
 
     /**
      * returns a random recipe where you have all ingredients for
+     * if none exist, returns pure random recipe
      */
-
     Recipe getRandomRecipe() {
-        return null;
+        List<Recipe> rl = new ArrayList<>();
+        for(Name nr : recs) {
+            Recipe r = (Recipe) nr;
+            boolean isValid = true;
+            for(Name ni : r.ingredients) {
+                Ingredient i = (Ingredient) ni;
+                if(((Ingredient) ings.get(i.name)).amountHave < i.amountNeed) {
+                    isValid = false;
+                    break;
+                }
+
+            }
+            if(isValid) {
+                rl.add(r);
+            }
+        }
+        Random r = new Random();
+        if (rl.isEmpty()) {
+            return (Recipe) recs.get(r.nextInt(recs.size()));
+        } else {
+            return rl.get(r.nextInt(rl.size()));
+        }
     }
 
 
