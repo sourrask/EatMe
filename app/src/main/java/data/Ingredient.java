@@ -7,7 +7,7 @@ package data;
 /**
  * creates an ingredient with an amount and unit
  */
-class Ingredient extends Name {
+public class Ingredient extends Name {
     final String category; //category to which it belongs
     double amountNeed;
     double amountHave;
