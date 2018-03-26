@@ -28,6 +28,14 @@ public class TextFileReaderTest extends TestUsingSP {
         assertEquals("dairy", i.category);
         assertEquals(500, i.amountNeed, 0);
         assertEquals(Unit.MILLILITERS, i.unit);
+
+        r = (Recipe) tfr.recs.get(21);
+        assertEquals("ratatouille", r.name);
+        i = (Ingredient) r.ingredients.get(3);
+        assertEquals("courgette", i.name);
+        assertEquals("vegetable", i.category);
+        assertEquals(3, i.amountNeed, 0);
+        assertEquals(Unit.NONE, i.unit);
     }
 
 }

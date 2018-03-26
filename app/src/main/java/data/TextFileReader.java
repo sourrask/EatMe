@@ -40,7 +40,11 @@ class TextFileReader {
                         String recName = "";
                         for (int i = 0; i < line.length(); i++) {
                             if (line.charAt(i) == '{') {
-                                recName = line.substring(0, i);
+                                if (line.charAt(i-1) == ' ') {
+                                    recName = line.substring(0, i-1);
+                                } else {
+                                    recName = line.substring(0, i);
+                                }
                                 break;
                             }
                         }

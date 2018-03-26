@@ -81,18 +81,25 @@ public class ControlPanel {
      * returns a list of ingredient where the amount > 0
      */
     List<Ingredient> getInventory() {
-        return null;
+        List<Ingredient> invlist = new ArrayList<>();
+        for (Name i : ings) {
+            Ingredient ing = (Ingredient) i;
+            if (ing.amountHave > 0) {
+                invlist.add(ing);
+            }
+        }
+        return invlist;
     }
 
     /**
      * adds an ingredient to the shopping list
      */
     void addIngredientToInventory(String name, String category, Double amount, String unit) {
-
+        ings.add(new Ingredient(name, category, 0.0, amount, unit));
     }
     //Only use when the ingredient already exists
     void addIngredientToInventory(String name, Double amount) {
-
+        ings.add(new Ingredient(name, "x", amount, 0.0, "x"));
     }
 
 
@@ -101,11 +108,11 @@ public class ControlPanel {
      * does NOT add it to the inventory
      */
     void removeIngredientFromInventory(String name) {
-
+        ((Ingredient)ings.get(name)).amountHave = 0;
     }
 
     /**
-     * deletes all ingredients from the shopping list and adds them to the inventory
+     * returns a random recipe where you have all ingredients for
      */
 
     Recipe getRandomRecipe() {
@@ -160,15 +167,15 @@ public class ControlPanel {
     /**
      * adds a new recipe. Does nothing if the recipe already exists
      */
-    void addRecipe() {
-
+    void addRecipe(String name) {
+        recs.add(new Recipe(name));
     }
 
     /**
      * deletes an existing recipe.
      */
-    void deleteRecipe() {
-
+    void deleteRecipe(String name) {
+        recs.remove(recs.get(name));
     }
 
     /**
@@ -176,15 +183,23 @@ public class ControlPanel {
      * if the ingredient doesn't exist, then it creates it and puts it in the ingredients list
      * (amount in ingredients list is 0)
      */
-    void addIngredientToRecipe() {
+    void addIngredientToRecipe(String recName, String name, String category, double amountN, double amountH, String unit) {
+        Ingredient i = new Ingredient(name, category, 0.0, 0.0, unit);
+        ings.add(i); //since amount is 0, nothing changes if ingredient already exists
+        Recipe r = (Recipe) recs.get(recName);
+        i.amountNeed = amountN;
+        i.amountHave = amountH;
+        r.ingredients.add(i);
+
 
     }
 
     /**
      * removes an ingredient from the recipe
      */
-    void removeIngredientFromRecipe() {
-
+    void removeIngredientFromRecipe(String recName, String ingName) {
+        Recipe r = (Recipe) recs.get(recName);
+        r.ingredients.remove(r.ingredients.get(ingName));
     }
 
     //----------------------------RECOMMENDED----------------------------
