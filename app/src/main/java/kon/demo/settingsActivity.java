@@ -42,10 +42,10 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         dutch.setOnClickListener(this);
     }
 
-    //
+    // change language to Prefered language in the whole application
     @Override
-    public void onClick(View view){
-        String lang="en";
+    public void onClick(View view) {
+        String lang= "en";
         switch (view.getId()) {
             case R.id.english:
                 lang = "en";
@@ -62,6 +62,7 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         finish();
         startActivity(refresh);
     }
+
     public void changeLocale(String lang) {
         if (lang.equalsIgnoreCase("")) {
             return;

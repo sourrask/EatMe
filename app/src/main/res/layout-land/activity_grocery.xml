@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--This file has the layout for the grocery activity (landscape layout). For the layout we use the
     constraint layout, since it is responsive and can be easily adapted to our preferences. We use
-    this layout for the searchbar on this page.-->
+    this layout for the searchbar and buttons on this page.-->
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
