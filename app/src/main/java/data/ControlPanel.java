@@ -186,6 +186,16 @@ public class ControlPanel {
     }
 
     //----------------------------RECIPE----------------------------
+
+    public List<Recipe> getAllRecipe() {
+        List<Recipe> lrecs = new ArrayList<>();
+        for (Name r : recs) {
+            Recipe rec = (Recipe) r;
+            lrecs.add(rec);
+        }
+        return lrecs;
+    }
+
     /**
      * adds a new recipe. Does nothing if the recipe already exists
      */
@@ -242,5 +252,13 @@ public class ControlPanel {
      */
     public void changeRecommended(String name) {
         ((Recipe)recs.get(name)).changeRecommended();
+    }
+
+    /**
+     * call when moving from activity to update SP
+     */
+    public void save() {
+        ings.exportSP();
+        recs.exportSP();
     }
 }
