@@ -186,6 +186,16 @@ public class ControlPanel {
     }
 
     //----------------------------RECIPE----------------------------
+
+    public List<Recipe> getAllRecipe() {
+        List<Recipe> lrecs = new ArrayList<>();
+        for (Name r : recs) {
+            Recipe rec = (Recipe) r;
+            lrecs.add(rec);
+        }
+        return lrecs;
+    }
+
     /**
      * adds a new recipe. Does nothing if the recipe already exists
      */
