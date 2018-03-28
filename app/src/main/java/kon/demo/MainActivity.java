@@ -11,8 +11,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import java.util.Locale;
+
+import data.ControlPanel;
 
 /*
  * Main class that renders the homepage. and includes the links to the other activities.
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
     ToggleButton toggleButton;
     Intent shake;
+
+    ControlPanel cp;
+
 
     //creating the view of the homepage, and adding a button
     @Override
@@ -41,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                     startService(shake);
                 } else {
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
-                    //Intent shake = new Intent (MainActivity.this,onShake.class);
                     stopService(shake);
                 }
             }

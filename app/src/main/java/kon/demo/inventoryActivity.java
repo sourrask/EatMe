@@ -1,24 +1,40 @@
 package kon.demo;
 
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.ScrollView;
+
+import java.lang.annotation.Annotation;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import data.ControlPanel;
+import data.Ingredient;
 
 /*
  * Activity class for the favorites activity. In this activity we display the favorite recipes.
  * We also use the back button of the phone to return to the homescreen.
  */
-public class inventoryActivity extends AppCompatActivity {
+public class inventoryActivity extends AppCompatActivity{
 
+    Context context=this;
+    ControlPanel cp = new ControlPanel(context);
     // Gets the template for the inventory activity by setting the content view to the desired layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+
+
+
     }
 
     // Back button that returns to the homescreen

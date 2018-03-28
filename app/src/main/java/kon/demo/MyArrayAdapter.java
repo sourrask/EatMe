@@ -13,7 +13,6 @@ import android.widget.TextView;
 public class MyArrayAdapter extends ArrayAdapter<String> {
 
     private final String[] recipes;
-    //private int counter;
     private Activity context;
 
     public MyArrayAdapter(Activity context, String[] recipes) {
