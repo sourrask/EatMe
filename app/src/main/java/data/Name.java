@@ -6,7 +6,7 @@ package data;
 
 class Name {
 
-    final String name;
+    public final String name;
 
     /**
      *
@@ -24,6 +24,10 @@ class Name {
             throw new IllegalArgumentException(
                     "Ingredient name cannot contain '#' or '*' or '&'");
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     /**
