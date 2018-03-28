@@ -16,4 +16,6 @@
     <string name="addAllToInventory">Προσθηκη ολων στα συστατικα</string>
     <string name="removeAllIνgredients">διαγραφη λιστας αγορων</string>
     <string name="addIngredients">προσθηκη υλικων</string>
+    <string name="back">Πισω</string>
+    <string name="number" />
 </resources>

@@ -16,5 +16,7 @@
     <string name="RemoveRecipe">Verwijderen</string>
     <string name="addAllToInventory">Voeg alle toe aan voorraad</string>
     <string name="removeAllIνgredients">Verwijder boodschappenlijst</string>
+    <string name="number" />
+
 
 </resources>
