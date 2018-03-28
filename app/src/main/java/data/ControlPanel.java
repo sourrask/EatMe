@@ -245,7 +245,7 @@ public class ControlPanel {
     }
 
     /**
-     * call when moving from activity
+     * call when moving from activity to update SP
      */
     public void save() {
         ings.exportSP();
