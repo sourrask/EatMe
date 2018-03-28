@@ -2,9 +2,11 @@ package kon.demo;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +34,8 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         initViews();
         setListeners();
         loadLocale();
+        updateViews();
+
 
     }
 
@@ -105,6 +109,23 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+    private void updateViews() {
+        SharedPreferences sharedPreferences = getSharedPreferences("LANGUAGE", Context.MODE_PRIVATE);
+        String locale = sharedPreferences.getString("LANGUAGE_KEY", "");
+        int color=getResources().getColor(R.color.selected);
+        Drawable background=getResources().getDrawable(R.drawable.roundedblue);
+        if (locale.equals("en")){
+            english.setBackground(background);
+            english.setTextColor(color);
+        } else if (locale.equals("nl")){
+            dutch.setBackground(background);
+            dutch.setTextColor(color);
+        }  else if (locale.equals("el")){
+            greek.setBackground(background);
+            greek.setTextColor(color);
+        }
+
     }
 
 }

@@ -10,4 +10,5 @@
     <color name="searchBackground">#e2dbdb</color>
     <color name="blue">#41a1e6</color>
     <color name="red">#ec4747</color>
+    <color name="selected">#ffffff</color>
 </resources>

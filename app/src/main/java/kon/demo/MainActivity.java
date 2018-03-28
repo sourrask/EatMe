@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     ToggleButton toggleButton;
     Intent shake;
 
-    ControlPanel cp;
 
 
     //creating the view of the homepage, and adding a button

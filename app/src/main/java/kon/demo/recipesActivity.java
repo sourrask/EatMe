@@ -1,9 +1,18 @@
 package kon.demo;
 
 import android.content.Context;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import data.ControlPanel;
@@ -25,10 +34,14 @@ import java.util.jar.Attributes;
  * home screen.
  */
 public class recipesActivity extends AppCompatActivity {
-    private Context context = this;
-    ControlPanel cp = new ControlPanel(context);
+    private Context context;
+    ControlPanel cp;
+    int i=0;
+    String[] recipesName;
+    MyArrayAdapter adapter;
 
-
+    //search editText
+    EditText searchText;
 
 
 
@@ -37,24 +50,54 @@ public class recipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipes_activity);
+        context = getApplicationContext();
+        cp = new ControlPanel(context);
         update();
 
 
     }
-    public void update(){
-        ListView recipesView= (ListView) findViewById(R.id.listRecipe);
-        List<Recipe> recipeList;
-        recipeList = cp.recs;
-        List<String> recipesName = new ArrayList<String>();
 
-        for (Recipe rec: recipes){
-            String name = rec.getName();
-            recipesName.add(name);
+    //update listview with recipes
+    public void update(){
+        final ListView recipesView= (ListView) findViewById(R.id.listRecipe);
+        RecipeList recipeList;
+        recipeList = cp.recs;
+        recipesName = new String[recipeList.size()];
+
+
+
+        for (Name recipe: recipeList){
+            String name = recipe.getName();
+            recipesName[i]=name;
+            i++;
         }
-        MyArrayAdapter adapter = new MyArrayAdapter(this, recipesName);
+        adapter = new MyArrayAdapter(this, recipesName);
         recipesView.setAdapter(adapter);
+        searchText= (EditText) findViewById(R.id.searchText);
+
+        //enable search
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            //when text is entered
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+               recipesActivity.this.adapter.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
     }
+
+
     // Back button that returns to the homescreen
     @Override
     public void onBackPressed(){

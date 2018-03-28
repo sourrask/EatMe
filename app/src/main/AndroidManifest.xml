@@ -20,7 +20,7 @@
             android:name=".inventoryActivity"
             android:label="@string/inventory"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden">
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
@@ -35,7 +35,7 @@
         </activity>
         <activity android:name=".groceryActivity"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/grocery_list">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -43,7 +43,7 @@
         </activity>
         <activity android:name=".recipesActivity"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/recipes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,7 +51,7 @@
         </activity>
         <activity android:name=".favoritesActivity"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden"
+            android:windowSoftInputMode="adjustPan"
             android:label="@string/favorites">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
