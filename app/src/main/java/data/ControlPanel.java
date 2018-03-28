@@ -243,4 +243,12 @@ public class ControlPanel {
     public void changeRecommended(String name) {
         ((Recipe)recs.get(name)).changeRecommended();
     }
+
+    /**
+     * call when moving from activity
+     */
+    public void save() {
+        ings.exportSP();
+        recs.exportSP();
+    }
 }
