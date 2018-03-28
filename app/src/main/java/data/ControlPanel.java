@@ -18,7 +18,7 @@ public class ControlPanel {
     public IngredientList ings;
     public RecipeList recs;
 
-    ControlPanel(Context appContext) {
+    public ControlPanel(Context appContext) {
         int contPriv = Context.MODE_PRIVATE;
         TextFileReader tfr = new TextFileReader(appContext);
         //ingredientlist

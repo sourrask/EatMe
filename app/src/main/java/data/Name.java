@@ -4,9 +4,13 @@ package data;
  * Created by s158270 on 14-3-2018.
  */
 
-class Name {
+public class Name {
 
-    final String name;
+    public final String name;
+
+    public String getName(){
+        return name;
+    }
 
     /**
      *
