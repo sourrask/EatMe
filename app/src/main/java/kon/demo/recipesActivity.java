@@ -37,17 +37,18 @@ public class recipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipes_activity);
-        update();
+        //update();
 
 
     }
+    /*
     public void update(){
         ListView recipesView= (ListView) findViewById(R.id.listRecipe);
         List<Recipe> recipeList;
         recipeList = cp.recs;
         List<String> recipesName = new ArrayList<String>();
 
-        for (Recipe rec: recipes){
+        for (Recipe rec: recipes) {
             String name = rec.getName();
             recipesName.add(name);
         }
@@ -55,6 +56,7 @@ public class recipesActivity extends AppCompatActivity {
         recipesView.setAdapter(adapter);
 
     }
+    */
     // Back button that returns to the homescreen
     @Override
     public void onBackPressed(){
