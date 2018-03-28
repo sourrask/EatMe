@@ -18,13 +18,16 @@ import data.Recipe;
  */
 public class favoritesActivity extends AppCompatActivity {
     // Gets the template for the favorites activity by setting the content view to the desired layout
-    private Context context = this;
-    private ControlPanel controlpanel  = new ControlPanel(context);
+    private Context context;
+    private ControlPanel controlpanel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+
+        context = getApplicationContext();
+        controlpanel = new ControlPanel(context);
 
         List<Recipe> recipesList;
         recipesList = controlpanel.getRecommendedRecipes();

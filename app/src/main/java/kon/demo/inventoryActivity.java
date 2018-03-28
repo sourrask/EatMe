@@ -25,13 +25,15 @@ import data.Ingredient;
  */
 public class inventoryActivity extends AppCompatActivity{
 
-    Context context=this;
-    ControlPanel cp = new ControlPanel(context);
+    Context context;
+    ControlPanel cp;
     // Gets the template for the inventory activity by setting the content view to the desired layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+        context = getApplicationContext();
+        cp = new ControlPanel(context);
 
 
 

@@ -25,8 +25,8 @@ import java.util.jar.Attributes;
  * home screen.
  */
 public class recipesActivity extends AppCompatActivity {
-    private Context context = this;
-    ControlPanel cp = new ControlPanel(context);
+    private Context context;
+    ControlPanel cp;
 
 
 
@@ -37,6 +37,9 @@ public class recipesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipes_activity);
+        context = getApplicationContext();
+        cp = new ControlPanel(context);
+
         //update();
 
 
