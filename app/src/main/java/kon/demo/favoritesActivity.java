@@ -15,6 +15,7 @@ public class favoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
         //// TODO: 04-Mar-18 search bar as in inventory if every1 agrees (searches different data)
+
     }
 
     // Back button that returns to the homescreen
