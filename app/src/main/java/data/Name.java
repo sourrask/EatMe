@@ -4,13 +4,9 @@ package data;
  * Created by s158270 on 14-3-2018.
  */
 
-public class Name {
+class Name {
 
     public final String name;
-
-    public String getName(){
-        return name;
-    }
 
     /**
      *
@@ -28,6 +24,10 @@ public class Name {
             throw new IllegalArgumentException(
                     "Ingredient name cannot contain '#' or '*' or '&'");
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     /**

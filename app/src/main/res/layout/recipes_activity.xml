@@ -66,12 +66,12 @@
         tools:layout_editor_absoluteY="502dp" />
 
     <ListView
+        android:id="@+id/listRecipe"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_goneMarginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/botHorizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:id="@+id/listRecipe"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topHorizontal"
         android:layout_marginTop="5dp"

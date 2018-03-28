@@ -22,9 +22,9 @@ public class ControlPanel {
         int contPriv = Context.MODE_PRIVATE;
         TextFileReader tfr = new TextFileReader(appContext);
         //ingredientlist
-        SharedPreferences inglistSP =appContext.getSharedPreferences("inglist", contPriv);
+        SharedPreferences inglistSP = appContext.getSharedPreferences("inglist", contPriv);
         //recipelist
-        SharedPreferences reclistSP =appContext.getSharedPreferences("reclist", contPriv);
+        SharedPreferences reclistSP = appContext.getSharedPreferences("reclist", contPriv);
 
         ings = new IngredientList(inglistSP, tfr);
         recs = new RecipeList(reclistSP, tfr);
@@ -186,6 +186,16 @@ public class ControlPanel {
     }
 
     //----------------------------RECIPE----------------------------
+
+    public List<Recipe> getAllRecipe() {
+        List<Recipe> lrecs = new ArrayList<>();
+        for (Name r : recs) {
+            Recipe rec = (Recipe) r;
+            lrecs.add(rec);
+        }
+        return lrecs;
+    }
+
     /**
      * adds a new recipe. Does nothing if the recipe already exists
      */
@@ -242,5 +252,13 @@ public class ControlPanel {
      */
     public void changeRecommended(String name) {
         ((Recipe)recs.get(name)).changeRecommended();
+    }
+
+    /**
+     * call when moving from activity to update SP
+     */
+    public void save() {
+        ings.exportSP();
+        recs.exportSP();
     }
 }
