@@ -15,8 +15,8 @@ import java.util.Random;
  * object from which everything can be easily controlled
  */
 public class ControlPanel {
-    private IngredientList ings;
-    private RecipeList recs;
+    public IngredientList ings;
+    public RecipeList recs;
 
     ControlPanel(Context appContext) {
         int contPriv = Context.MODE_PRIVATE;

@@ -66,8 +66,8 @@ class TextFileReader {
 
                             Ingredient i = new Ingredient(name, cat, 0.0, 0.0, unit);
                             ings.add(i);
-                            i.addAmountNeed(amountNeed);
-                            r.ingredients.add(i);
+                            Ingredient ir = new Ingredient(name, cat, amountNeed, 0.0, unit);
+                            r.ingredients.add(ir);
 
                         }
                         recs.add(r);
