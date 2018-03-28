@@ -4,7 +4,7 @@ package data;
  * Created by s158270 on 14-3-2018.
  */
 
-class Name {
+public class Name {
 
     public final String name;
 

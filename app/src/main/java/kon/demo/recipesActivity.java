@@ -84,8 +84,8 @@ public class recipesActivity extends AppCompatActivity {
 
             //when text is entered
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-               recipesActivity.this.adapter.getFilter().filter(s);
+            public void onTextChanged(CharSequence cs, int start, int before, int count) {
+               recipesActivity.this.adapter.getFilter().filter(cs);
             }
 
             @Override
