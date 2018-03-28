@@ -11,7 +11,6 @@
         android:layout_height="50dp"
         android:textSize="30sp"
         android:textColor="@color/TextColor"
-
          />
 
     <ImageView
@@ -23,7 +22,6 @@
         android:layout_marginEnd="59dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/editpng"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="305dp" />
 
@@ -35,7 +33,6 @@
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/deletepng"
         tools:layout_editor_absoluteX="305dp" />
 
     <ImageView
@@ -47,7 +44,6 @@
         android:layout_marginEnd="117dp"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        android:src="@drawable/sendpng"
         tools:layout_editor_absoluteX="305dp" />
 
 

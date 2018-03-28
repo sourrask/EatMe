@@ -22,9 +22,9 @@ public class ControlPanel {
         int contPriv = Context.MODE_PRIVATE;
         TextFileReader tfr = new TextFileReader(appContext);
         //ingredientlist
-        SharedPreferences inglistSP =appContext.getSharedPreferences("inglist", contPriv);
+        SharedPreferences inglistSP = appContext.getSharedPreferences("inglist", contPriv);
         //recipelist
-        SharedPreferences reclistSP =appContext.getSharedPreferences("reclist", contPriv);
+        SharedPreferences reclistSP = appContext.getSharedPreferences("reclist", contPriv);
 
         ings = new IngredientList(inglistSP, tfr);
         recs = new RecipeList(reclistSP, tfr);
