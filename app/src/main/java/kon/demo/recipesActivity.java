@@ -48,7 +48,7 @@ public class recipesActivity extends AppCompatActivity {
     public void update(){
         ListView recipesView= (ListView) findViewById(R.id.listRecipe);
         List<Recipe> recipeList;
-        recipeList = cp.recs;
+        recipeList = cp.getAllRecipes();
         List<String> recipesName = new ArrayList<String>();
 
         for (Recipe rec: recipes) {
