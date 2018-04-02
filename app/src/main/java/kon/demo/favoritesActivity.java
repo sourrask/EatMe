@@ -3,13 +3,18 @@ package kon.demo;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
 import java.util.List;
 
 import data.ControlPanel;
+import data.Name;
 import data.Recipe;
+import data.RecipeList;
 
 
 /*
@@ -19,53 +24,62 @@ import data.Recipe;
 public class favoritesActivity extends AppCompatActivity {
     // Gets the template for the favorites activity by setting the content view to a desired layout
     private Context context;
-    private ControlPanel controlpanel;
+    ControlPanel cp;
+    int i=0;
+    String[] favoritesName;
+    MyArrayAdapter adapter;
+
+    //search editText
+    EditText searchText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
-
         context = getApplicationContext();
-        controlpanel = new ControlPanel(context);
+        cp = new ControlPanel(context);
+        update();
+    }
 
-        List<Recipe> recipesList;
-        recipesList = controlpanel.getRecommendedRecipes();
-        String[] recipesNames = new String[recipesList.size()];
-        int i = 0;
-        for (Recipe rec : recipesList) {
-            String name = rec.getName();
-            recipesNames[i] = name;
+    //update listview with recipes
+    public void update() {
+        final ListView favoritesView = (ListView) findViewById(R.id.favoritesList);
+        List<Recipe> favoritesList;
+        favoritesList = cp.getRecommendedRecipes();
+        favoritesName = new String[favoritesList.size()];
+
+        for (Recipe recipe : favoritesList) {
+            String name = recipe.getName();
+            favoritesName[i] = name;
             i++;
-            if (i == recipesList.size()) {
-                break;
-            }
         }
-        MyArrayAdapter MyAdapter;
-        MyAdapter = new MyArrayAdapter(this, recipesNames);
-        ListView favoriteList = new ListView(this);
-        setContentView(favoriteList);
-        favoriteList.setAdapter(MyAdapter);
-    }
-    /*
-    public void updateList() {
-        List<Recipe> recipesList;
-        recipesList = controlpanel.getRecommendedRecipes();
-        List<String> recipesNames = new ArrayList<String>();
-        for (Recipe rec : recipesList) {
-            String name = rec.getName();
-            recipesNames.add(name);
-        }
-        adapter = new ArrayAdapter<String>(context, R.layout.activity_favorites, R.id.favoritesList, recipesNames);
 
-        ListView favoritesView = (ListView) findViewById(R.id.favoritesList);
-        setContentView(favoritesView);
+        adapter = new MyArrayAdapter(this, favoritesName);
         favoritesView.setAdapter(adapter);
+        searchText = (EditText) findViewById(R.id.searchText);
 
+        //enable search
+        /*
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-        adapter.notifyDataSetChanged();
+            }
+
+            //when text is entered
+            @Override
+            public void onTextChanged(CharSequence cs, int start, int before, int count) {
+                favoritesActivity.this.adapter.getFilter();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        */
+
     }
-    */
 
     // Back button that returns to the homescreen
     @Override
