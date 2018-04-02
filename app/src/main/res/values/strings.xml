@@ -22,6 +22,8 @@
     <string name="shake" translatable="false">Shake</string>
     <string name="addAllToInventory">Add all to inventory</string>
     <string name="removeAllIνgredients">Delete Grocery list</string>
+    <string name="cancel">cancel</string>
+    <string name="finish">finish</string>
 
 </resources>
 
