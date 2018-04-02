@@ -8,10 +8,10 @@ package data;
  * creates an ingredient with an amount and unit
  */
 public class Ingredient extends Name {
-    final String category; //category to which it belongs
-    double amountNeed;
-    double amountHave;
-    final Unit unit;
+    public final String category; //category to which it belongs
+    public double amountNeed;
+    public double amountHave;
+    public final Unit unit;
 
     /**
      *
