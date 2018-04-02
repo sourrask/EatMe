@@ -94,7 +94,7 @@ public class inventoryActivity extends AppCompatActivity{
     }
 
     public void AddIngredient(View view) {
-        //via popup window, let user add ingredient + amount
+        //via a popup window, let user add ingredient + amount
     }
 
     /*
