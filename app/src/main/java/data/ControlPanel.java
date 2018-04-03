@@ -234,6 +234,16 @@ public class ControlPanel {
         r.ingredients.remove(r.ingredients.get(ingName));
     }
 
+    public List<Ingredient> getIngredientsFromRecipe(String recName) {
+        Recipe r = (Recipe) recs.get(recName);
+        ArrayList<Ingredient> ingList = new ArrayList<>();
+        for (Name n : r.ingredients) {
+            Ingredient i = (Ingredient) n;
+            ingList.add(i);
+        }
+        return ingList;
+    }
+
     //----------------------------RECOMMENDED----------------------------
 
     public List<Recipe> getRecommendedRecipes() {
