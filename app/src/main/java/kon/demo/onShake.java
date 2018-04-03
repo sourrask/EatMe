@@ -55,28 +55,8 @@ public class onShake extends Service implements ShakeDetector.Listener {
     //If the shake is detected by the phone, it displays a random recipe
     @Override
     public void hearShake() {
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
-
-        String randomrecipe=cp.getRandomRecipe().name;
-        builder.setTitle(randomrecipe);
-        List<Ingredient> recipesIngredients;
-        recipesIngredients=cp.getIngredientsFromRecipe(randomrecipe);
-        String [] ingredients=new String[cp.getIngredientsFromRecipe(randomrecipe).size()];
-        int index=0;
-
-        for (Ingredient ings: recipesIngredients){
-            String str=ings.getName();
-            ingredients[index]=str;
-            index++;
-
-        }
-
-        Arrays.sort(ingredients);
-        builder.setItems(ingredients,null);
-        builder.setPositiveButton(R.string.tryAgain,null);
-        builder.setView(listView);
-        AlertDialog dialog=builder.create();
-        dialog.show();
+            Intent random= new Intent(this,favoritesActivity.class);
+            startActivity(random);
 
     }
 
