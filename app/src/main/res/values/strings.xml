@@ -29,6 +29,10 @@
     <string name="ingredientNeeded">Ingredients needed:</string>
     <string name="missingToShopping">Add Missing to GL</string>
     <string name="removeAvailable">Remove Available Ingredients</string>
+    <string name="addToFavorites">Add to favorites:</string>
+    <string name="removeFromFavorites">Remove from favorites:</string>
+    <string name="randomRecipe">Your random recipe:</string>
+    <string name="tryAgain">Shake again!</string>
 
 </resources>
 

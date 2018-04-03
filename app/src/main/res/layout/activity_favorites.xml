@@ -45,7 +45,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="addrecipe"/>
 
     <Button
         android:id="@+id/removeRecipe"
@@ -61,7 +62,8 @@
         app:layout_constraintLeft_toRightOf="@id/midVertical"
         app:layout_constraintTop_toBottomOf="@+id/botHorizontal"
         tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="502dp" />
+        tools:layout_editor_absoluteY="502dp"
+        android:onClick="removeRecipe"/>
 
     <ListView
         android:id="@+id/favoritesList"

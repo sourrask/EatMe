@@ -152,5 +152,7 @@ public class inventoryActivity extends AppCompatActivity{
     public void RemoveIngredient(View view) {
         //select an ingredient
         //delete it via cp.removeIngredientFromShoppingList(String)
+        cp.removeIngredientFromInventory("kaas");
+        update();
     }
 }

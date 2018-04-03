@@ -77,44 +77,49 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             viewHolder=(ViewHolder) row.getTag();
         }
         viewHolder.text.setText(recipes[position]);
-        //todo check
-        if (bool=true) {
-            row.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String string=recipes[position];
-                    List<Ingredient> ingredients;
-                    ingredients=cp.getIngredientsFromRecipe(string);
-                    String[] ings = new String [ingredients.size()];
-                    int index=0;
-
-                    for (Ingredient ing: ingredients){
-                        String str=ing.getName();
-                        ings[index]=str;
-                        index++;
-                    }
-                    Arrays.sort(ings);
-                    MyIngredientAdapter myIngredientAdapter= new MyIngredientAdapter(context,ings);
-                    listView.setAdapter(myIngredientAdapter);
-                    showDialogListView(v);
-
-                }
-            });
+        if (bool=true){
+            viewHolder.send.setVisibility(View.INVISIBLE);
+            viewHolder.edit.setVisibility(View.INVISIBLE);
+            viewHolder.delete.setVisibility(View.INVISIBLE);
         }
+        //todo check
+//        if (bool=true) {
+//            row.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String string=recipes[position];
+//                    List<Ingredient> ingredients;
+//                    ingredients=cp.getIngredientsFromRecipe(string);
+//                    String[] ings = new String [ingredients.size()];
+//                    int index=0;
+//
+//                    for (Ingredient ing: ingredients){
+//                        String str=ing.getName();
+//                        ings[index]=str;
+//                        index++;
+//                    }
+//                    Arrays.sort(ings);
+//                    MyIngredientAdapter myIngredientAdapter= new MyIngredientAdapter(context,ings);
+//                    listView.setAdapter(myIngredientAdapter);
+//                    showDialogListView(v);
+//
+//                }
+//            });
+//        }
 
         return row;
     }
 
-    private void showDialogListView(View v) {
-        AlertDialog.Builder builder=new AlertDialog.Builder(context);
-        builder.setCancelable(true);
-        builder.setNegativeButton(R.string.cancel,null);
-        builder.setNegativeButton(R.string.missingToShopping,null);
-        builder.setNeutralButton(R.string.removeAvailable,null);
-        builder.setView(listView);
-        AlertDialog dialog=builder.create();
-        dialog.show();
-    }
-
+//    private void showDialogListView(View v) {
+//        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+//        builder.setCancelable(true);
+//        builder.setNegativeButton(R.string.cancel,null);
+//        builder.setNegativeButton(R.string.missingToShopping,null);
+//        builder.setNeutralButton(R.string.removeAvailable,null);
+//        builder.setView(listView);
+//        AlertDialog dialog=builder.create();
+//        dialog.show();
+//    }
+//
 
 }

@@ -1,20 +1,19 @@
 package kon.demo;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ArrayAdapter;
 
+import java.util.Arrays;
 import java.util.List;
 
 import data.ControlPanel;
-import data.Name;
 import data.Recipe;
-import data.RecipeList;
 
 
 /*
@@ -23,11 +22,14 @@ import data.RecipeList;
  */
 public class favoritesActivity extends AppCompatActivity {
     // Gets the template for the favorites activity by setting the content view to a desired layout
+    ListView listView;
     private Context context;
     ControlPanel cp;
     int i=0;
     String[] favoritesName;
     MyArrayAdapter adapter;
+    String[]recipes;
+
 
     //search editText
     EditText searchText;
@@ -47,6 +49,7 @@ public class favoritesActivity extends AppCompatActivity {
         List<Recipe> favoritesList;
         favoritesList = cp.getRecommendedRecipes();
         favoritesName = new String[favoritesList.size()];
+        i=0;
 
         for (Recipe recipe : favoritesList) {
             String name = recipe.getName();
@@ -57,6 +60,7 @@ public class favoritesActivity extends AppCompatActivity {
         adapter = new MyArrayAdapter(this, favoritesName,cp,false);
         favoritesView.setAdapter(adapter);
         searchText = (EditText) findViewById(R.id.searchText);
+
 
         //enable search
         /*
@@ -86,5 +90,64 @@ public class favoritesActivity extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+        cp.save();
+    }
+
+    public void addrecipe(View view) {
+        listView=new ListView(this);
+        List<Recipe> recipeList;
+        recipeList = cp.getAllRecipe();
+        recipes = new String[recipeList.size()];
+        i=0;
+        for (Recipe recipe : recipeList) {
+            String name = recipe.getName();
+            recipes[i] = name;
+            i++;
+        }
+
+        Arrays.sort(recipes);
+        //adapter = new MyArrayAdapter(this, recipes,cp,true);
+        //listView.setAdapter(adapter);
+        searchText = (EditText) findViewById(R.id.searchText);
+
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setTitle(R.string.addToFavorites);
+        builder.setItems(recipes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                updateRecommended(which);
+            }
+        });
+
+        builder.setPositiveButton(R.string.finish,null);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
+
+    private void updateRecommended(int which) {
+        cp.changeRecommended(recipes[which]);
+        update();
+    }
+
+    public void removeRecipe(View view) {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setTitle(R.string.removeFromFavorites);
+        builder.setItems(favoritesName, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                updateDeleteRecommended(which);
+            }
+        });
+
+        builder.setPositiveButton(R.string.finish,null);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
+    }
+
+    private void updateDeleteRecommended(int which) {
+        cp.changeRecommended(favoritesName[which]);
+        update();
     }
 }

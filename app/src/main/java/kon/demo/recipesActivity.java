@@ -76,9 +76,11 @@ public class recipesActivity extends AppCompatActivity {
             i++;
         }
         Arrays.sort(recipesName);
-        adapter = new MyArrayAdapter(this, recipesName, cp,true);
+        adapter = new MyArrayAdapter(this, recipesName, cp,false);
         recipesView.setAdapter(adapter);
         searchText= (EditText) findViewById(R.id.searchText);
+
+
 
 
 

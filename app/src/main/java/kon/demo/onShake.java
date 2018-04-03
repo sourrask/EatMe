@@ -1,14 +1,25 @@
 package kon.demo;
 
 import android.app.Service;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.ToggleButton;
 
 import com.squareup.seismic.ShakeDetector;
+
+import java.util.Arrays;
+import java.util.List;
+
+import data.ControlPanel;
+import data.Ingredient;
+import data.Name;
+import data.Recipe;
 
 /**
  * Created by sourrask on 20-Mar-18.
@@ -19,9 +30,10 @@ import com.squareup.seismic.ShakeDetector;
  * become active and when the user shakes the phone they will get a random recipe.
  */
 public class onShake extends Service implements ShakeDetector.Listener {
-
+    ControlPanel cp;
     ShakeDetector shakeDetector;        //variable that consists of a Shake detector
     SensorManager manager;              //variable sensor manager
+    ListView listView;
 
     //creating the shake detector
     @Override
@@ -30,7 +42,7 @@ public class onShake extends Service implements ShakeDetector.Listener {
         shakeDetector = new ShakeDetector(this);
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         shakeDetector.start(manager);
-
+        cp=new ControlPanel(getApplicationContext());
     }
 
 
@@ -43,8 +55,28 @@ public class onShake extends Service implements ShakeDetector.Listener {
     //If the shake is detected by the phone, it displays a random recipe
     @Override
     public void hearShake() {
-        Intent random = new Intent(this,recipesActivity.class);
-        startActivity(random); // for now
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+
+        String randomrecipe=cp.getRandomRecipe().name;
+        builder.setTitle(randomrecipe);
+        List<Ingredient> recipesIngredients;
+        recipesIngredients=cp.getIngredientsFromRecipe(randomrecipe);
+        String [] ingredients=new String[cp.getIngredientsFromRecipe(randomrecipe).size()];
+        int index=0;
+
+        for (Ingredient ings: recipesIngredients){
+            String str=ings.getName();
+            ingredients[index]=str;
+            index++;
+
+        }
+
+        Arrays.sort(ingredients);
+        builder.setItems(ingredients,null);
+        builder.setPositiveButton(R.string.tryAgain,null);
+        builder.setView(listView);
+        AlertDialog dialog=builder.create();
+        dialog.show();
 
     }
 
