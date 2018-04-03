@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/recipeName"
+        android:id="@+id/ingredientName"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="bottom|center_vertical"
@@ -27,14 +27,16 @@
         android:id="@+id/numberAdding"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
         android:layout_toStartOf="@+id/add"
-        android:text="#"
-        android:textSize="23sp"/>
+        android:text="0"
+        android:textSize="30sp"/>
 
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:id="@+id/minus"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@id/numberAdding"
         android:adjustViewBounds="true"

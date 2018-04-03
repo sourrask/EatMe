@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kon.demo">
-    <uses-permission android:name="android.hardware.sensor.accelerometer" android:required="true" />
+
+    <uses-permission
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/group1icon"
@@ -9,10 +13,10 @@
         android:roundIcon="@mipmap/group1icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,32 +37,36 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".groceryActivity"
+        <activity
+            android:name=".groceryActivity"
+            android:label="@string/grocery_list"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/grocery_list">
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".recipesActivity"
+        <activity
+            android:name=".recipesActivity"
+            android:label="@string/recipes"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/recipes">
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".favoritesActivity"
+        <activity
+            android:name=".favoritesActivity"
+            android:label="@string/favorites"
             android:parentActivityName=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:label="@string/favorites">
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
 
         <service android:name=".onShake" />
+
     </application>
 
 </manifest>

@@ -1,7 +1,9 @@
 package kon.demo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -25,6 +27,7 @@ import android.app.ListActivity;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.jar.Attributes;
 
@@ -60,6 +63,7 @@ public class recipesActivity extends AppCompatActivity {
     //update listview with recipes
     public void update(){
         final ListView recipesView= (ListView) findViewById(R.id.listRecipe);
+        final ListView ingredientsView;
         RecipeList recipeList;
         recipeList = cp.recs;
         recipesName = new String[recipeList.size()];
@@ -71,28 +75,31 @@ public class recipesActivity extends AppCompatActivity {
             recipesName[i]=name;
             i++;
         }
-        adapter = new MyArrayAdapter(this, recipesName);
+        Arrays.sort(recipesName);
+        adapter = new MyArrayAdapter(this, recipesName, cp,true);
         recipesView.setAdapter(adapter);
         searchText= (EditText) findViewById(R.id.searchText);
 
-        //enable search
-        searchText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
 
-            //when text is entered
-            @Override
-            public void onTextChanged(CharSequence cs, int start, int before, int count) {
-               recipesActivity.this.adapter.getFilter().filter(cs);
-            }
+                //enable search
+                searchText.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            @Override
-            public void afterTextChanged(Editable s) {
+                    }
 
-            }
-        });
+                    //when text is entered
+                    @Override
+                    public void onTextChanged(CharSequence cs, int start, int before, int count) {
+                        recipesActivity.this.adapter.getFilter().filter(cs);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
 
 
     }

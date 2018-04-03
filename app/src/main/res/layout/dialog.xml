@@ -29,6 +29,7 @@
         android:layout_below="@+id/searchText"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:id="@+id/listview"
         app:layout_constraintBottom_toBottomOf="@+id/hor1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,11 +47,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/vertical3"
         android:background="@drawable/roundedred"
+        android:id="@+id/cancel"
         android:text="@string/cancel"/>
 
     <Button
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:id="@+id/save"
         app:layout_constraintStart_toStartOf="@id/vertical3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

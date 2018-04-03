@@ -24,6 +24,11 @@
     <string name="removeAllIνgredients">Delete Grocery list</string>
     <string name="cancel">cancel</string>
     <string name="finish">finish</string>
+    <string name="addToInventory">Add Ingredients:</string>
+    <string name="save">save</string>
+    <string name="ingredientNeeded">Ingredients needed:</string>
+    <string name="missingToShopping">Add Missing to GL</string>
+    <string name="removeAvailable">Remove Available Ingredients</string>
 
 </resources>
 

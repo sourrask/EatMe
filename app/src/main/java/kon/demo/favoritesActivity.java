@@ -54,7 +54,7 @@ public class favoritesActivity extends AppCompatActivity {
             i++;
         }
 
-        adapter = new MyArrayAdapter(this, favoritesName);
+        adapter = new MyArrayAdapter(this, favoritesName,cp,false);
         favoritesView.setAdapter(adapter);
         searchText = (EditText) findViewById(R.id.searchText);
 

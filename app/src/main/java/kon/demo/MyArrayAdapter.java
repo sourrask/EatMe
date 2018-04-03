@@ -1,24 +1,45 @@
 package kon.demo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.support.annotation.NonNull;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.List;
+
+import data.ControlPanel;
+import data.Ingredient;
+import data.Name;
+import data.Recipe;
 
 
 public class MyArrayAdapter extends ArrayAdapter<String> {
 
     private final String[] recipes;
     private Activity context;
+    private ListView listView;
+    ControlPanel cp;
+    String string,str;
+    Boolean bool;
 
-    public MyArrayAdapter(Activity context, String[] recipes) {
+
+
+    public MyArrayAdapter(Activity context, String[] recipes, ControlPanel cp, boolean bool) {
         super(context,R.layout.rowlayout, recipes);
         this.recipes=recipes;
         this.context=context;
+        this.cp=cp;
+        this.bool=bool;
+
 
 
     }
@@ -32,12 +53,14 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             send=(ImageView) v.findViewById(R.id.send);
             edit=(ImageView) v.findViewById(R.id.edit);
             delete=(ImageView) v.findViewById(R.id.delete);
+
+
         }
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent){
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent){
         View row=convertView;
         ViewHolder viewHolder=null;
         if (row==null) {
@@ -54,21 +77,44 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             viewHolder=(ViewHolder) row.getTag();
         }
         viewHolder.text.setText(recipes[position]);
+        //todo check
+        if (bool=true) {
+            row.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String string=recipes[position];
+                    List<Ingredient> ingredients;
+                    ingredients=cp.getIngredientsFromRecipe(string);
+                    String[] ings = new String [ingredients.size()];
+                    int index=0;
+
+                    for (Ingredient ing: ingredients){
+                        String str=ing.getName();
+                        ings[index]=str;
+                        index++;
+                    }
+                    Arrays.sort(ings);
+                    MyIngredientAdapter myIngredientAdapter= new MyIngredientAdapter(context,ings);
+                    listView.setAdapter(myIngredientAdapter);
+                    showDialogListView(v);
+
+                }
+            });
+        }
 
         return row;
     }
-//    @Override
-//    public int getCount(){
-//        return recipes.length;
-//    }
-//    @Override
-//    public String getItem(int i){
-//        return null;
-//    }
-//    @Override
-//    public long getItemId(int i){
-//        return 0;
-//    }
+
+    private void showDialogListView(View v) {
+        AlertDialog.Builder builder=new AlertDialog.Builder(context);
+        builder.setCancelable(true);
+        builder.setNegativeButton(R.string.cancel,null);
+        builder.setNegativeButton(R.string.missingToShopping,null);
+        builder.setNeutralButton(R.string.removeAvailable,null);
+        builder.setView(listView);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+    }
 
 
 }

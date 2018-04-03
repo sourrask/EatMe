@@ -53,7 +53,7 @@ public class groceryActivity extends AppCompatActivity {
         }
 
         Arrays.sort(shIngName);
-        adapter = new MyArrayAdapter(this, shIngName);
+        adapter = new MyArrayAdapter(this, shIngName,cp,false);
         groceryView.setAdapter(adapter);
         searchText= (EditText) findViewById(R.id.searchGrocery);
 
