@@ -17,6 +17,18 @@
     <string name="addAllToInventory">Voeg alle toe aan voorraad</string>
     <string name="removeAllIνgredients">Verwijder boodschappenlijst</string>
     <string name="number" />
+    <!--TODO-->
+    <string name="cancel">cancel</string>
+    <string name="finish">finish</string>
+    <string name="addToInventory">Add Ingredients:</string>
+    <string name="save">save</string>
+    <string name="ingredientNeeded">Ingredients needed:</string>
+    <string name="missingToShopping">Add Missing to GL</string>
+    <string name="removeAvailable">Remove Available Ingredients</string>
+    <string name="addToFavorites">Add to favorites:</string>
+    <string name="removeFromFavorites">Remove from favorites:</string>
+    <string name="randomRecipe">Your random recipe:</string>
+    <string name="tryAgain">Shake again!</string>
 
 
 </resources>
