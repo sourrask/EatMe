@@ -16,7 +16,7 @@
     <string name="RemoveRecipe">Verwijderen</string>
     <string name="addAllToInventory">Voeg alle toe aan voorraad</string>
     <string name="removeAllIνgredients">Verwijder boodschappenlijst</string>
-    <string name="number" />
+    <string name="number" >nummer</string>
     <!--TODO xd-->
     <string name="cancel">annuleren</string>
     <string name="finish">afronden</string>
@@ -29,6 +29,7 @@
     <string name="removeFromFavorites">Van favorieten verwijderen:</string>
     <string name="randomRecipe">Je willekeurige recept:</string>
     <string name="tryAgain">Opnieuw schudden!</string>
+    <string name="back">Terug</string>
 
 
 </resources>

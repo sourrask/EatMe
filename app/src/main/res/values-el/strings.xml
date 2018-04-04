@@ -17,7 +17,7 @@
     <string name="removeAllIνgredients">διαγραφη λιστας αγορων</string>
     <string name="addIngredients">προσθηκη υλικων</string>
     <string name="back">Πισω</string>
-    <string name="number" />
+    <string name="number" >Νούμερο</string>
     <string name="cancel">Πίσω</string>
     <string name="finish">Τέλος</string>
     <string name="addToInventory">Προσθήκη υλικών:</string>
@@ -28,4 +28,5 @@
     <string name="addToFavorites">Προσθήκη στα αγαπημένα</string>
     <string name="removeFromFavorites">Αφαίρεση από αγαπημένα</string>
     <string name="randomRecipe">Η τυχαία σου συνταγή:</string>
+    <string name="tryAgain">Shake πάλι</string>
 </resources>
