@@ -18,17 +18,17 @@
     <string name="removeAllIνgredients">Verwijder boodschappenlijst</string>
     <string name="number" />
     <!--TODO-->
-    <string name="cancel">cancel</string>
-    <string name="finish">finish</string>
-    <string name="addToInventory">Add Ingredients:</string>
+    <string name="cancel">annuleren</string>
+    <string name="finish">afronden</string>
+    <string name="addToInventory">Ingredient toevoegen:</string>
     <string name="save">save</string>
-    <string name="ingredientNeeded">Ingredients needed:</string>
-    <string name="missingToShopping">Add Missing to GL</string>
-    <string name="removeAvailable">Remove Available Ingredients</string>
-    <string name="addToFavorites">Add to favorites:</string>
-    <string name="removeFromFavorites">Remove from favorites:</string>
-    <string name="randomRecipe">Your random recipe:</string>
-    <string name="tryAgain">Shake again!</string>
+    <string name="ingredientNeeded">Ingredienten nodig:</string>
+    <string name="missingToShopping">Ontbrekende toevoegen aan BL</string> <!--BL = BoodschappenLijst-->
+    <string name="removeAvailable">Beschikbare ingredienten verwijderen</string>
+    <string name="addToFavorites">Aan favorieten toevoegen:</string>
+    <string name="removeFromFavorites">Van favorieten verwijderen:</string>
+    <string name="randomRecipe">Je willekeurige recept:</string>
+    <string name="tryAgain">Opnieuw schudden!</string>
 
 
 </resources>
