@@ -32,7 +32,7 @@
     <string name="addToFavorites">Add to favorites:</string>
     <string name="removeFromFavorites">Remove from favorites:</string>
     <string name="randomRecipe">Your random recipe:</string>
-    <string name="tryAgain">Shake again!</string>
+    <string name="tryAgain" translatable="false">Shake again!</string>
 
 </resources>
 

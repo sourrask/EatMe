@@ -18,4 +18,14 @@
     <string name="addIngredients">προσθηκη υλικων</string>
     <string name="back">Πισω</string>
     <string name="number" />
+    <string name="cancel">Πίσω</string>
+    <string name="finish">Τέλος</string>
+    <string name="addToInventory">Προσθήκη υλικών:</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="ingredientNeeded">Απαραίτητα υλικά!</string>
+    <string name="missingToShopping">Προσθήκη απόντων στη λίστα</string>
+    <string name="removeAvailable">Αφαίρεση διαθέσιμων υλικών</string>
+    <string name="addToFavorites">Προσθήκη στα αγαπημένα</string>
+    <string name="removeFromFavorites">Αφαίρεση από αγαπημένα</string>
+    <string name="randomRecipe">Η τυχαία σου συνταγή:</string>
 </resources>
