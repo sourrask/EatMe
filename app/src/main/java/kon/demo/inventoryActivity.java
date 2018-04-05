@@ -52,10 +52,13 @@ public class inventoryActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         cp = new ControlPanel(getApplicationContext());
         update();
-
-
     }
 
     //update listview with recipes

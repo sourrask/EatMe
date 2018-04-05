@@ -54,10 +54,15 @@ public class recipesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipes_activity);
         context = getApplicationContext();
-        cp = new ControlPanel(context);
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cp = new ControlPanel(getApplicationContext());
         update();
-
-
     }
 
     //update listview with recipes

@@ -39,7 +39,12 @@ public class favoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
         context = getApplicationContext();
-        cp = new ControlPanel(context);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cp = new ControlPanel(getApplicationContext());
         update();
     }
 
