@@ -61,6 +61,8 @@ public class favoritesActivity extends AppCompatActivity {
         favoritesView.setAdapter(adapter);
         searchText = (EditText) findViewById(R.id.searchText);
 
+        cp.save();
+
 
         //enable search
         /*

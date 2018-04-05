@@ -80,6 +80,8 @@ public class recipesActivity extends AppCompatActivity {
         recipesView.setAdapter(adapter);
         searchText= (EditText) findViewById(R.id.searchText);
 
+        cp.save();
+
 
 
 
