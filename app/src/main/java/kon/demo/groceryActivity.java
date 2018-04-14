@@ -34,6 +34,11 @@ public class groceryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grocery);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         cp = new ControlPanel(getApplicationContext());
         update();
     }
