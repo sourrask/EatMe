@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -136,7 +137,12 @@ public class inventoryActivity extends AppCompatActivity{
         AlertDialog.Builder builder= new AlertDialog.Builder(inventoryActivity.this);
         builder.setCancelable(true);
         builder.setNegativeButton(R.string.cancel, null);
-        builder.setPositiveButton(R.string.save,null);
+        builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //something ToDo
+            }
+        });
         builder.setTitle(R.string.addToInventory);
         builder.setView(listView);
         AlertDialog dialog=builder.create();
