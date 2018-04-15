@@ -10,19 +10,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import data.ControlPanel;
+import data.Ingredient;
+
 
 //used in inventoryActivity to get all ingredients and allow to add them to the inventory
 public class MyIngredientAdapter extends ArrayAdapter<String> {
     private final String[] ingredients;
+    boolean isInventory;
     private Activity context;
     String str;
+    double counter;
 
-    public MyIngredientAdapter(Activity context, String[] resource) {
+    ControlPanel cp;
+
+    public MyIngredientAdapter(Activity context, String[] resource, boolean isInv) {
         super(context,R.layout.add_remove_rowlayout, resource);
         this.ingredients=resource;
+        this.isInventory = isInv;
         this.context=context;
-
-
+        cp = new ControlPanel(context);
     }
     static class ViewHolder {
         public TextView text, amount;
@@ -60,9 +67,17 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
         }else{
             viewHolder=(MyIngredientAdapter.ViewHolder) row.getTag();
         }
-        final int[] counter = {0};
-        viewHolder.minus.setClickable(false); //cannot go below 0
-        str= Integer.toString(counter[0]);
+        //create the counter
+        int i = 0;
+        Ingredient ing = (Ingredient) cp.ings.get(ingredients[position]);
+        if (isInventory) {
+            counter = ing.amountHave;
+        } else {
+            counter = ing.amountHave;
+        }
+        i++;
+
+        str= Double.toString(counter);
         viewHolder.amount.setText(str);
 
         final ViewHolder finalViewHolder = viewHolder;
@@ -70,8 +85,8 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
 
-                counter[0]++;
-                str=Integer.toString(counter[0]);
+                counter++;
+                str=Double.toString(counter);
                 finalViewHolder.amount.setText(str);
                 finalViewHolder.minus.setClickable(true);
 
@@ -85,9 +100,9 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
 
-                if (counter[0]>0) {
-                    counter[0]--;
-                    str=Integer.toString(counter[0]);
+                if (counter>0) {
+                    counter--;
+                    str=Double.toString(counter);
                     finalViewHolder1.amount.setText(str);
                 }else finalViewHolder.minus.setClickable(false);
             }

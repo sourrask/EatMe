@@ -127,7 +127,7 @@ public class inventoryActivity extends AppCompatActivity{
         }
 
         Arrays.sort(allIngredients);
-        ingredientAdapter=new MyIngredientAdapter(this, allIngredients);
+        ingredientAdapter=new MyIngredientAdapter(this, allIngredients, true);
         listView.setAdapter(ingredientAdapter);
 
         showDialogListView(view);
