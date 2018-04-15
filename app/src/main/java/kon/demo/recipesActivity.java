@@ -1,6 +1,9 @@
 package kon.demo;
 
+import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
@@ -8,17 +11,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import data.ControlPanel;
 import data.Ingredient;
+import data.IngredientList;
 import data.Name;
 import data.Recipe;
 import data.RecipeList;
@@ -119,5 +125,10 @@ public class recipesActivity extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+    }
+
+    public void addrecipe(View view) {
+        Intent add = new Intent(this, AddRecipe.class);
+        startActivity(add);
     }
 }

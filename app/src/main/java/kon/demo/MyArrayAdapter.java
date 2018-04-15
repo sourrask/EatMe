@@ -32,6 +32,8 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
     Boolean bool;
 
 
+    //boolean used to make layout choices such as buttons (in some cases not used)
+    //if true makes send, delete, edit invisible
 
     public MyArrayAdapter(Activity context, String[] recipes, ControlPanel cp, boolean bool) {
         super(context,R.layout.rowlayout, recipes);
@@ -58,6 +60,8 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
         }
     }
 
+
+    //get listView row and set buttons
     @NonNull
     @Override
     public View getView(final int position, View convertView, @NonNull ViewGroup parent){
@@ -82,44 +86,10 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             viewHolder.edit.setVisibility(View.INVISIBLE);
             viewHolder.delete.setVisibility(View.INVISIBLE);
         }
-        //todo check
-//        if (bool=true) {
-//            row.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String string=recipes[position];
-//                    List<Ingredient> ingredients;
-//                    ingredients=cp.getIngredientsFromRecipe(string);
-//                    String[] ings = new String [ingredients.size()];
-//                    int index=0;
-//
-//                    for (Ingredient ing: ingredients){
-//                        String str=ing.getName();
-//                        ings[index]=str;
-//                        index++;
-//                    }
-//                    Arrays.sort(ings);
-//                    MyIngredientAdapter myIngredientAdapter= new MyIngredientAdapter(context,ings);
-//                    listView.setAdapter(myIngredientAdapter);
-//                    showDialogListView(v);
-//
-//                }
-//            });
-//        }
+
 
         return row;
     }
 
-//    private void showDialogListView(View v) {
-//        AlertDialog.Builder builder=new AlertDialog.Builder(context);
-//        builder.setCancelable(true);
-//        builder.setNegativeButton(R.string.cancel,null);
-//        builder.setNegativeButton(R.string.missingToShopping,null);
-//        builder.setNeutralButton(R.string.removeAvailable,null);
-//        builder.setView(listView);
-//        AlertDialog dialog=builder.create();
-//        dialog.show();
-//    }
-//
 
 }

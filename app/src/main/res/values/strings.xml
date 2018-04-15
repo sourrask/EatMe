@@ -33,6 +33,10 @@
     <string name="removeFromFavorites">Remove from favorites:</string>
     <string name="randomRecipe">Your random recipe:</string>
     <string name="tryAgain" translatable="false">Shake again!</string>
+    <string name="addmore">Add More Ingredients</string>
+    <string name="recipename">Recipe Name</string>
+    <string name="ingredientName">Ingredient Name</string>
+    <string name="amount">Amount</string>
 
 </resources>
 

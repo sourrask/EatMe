@@ -38,6 +38,8 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
         }
     }
 
+
+    //create row view with buttons and text, set limit to button minus
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent){
@@ -59,7 +61,7 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             viewHolder=(MyIngredientAdapter.ViewHolder) row.getTag();
         }
         final int[] counter = {0};
-        viewHolder.minus.setClickable(false);
+        viewHolder.minus.setClickable(false); //cannot go below 0
         str= Integer.toString(counter[0]);
         viewHolder.amount.setText(str);
 

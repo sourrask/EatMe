@@ -150,7 +150,7 @@ tomato_sauce smoothie 720 milliliters
 
 Tzatziki {
 garlic_clove spice 1 none
-lemon_juice fluid 45 milliliters
+vinegar fluid 20 milliliters
 cucumber vegetable 1 none
 greek_yoghurt dairy 90 milliliters
 salt spice 15 grams
@@ -230,7 +230,7 @@ Vegetarian quiche lorraine {
 olive_oil vegetable 30 milliliters
 puff_pastry_package other 1 none
 eggs meat 5 none
-crème_fraiche dairy 200 grams
+creme_fraiche dairy 200 grams
 emmentaler dairy 150 grams
 }
 

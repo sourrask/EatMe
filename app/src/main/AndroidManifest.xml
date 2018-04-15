@@ -65,6 +65,13 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <activity android:name=".AddRecipe"
+            android:parentActivityName=".recipesActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:label="@string/AddRecipe">
+
+        </activity>
+
         <service android:name=".onShake" />
 
     </application>
