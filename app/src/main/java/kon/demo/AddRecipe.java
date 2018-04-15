@@ -37,7 +37,14 @@ public class AddRecipe extends AppCompatActivity{
         setContentView(R.layout.addrecipe);
         pressed=false;
         createView();
+        cp = new ControlPanel(getApplicationContext());
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        cp = new ControlPanel(getApplicationContext());
     }
 
     private void createView() {
@@ -83,7 +90,7 @@ public class AddRecipe extends AppCompatActivity{
     }
 
     public void saverecipe(View view) {
-            str = recipe.toString();
+            str = recipe.getText().toString();
             if (str!=null) {
                 pressed = true;
                 recipe.setClickable(false);
