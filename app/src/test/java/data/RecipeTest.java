@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class RecipeTest {
     List<Ingredient> usedList = new ArrayList<>();
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Ingredient i1 = new Ingredient(
                 "cheese", "dairy", 2.0, 0.0, Unit.NONE);
         Ingredient i2 = new Ingredient(

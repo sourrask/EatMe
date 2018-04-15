@@ -11,7 +11,7 @@ import static junit.framework.Assert.assertEquals;
 public class TextFileReaderTest extends TestUsingSP {
     TextFileReader tfr = null;
     @Before
-    public void setUpp() throws Exception {
+    public void setUpp() {
         tfr = new TextFileReader(appContext);
     }
 

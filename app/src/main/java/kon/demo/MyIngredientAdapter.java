@@ -47,7 +47,7 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
 
         MyIngredientAdapter.ViewHolder viewHolder=null;
         if (row==null) {
-            LayoutInflater inflater = (LayoutInflater) context.getLayoutInflater();
+            LayoutInflater inflater = context.getLayoutInflater();
             row = inflater.inflate(R.layout.add_remove_rowlayout, null,true);
             viewHolder=new ViewHolder(row);
             viewHolder.text=(TextView)row.findViewById(R.id.ingredientName);

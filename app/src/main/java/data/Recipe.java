@@ -25,11 +25,7 @@ public class Recipe extends Name {
     }
 
     void changeRecommended() {
-        if (recommended) {
-            recommended = false;
-        } else {
-            recommended = true;
-        }
+        recommended = !recommended;
     }
 
 }

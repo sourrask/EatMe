@@ -1,28 +1,28 @@
 package kon.demo;
 
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.NumberPicker;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import data.ControlPanel;
 import data.Ingredient;
+import data.Unit;
+
+import static data.Unit.getUnit;
 
 public class AddRecipe extends AppCompatActivity{
 
     ControlPanel cp;
     String[] ingredientsName;
     MyArrayAdapter adapter2;
-    int first=0;
     Boolean pressed;
     EditText recipe,ingredient,amount;
     Button add,save;
@@ -56,50 +56,70 @@ public class AddRecipe extends AppCompatActivity{
         add = (Button) findViewById(R.id.addNextIngredient);
         list = (ListView) findViewById(R.id.newingredients);
         save = (Button) findViewById(R.id.addRecipe);
+        recipe.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-//        add.setClickable(false);
-//        ingredient.setFocusable(false);
-//        amount.setFocusable(false);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                pressed=true;
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                pressed=true;
+            }
+        });
 
 }
 
     public void saveIngredient(View view) {
         if (pressed=true) {
 
-
+                    String unit="NONE";
+                    Unit units=getUnit(unit);
                     String ingredientName = ingredient.getText().toString();
                     amountOf =Double.valueOf(amount.getText().toString());
-                    cp.addIngredientToRecipe(str, ingredientName, null, amountOf, 0, "");
+                    cp.addIngredient(ingredientName,"none",unit);
+                    cp.addIngredientToRecipe(str, ingredientName, "none", amountOf, 0,units);
                     ingredient.setText("");
-                    amount.setText("0");
+                    amount.setText("");
                     int index = 0;
                     List<Ingredient> ingrs = cp.getIngredientsFromRecipe(str);
-                    ingredientsName = new String[ingrs.size()];
+
+                    ingredientsName = new String[ingrs.size()+1];
                     for (Ingredient ings : ingrs) {
                         String ingrName = ings.name;
                         ingredientsName[index] = ingrName;
                         index++;
                     }
-
                     Arrays.sort(ingredientsName);
+                    adapter2 = new MyArrayAdapter(this, ingredientsName, cp, true);
 
-                    adapter2 = new MyArrayAdapter(AddRecipe.this, ingredientsName, cp, true);
-                    list.setAdapter(adapter2);
+                    update();
 
         }
+    }
+
+    private void update() {
+        list.setAdapter(adapter2);
+        cp.save();
     }
 
     public void saverecipe(View view) {
             str = recipe.getText().toString();
             if (str!=null) {
-                pressed = true;
                 recipe.setClickable(false);
                 recipe.setFocusable(false);
                 recipe.setTextColor(getResources().getColor(R.color.TextColor));
                 add.setClickable(true);
                 ingredient.setFocusable(true);
                 amount.setClickable(true);
-                saveRecipe(str); //saveRecipe not working error
+                saveRecipe(str);
+
             }
     }
 

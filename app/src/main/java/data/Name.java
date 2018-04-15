@@ -37,10 +37,6 @@ public class Name {
      * @return if x has a '#' or '*' or '&'
      */
     static boolean isValid(String x) {
-        if (x.equals("") || x.contains("#") || x.contains("*") || x.contains("&")) {
-            return false;
-        } else {
-            return true;
-        }
+        return !x.equals("") && !x.contains("#") && !x.contains("*") && !x.contains("&");
     }
 }

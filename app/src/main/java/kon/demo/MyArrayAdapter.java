@@ -68,7 +68,7 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
         View row=convertView;
         ViewHolder viewHolder=null;
         if (row==null) {
-            LayoutInflater inflater = (LayoutInflater) context.getLayoutInflater();
+            LayoutInflater inflater = context.getLayoutInflater();
             row = inflater.inflate(R.layout.rowlayout, null,true);
             viewHolder=new ViewHolder(row);
             viewHolder.text=(TextView)row.findViewById(R.id.recipeName);

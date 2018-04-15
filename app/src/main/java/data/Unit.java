@@ -4,7 +4,7 @@ package data;
  * Created by s158270 on 13-3-2018.
  */
 
-enum Unit {
+public enum Unit {
     GRAMS, MILLILITERS, NONE;
 
     /**
@@ -14,7 +14,7 @@ enum Unit {
      * @param x string to represent unit
      * @return the matching unit, or none if no match is found
      */
-    static Unit getUnit(String x) {
+    public static Unit getUnit(String x) {
         x = x.toUpperCase();
         for (Unit u : Unit.values()) {
             if(u.toString().equals(x)) {

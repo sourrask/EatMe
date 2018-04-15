@@ -16,7 +16,7 @@ public class IngredientTest {
     String unit;
     Ingredient i;
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         ingName = "zoUt";
         ingCat = "smAAkMakERs";
         amountNeed = 0.25;
