@@ -34,7 +34,7 @@ public class Name {
      *
      * checks if a string is valid
      * @param x string to be checked
-     * @return if x has a ',' or '/' or ':' or '&'
+     * @return if x has a '#' or '*' or '&'
      */
     static boolean isValid(String x) {
         if (x.equals("") || x.contains("#") || x.contains("*") || x.contains("&")) {
