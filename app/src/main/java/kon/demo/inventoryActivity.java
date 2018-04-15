@@ -141,6 +141,7 @@ public class inventoryActivity extends AppCompatActivity{
         builder.setView(listView);
         AlertDialog dialog=builder.create();
         dialog.show();
+
     }
 
     /*

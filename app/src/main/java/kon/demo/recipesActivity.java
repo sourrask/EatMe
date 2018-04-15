@@ -1,41 +1,25 @@
 package kon.demo;
 
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import data.ControlPanel;
 import data.Ingredient;
-import data.IngredientList;
 import data.Name;
-import data.Recipe;
 import data.RecipeList;
 
-import android.app.ListActivity;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.jar.Attributes;
 
 /*
  * Activity class for the recipes activity. In this activity we display the recipes in the database.
@@ -48,10 +32,14 @@ public class recipesActivity extends AppCompatActivity {
     int i=0;
     String[] recipesName;
     MyArrayAdapter adapter;
+    List<Ingredient> ingredientList;
+    Double [] amount;
+
+
 
     //search editText
     EditText searchText;
-
+    String[] ingredientName;
 
 
     // Gets the template for the recipes activity by setting the content view to the desired layout
@@ -89,6 +77,49 @@ public class recipesActivity extends AppCompatActivity {
         Arrays.sort(recipesName);
         adapter = new MyArrayAdapter(this, recipesName, cp,false);
         recipesView.setAdapter(adapter);
+
+        //set a pop up view wih the ingredients for every recipe
+        recipesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(recipesActivity.this );
+                ingredientList=cp.getIngredientsFromRecipe(recipesName[position]);
+                amount= new Double[ingredientList.size()];
+                i=0;
+                ingredientName=new String [ingredientList.size()];
+
+                for(Ingredient ings: ingredientList){
+                    String ingredient=ings.name;
+                    amount[i]=ings.amountNeed;
+                    ingredient=ingredient + "        x" +amount[i];
+                    ingredientName[i]=ingredient;
+                    i++;
+                }
+                Arrays.sort(ingredientName);
+                dialog.setTitle(recipesName[position] + " :");
+                dialog.setItems(ingredientName,null);//todo add maybe another onclikc on each ingredient?
+                //what todo when using ings you have
+                dialog.setNegativeButton(R.string.useWhatIHave, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                //what todo when you want to add missing to SL
+                dialog.setNeutralButton(R.string.addMissingToList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                dialog.setPositiveButton(R.string.cancel, null);
+                dialog.create();
+                dialog.show();
+
+            }
+        });
         searchText= (EditText) findViewById(R.id.searchText);
 
         cp.save();
@@ -132,6 +163,8 @@ public class recipesActivity extends AppCompatActivity {
         startActivity(add);
     }
 
+
+    //pop up dialog to delete a recipe
     public void deleteRecipe(View view) {
         AlertDialog.Builder builder= new AlertDialog.Builder(this);
         builder.setTitle(R.string.removeRecipe);
@@ -147,6 +180,7 @@ public class recipesActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //deleting selected recipe from the dialog
     private void updateDeleteRecommended(int which) {
         cp.deleteRecipe(recipesName[which]);
         update();

@@ -22,7 +22,7 @@
     <string name="shake" translatable="false">Shake</string>
     <string name="addAllToInventory">Add all to inventory</string>
     <string name="removeAllIνgredients">Delete Grocery list</string>
-    <string name="cancel">cancel</string>
+    <string name="cancel">Cancel</string>
     <string name="finish">finish</string>
     <string name="addToInventory">Add ingredients:</string>
     <string name="save">save</string>
@@ -40,6 +40,8 @@
     <string name="deleteAlert">Do you want to delete</string>
     <string name="delete">Delete</string>
     <string name="removeRecipe">Delete Recipe:</string>
+    <string name="useWhatIHave">Use ingredients you have</string>
+    <string name="addMissingToList">Add missing to Shopping List</string>
 
 </resources>
 
