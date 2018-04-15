@@ -11,13 +11,17 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import data.ControlPanel;
 import data.Ingredient;
 import data.Name;
 import data.RecipeList;
 
+import java.text.ParsePosition;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,7 +37,7 @@ public class recipesActivity extends AppCompatActivity {
     String[] recipesName;
     MyArrayAdapter adapter;
     List<Ingredient> ingredientList;
-    Double [] amount;
+    Double [] amount,haveAmount,needAmount;
 
 
 
@@ -85,18 +89,35 @@ public class recipesActivity extends AppCompatActivity {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(recipesActivity.this );
                 ingredientList=cp.getIngredientsFromRecipe(recipesName[position]);
                 amount= new Double[ingredientList.size()];
+                haveAmount =new Double [ingredientList.size()];
+                needAmount = new Double[ingredientList.size()];
                 i=0;
                 ingredientName=new String [ingredientList.size()];
 
                 for(Ingredient ings: ingredientList){
                     String ingredient=ings.name;
-                    amount[i]=ings.amountNeed;
-                    ingredient=ingredient + "        x" +amount[i];
+                    amount[i]= ings.amountNeed;
+                    haveAmount[i]=ings.amountHave;
+
+                    int size=60-ingredient.length()-amount[i].toString().length();
+                    String gap= "";
+                    int index=0;
+                    while (index!=size) {
+                        gap=gap + " ";
+                        index++;
+                    }
+                    ingredient=ingredient+ gap +" x" + amount[i];
                     ingredientName[i]=ingredient;
                     i++;
                 }
                 Arrays.sort(ingredientName);
                 dialog.setTitle(recipesName[position] + " :");
+
+
+
+
+
+
                 dialog.setItems(ingredientName,null);//todo add maybe another onclikc on each ingredient?
                 //what todo when using ings you have
                 dialog.setNegativeButton(R.string.useWhatIHave, new DialogInterface.OnClickListener() {

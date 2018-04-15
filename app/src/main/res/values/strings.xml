@@ -42,6 +42,8 @@
     <string name="removeRecipe">Delete Recipe:</string>
     <string name="useWhatIHave">Use ingredients you have</string>
     <string name="addMissingToList">Add missing to Shopping List</string>
+    <string name="have">Have:</string>
+    <string name="need">Need:</string>
 
 </resources>
 
