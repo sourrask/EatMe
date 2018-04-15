@@ -67,8 +67,8 @@ public class AddRecipe extends AppCompatActivity{
         if (pressed=true) {
 
 
-                    String ingredientName = ingredient.toString();
-                    amountOf =Double.valueOf(amount.toString());
+                    String ingredientName = ingredient.getText().toString();
+                    amountOf =Double.valueOf(amount.getText().toString());
                     cp.addIngredientToRecipe(str, ingredientName, null, amountOf, 0, "");
                     ingredient.setText("");
                     amount.setText("0");
