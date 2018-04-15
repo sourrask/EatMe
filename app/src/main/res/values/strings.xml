@@ -37,6 +37,9 @@
     <string name="recipename">Recipe Name</string>
     <string name="ingredientName">Ingredient Name</string>
     <string name="amount">Amount</string>
+    <string name="deleteAlert">Do you want to delete</string>
+    <string name="delete">Delete</string>
+    <string name="removeRecipe">Delete Recipe:</string>
 
 </resources>
 

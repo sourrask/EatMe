@@ -3,6 +3,7 @@ package kon.demo;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -56,7 +57,6 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             edit=(ImageView) v.findViewById(R.id.edit);
             delete=(ImageView) v.findViewById(R.id.delete);
 
-
         }
     }
 
@@ -77,15 +77,36 @@ public class MyArrayAdapter extends ArrayAdapter<String> {
             viewHolder.edit=(ImageView)row.findViewById(R.id.edit);
             row.setTag(viewHolder);
             row.setTag(viewHolder);
+
+
         }else{
             viewHolder=(ViewHolder) row.getTag();
         }
         viewHolder.text.setText(recipes[position]);
+
         if (bool=true){
             viewHolder.send.setVisibility(View.INVISIBLE);
             viewHolder.edit.setVisibility(View.INVISIBLE);
             viewHolder.delete.setVisibility(View.INVISIBLE);
         }
+//        row.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                            AlertDialog.Builder recipeDialog = new AlertDialog.Builder(getContext());
+//                            recipeDialog.setTitle(recipes[position]);
+//                            recipeDialog.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    cp.deleteRecipe(recipes[position]);
+//                                }
+//                            });
+//                            recipeDialog.setNegativeButton(R.string.cancel,null);
+//                        }
+//                    });
+
+
+
 
 
         return row;

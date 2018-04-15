@@ -131,4 +131,24 @@ public class recipesActivity extends AppCompatActivity {
         Intent add = new Intent(this, AddRecipe.class);
         startActivity(add);
     }
+
+    public void deleteRecipe(View view) {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setTitle(R.string.removeRecipe);
+        builder.setItems(recipesName, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                updateDeleteRecommended(which);
+            }
+        });
+
+        builder.setPositiveButton(R.string.finish,null);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+    }
+
+    private void updateDeleteRecommended(int which) {
+        cp.deleteRecipe(recipesName[which]);
+        update();
+    }
 }
