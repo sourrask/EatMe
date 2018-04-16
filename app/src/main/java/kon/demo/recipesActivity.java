@@ -98,7 +98,7 @@ public class recipesActivity extends AppCompatActivity {
                     amount[i]= ings.amountNeed;
                     haveAmount[i]=ings.amountHave;
 
-                    int size=60-ingredient.length()-amount[i].toString().length();
+                    int size=65-ingredient.length()-amount[i].toString().length();
                     String gap= "";
                     int index=0;
                     while (index!=size) {
@@ -110,7 +110,7 @@ public class recipesActivity extends AppCompatActivity {
                     i++;
                 }
                 Arrays.sort(ingredientName);
-                dialog.setTitle(ingredientName[position] + " :");
+                dialog.setTitle(recipesName[position] + " :");
 
 
 

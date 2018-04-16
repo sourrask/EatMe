@@ -23,7 +23,7 @@ public class AddRecipe extends AppCompatActivity{
     ControlPanel cp;
     String[] ingredientsName;
     MyArrayAdapter adapter2;
-    Boolean pressed;
+   // Boolean pressed;
     EditText recipe,ingredient,amount;
     Button add,save;
     ListView list;
@@ -35,7 +35,7 @@ public class AddRecipe extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addrecipe);
-        pressed=false;
+    //    pressed=false;
         createView();
         cp = new ControlPanel(getApplicationContext());
 
@@ -64,27 +64,50 @@ public class AddRecipe extends AppCompatActivity{
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                pressed=true;
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                pressed=true;
+            }
+        });
+
+        amount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    amount.setBackground(getDrawable(R.drawable.rounded));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
 }
 
     public void saveIngredient(View view) {
-        if (pressed=true) {
+        str = recipe.getText().toString();
+        String ingredientName = ingredient.getText().toString();
+        //if ingredient filed is not empty it sets add button to clickable
+        if (ingredientName.length()!=0) {
+            //checks if it should be added to a recipe
+            if (str.length() != 0) {
 
-                    String unit="NONE";
-                    Unit units=getUnit(unit);
-                    String ingredientName = ingredient.getText().toString();
-                    amountOf =Double.valueOf(amount.getText().toString());
-                    cp.addIngredient(ingredientName,"none",unit);
-                    cp.addIngredientToRecipe(str, ingredientName, "none", amountOf, 0,units);
+                String unit = "NONE";
+                Unit units = getUnit(unit);
+
+                if (amount.getText().toString().length()==0) {
+                    amount.setBackground(getDrawable(R.drawable.roundedred));
+                }else {
+                    amount.setBackground(getDrawable(R.drawable.rounded));
+                    amountOf = Double.valueOf(amount.getText().toString());
+                    cp.addIngredient(ingredientName, "none", unit);
+                    cp.addIngredientToRecipe(str, ingredientName, "none", amountOf, 0, units);
                     ingredient.setText("");
                     amount.setText("");
                     int index = 0;
@@ -98,9 +121,20 @@ public class AddRecipe extends AppCompatActivity{
                     }
                     Arrays.sort(ingredientsName);
                     adapter2 = new MyArrayAdapter(this, ingredientsName, cp, true);
+                }
 
-                    update();
+            } else {
+                add.setClickable(true);
+                String unit = "NONE";
+                //if amount is not given just adds the ingredient in the ingredientList
+                if (amount.getText().toString().length()==0) amount.setText("0");
+                amountOf = Double.valueOf(amount.getText().toString());
+                cp.addIngredient(ingredientName, "none", unit);
+                ingredient.setText("");
+                amount.setText("");
 
+            }
+            update();
         }
     }
 
@@ -111,7 +145,8 @@ public class AddRecipe extends AppCompatActivity{
 
     public void saverecipe(View view) {
             str = recipe.getText().toString();
-            if (str!=null) {
+
+            if (str.length()!=0) {
                 recipe.setClickable(false);
                 recipe.setFocusable(false);
                 recipe.setTextColor(getResources().getColor(R.color.TextColor));
