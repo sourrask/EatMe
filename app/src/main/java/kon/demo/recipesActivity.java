@@ -72,7 +72,7 @@ public class recipesActivity extends AppCompatActivity {
         recipesName = new String[recipeList.size()];
 
 
-
+        i = 0;
         for (Name recipe: recipeList){
             String name = recipe.getName();
             recipesName[i]=name;
