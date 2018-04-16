@@ -1,6 +1,8 @@
 package kon.demo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -28,6 +30,9 @@ public class groceryActivity extends AppCompatActivity {
     ControlPanel cp;
     MyArrayAdapter adapter;
     EditText searchText;
+    ListView listView;
+    String[] allIngredients;
+    MyIngredientAdapter ingredientAdapter;
 
     // Gets the template for the grocery activity by setting the content view to the desired layout
     @Override
@@ -99,8 +104,43 @@ public class groceryActivity extends AppCompatActivity {
     // Method that adds ingredients to the shopping list.
     public void addToShoppingList(View view) {
         //via popup window, let user add ingredient + amount
-        cp.addIngredientToShoppingList("kaas", 2.0);
-        update();
+        listView=new ListView(this);
+        List<Ingredient> ingredients;
+        ingredients=cp.getAllIngredients();
+        allIngredients= new String[ingredients.size()];
+        int index=0;
+
+        for (Ingredient ing: ingredients) {
+            String name = ing.getName();
+            allIngredients[index] = name;
+            index++;
+        }
+
+        Arrays.sort(allIngredients);
+        ingredientAdapter = new MyIngredientAdapter(this, allIngredients, false);
+        listView.setAdapter(ingredientAdapter);
+
+        showDialogListView(view);
+    }
+    public void showDialogListView(View view){
+        AlertDialog.Builder builder= new AlertDialog.Builder(groceryActivity.this);
+        builder.setCancelable(true);
+        builder.setNegativeButton(R.string.cancel, null);
+        builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                double[] amounts = ingredientAdapter.getAmounts();
+                for (int j = 0; j < amounts.length; j++) {
+                    ((Ingredient)cp.ings.get(allIngredients[j])).amountNeed = amounts[j];
+                }
+                update();
+            }
+        });
+        builder.setTitle(R.string.addToInventory);
+        builder.setView(listView);
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
     }
 
     // Method that removes the ingredients from the shopping list and adds them all to the inventory
@@ -111,9 +151,7 @@ public class groceryActivity extends AppCompatActivity {
 
     // Method that removes ingredients from the shopping list.
     public void removeFromShoppingList(View view) {
-        //select an ingredient
-        //delete it via cp.removeIngredientFromShoppingList(String)
-        update();
+        //ToDo remove
     }
 
     //Method that fully deletes the shopping list

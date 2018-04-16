@@ -112,6 +112,7 @@ public class inventoryActivity extends AppCompatActivity{
     @Override
     public void onBackPressed(){
         super.onBackPressed();
+        cp.save();
         finish();
     }
 
