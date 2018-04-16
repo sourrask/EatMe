@@ -90,7 +90,7 @@ public class AddRecipe extends AppCompatActivity{
                     int index = 0;
                     List<Ingredient> ingrs = cp.getIngredientsFromRecipe(str);
 
-                    ingredientsName = new String[ingrs.size()+1];
+                    ingredientsName = new String[ingrs.size()];
                     for (Ingredient ings : ingrs) {
                         String ingrName = ings.name;
                         ingredientsName[index] = ingrName;
