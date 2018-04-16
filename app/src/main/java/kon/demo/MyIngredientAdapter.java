@@ -17,10 +17,10 @@ import data.Ingredient;
 //used in inventoryActivity to get all ingredients and allow to add them to the inventory
 public class MyIngredientAdapter extends ArrayAdapter<String> {
     private final String[] ingredients;
+    private final double[] ingredientsAmount;
     boolean isInventory;
     private Activity context;
     String str;
-    double counter;
 
     ControlPanel cp;
 
@@ -30,6 +30,14 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
         this.isInventory = isInv;
         this.context=context;
         cp = new ControlPanel(context);
+        ingredientsAmount = new double[resource.length];
+        for (int i = 0 ; i < resource.length; i++) {
+            if (isInv) {
+                ingredientsAmount[i] = ((Ingredient)cp.ings.get(resource[i])).amountHave;
+            } else {
+                ingredientsAmount[i] = ((Ingredient)cp.ings.get(resource[i])).amountNeed;
+            }
+        }
     }
     static class ViewHolder {
         public TextView text, amount;
@@ -49,7 +57,7 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
     //create row view with buttons and text, set limit to button minus
     @NonNull
     @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent){
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent){
         View row=convertView;
 
         MyIngredientAdapter.ViewHolder viewHolder=null;
@@ -67,17 +75,8 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
         }else{
             viewHolder=(MyIngredientAdapter.ViewHolder) row.getTag();
         }
-        //create the counter
-        int i = 0;
-        Ingredient ing = (Ingredient) cp.ings.get(ingredients[position]);
-        if (isInventory) {
-            counter = ing.amountHave;
-        } else {
-            counter = ing.amountHave;
-        }
-        i++;
 
-        str= Double.toString(counter);
+        str= Double.toString(ingredientsAmount[position]);
         viewHolder.amount.setText(str);
 
         final ViewHolder finalViewHolder = viewHolder;
@@ -85,8 +84,8 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
 
-                counter++;
-                str=Double.toString(counter);
+                ingredientsAmount[position]++;
+                str=Double.toString(ingredientsAmount[position]);
                 finalViewHolder.amount.setText(str);
                 finalViewHolder.minus.setClickable(true);
 
@@ -100,9 +99,9 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
 
-                if (counter>0) {
-                    counter--;
-                    str=Double.toString(counter);
+                if (ingredientsAmount[position] > 0) {
+                    ingredientsAmount[position]--;
+                    str=Double.toString(ingredientsAmount[position]);
                     finalViewHolder1.amount.setText(str);
                 }else finalViewHolder.minus.setClickable(false);
             }
@@ -112,6 +111,10 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
         viewHolder.text.setText(ingredients[position]);
 
         return row;
+    }
+
+    public double[] getAmounts() {
+        return ingredientsAmount;
     }
 
 

@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -45,6 +46,7 @@ public class inventoryActivity extends AppCompatActivity{
     ControlPanel cp;
     MyArrayAdapter adapter;
     MyIngredientAdapter ingredientAdapter;
+    String[] allIngredients;
     EditText searchText;
     ListView listView;
     String str;
@@ -118,7 +120,7 @@ public class inventoryActivity extends AppCompatActivity{
         listView=new ListView(this);
         List<Ingredient> ingredients;
         ingredients=cp.getAllIngredients();
-        String[] allIngredients= new String[ingredients.size()];
+        allIngredients= new String[ingredients.size()];
         int index=0;
 
         for (Ingredient ing: ingredients) {
@@ -128,7 +130,7 @@ public class inventoryActivity extends AppCompatActivity{
         }
 
         Arrays.sort(allIngredients);
-        ingredientAdapter=new MyIngredientAdapter(this, allIngredients, true);
+        ingredientAdapter = new MyIngredientAdapter(this, allIngredients, true);
         listView.setAdapter(ingredientAdapter);
 
         showDialogListView(view);
@@ -140,7 +142,11 @@ public class inventoryActivity extends AppCompatActivity{
         builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //something ToDo
+                double[] amounts = ingredientAdapter.getAmounts();
+                for (int j = 0; j < amounts.length; j++) {
+                    ((Ingredient)cp.ings.get(allIngredients[j])).amountHave = amounts[j];
+                }
+                update();
             }
         });
         builder.setTitle(R.string.addToInventory);
@@ -160,9 +166,6 @@ public class inventoryActivity extends AppCompatActivity{
      * @throws
      */
     public void RemoveIngredient(View view) {
-        //select an ingredient
-        //delete it via cp.removeIngredientFromShoppingList(String)
-        cp.removeIngredientFromInventory("kaas");
-        update();
+        //ToDo remove
     }
 }
