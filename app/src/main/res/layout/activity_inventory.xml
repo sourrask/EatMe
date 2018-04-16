@@ -25,6 +25,7 @@
         android:background="@drawable/rounded"
         android:hint="@string/searchHintEnglish"
         android:layout_alignParentEnd="true"
+        android:onClick="showText"
         android:inputType="text"
         android:focusableInTouchMode="true"
         android:focusable="true"

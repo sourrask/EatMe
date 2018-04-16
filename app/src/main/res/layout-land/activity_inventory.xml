@@ -27,6 +27,7 @@
         android:hint="@string/searchHintEnglish"
         android:layout_alignParentEnd="true"
         android:inputType="text"
+        android:onClick="showText"
         android:focusableInTouchMode="true"
         android:focusable="true"
         android:imeOptions="actionSearch"

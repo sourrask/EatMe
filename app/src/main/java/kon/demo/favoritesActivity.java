@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -13,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import data.ControlPanel;
+import data.Ingredient;
 import data.Recipe;
 
 
@@ -29,10 +31,14 @@ public class favoritesActivity extends AppCompatActivity {
     String[] favoritesName;
     MyArrayAdapter adapter;
     String[]recipes;
+    List<Recipe> favoritesList;
+    List<Ingredient> ingredientList;
+    Double [] amount,haveAmount,needAmount;
 
 
     //search editText
     EditText searchText;
+    String[] ingredientName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +57,7 @@ public class favoritesActivity extends AppCompatActivity {
     //update listview with recipes
     public void update() {
         final ListView favoritesView = (ListView) findViewById(R.id.favoritesList);
-        List<Recipe> favoritesList;
+
         favoritesList = cp.getRecommendedRecipes();
         favoritesName = new String[favoritesList.size()];
         i=0;
@@ -61,13 +67,75 @@ public class favoritesActivity extends AppCompatActivity {
             favoritesName[i] = name;
             i++;
         }
-
+        Arrays.sort(favoritesName);
         adapter = new MyArrayAdapter(this, favoritesName,cp,false);
         favoritesView.setAdapter(adapter);
-        searchText = (EditText) findViewById(R.id.searchText);
+
+        favoritesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(favoritesActivity.this );
+                ingredientList=cp.getIngredientsFromRecipe(favoritesName[position]);
+                amount= new Double[ingredientList.size()];
+                haveAmount =new Double [ingredientList.size()];
+                needAmount = new Double[ingredientList.size()];
+                i=0;
+                ingredientName=new String [ingredientList.size()];
+
+                for(Ingredient ings: ingredientList){
+                    String ingredient=ings.name;
+                    amount[i]= ings.amountNeed;
+                    haveAmount[i]=ings.amountHave;
+
+                    int size=60-ingredient.length()-amount[i].toString().length();
+                    String gap= "";
+                    int index=0;
+                    while (index!=size) {
+                        gap=gap + " ";
+                        index++;
+                    }
+                    ingredient=ingredient+ gap  + amount[i] +"  (Have: "+haveAmount[i]+" )";
+                    ingredientName[i]=ingredient;
+                    i++;
+                }
+                Arrays.sort(ingredientName);
+                dialog.setTitle(favoritesName[position] + " :");
+
+
+
+
+
+
+                dialog.setItems(ingredientName,null);//todo add maybe another onclikc on each ingredient?
+                //what todo when using ings you have
+                dialog.setNegativeButton(R.string.useWhatIHave, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        int index2=0;
+//                        for (Ingredient ing : ingredientList) {
+//                            cp.removeIngredientFromInventory(ingredientName[index2]);
+//                            index2++;
+//                        }
+                    }
+                });
+
+                //what todo when you want to add missing to SL
+                dialog.setNeutralButton(R.string.addMissingToList, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+                dialog.setPositiveButton(R.string.cancel, null);
+                dialog.create();
+                dialog.show();
+
+            }
+        });
 
         cp.save();
-
+        searchText = (EditText) findViewById(R.id.searchText);
 
         //enable search
         /*

@@ -169,4 +169,7 @@ public class inventoryActivity extends AppCompatActivity{
     public void RemoveIngredient(View view) {
         //ToDo remove
     }
+
+    public void showText(View view) {
+    }
 }

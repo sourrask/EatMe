@@ -110,7 +110,7 @@ public class recipesActivity extends AppCompatActivity {
                     i++;
                 }
                 Arrays.sort(ingredientName);
-                dialog.setTitle(recipesName[position] + " :");
+                dialog.setTitle(ingredientName[position] + " :");
 
 
 
