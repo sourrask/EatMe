@@ -44,6 +44,7 @@
     <string name="addMissingToList">Add missing to Shopping List</string>
     <string name="have">Have:</string>
     <string name="need">Need:</string>
+    <string name="editButton">Add/Remove Ingredients</string>
 
 </resources>
 

@@ -66,7 +66,6 @@ public class recipesActivity extends AppCompatActivity {
     //update listview with recipes
     public void update(){
         final ListView recipesView= (ListView) findViewById(R.id.listRecipe);
-        final ListView ingredientsView;
         RecipeList recipeList;
         recipeList = cp.recs;
         recipesName = new String[recipeList.size()];
@@ -85,7 +84,7 @@ public class recipesActivity extends AppCompatActivity {
         //set a pop up view wih the ingredients for every recipe
         recipesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(recipesActivity.this );
                 ingredientList=cp.getIngredientsFromRecipe(recipesName[position]);
                 amount= new Double[ingredientList.size()];
@@ -106,7 +105,7 @@ public class recipesActivity extends AppCompatActivity {
                         gap=gap + " ";
                         index++;
                     }
-                    ingredient=ingredient+ gap +" x" + amount[i];
+                    ingredient=ingredient+ gap  + amount[i] +"  (Have: "+haveAmount[i]+" )";
                     ingredientName[i]=ingredient;
                     i++;
                 }
@@ -123,7 +122,11 @@ public class recipesActivity extends AppCompatActivity {
                 dialog.setNegativeButton(R.string.useWhatIHave, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+//                        int index2=0;
+//                        for (Ingredient ing : ingredientList) {
+//                            cp.removeIngredientFromInventory(ingredientName[index2]);
+//                            index2++;
+//                        }
                     }
                 });
 
