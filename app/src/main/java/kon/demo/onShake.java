@@ -1,6 +1,7 @@
 package kon.demo;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.SensorManager;
@@ -42,8 +43,6 @@ public class onShake extends Service implements ShakeDetector.Listener {
         shakeDetector = new ShakeDetector(this);
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         shakeDetector.start(manager);
-        cp=new ControlPanel(getApplicationContext());
-        hearShake();
     }
 
 
@@ -58,7 +57,9 @@ public class onShake extends Service implements ShakeDetector.Listener {
     public void hearShake() {
             //Intent random= new Intent(this,favoritesActivity.class);
             //startActivity(random);
-            new RecipeDialog(getBaseContext(), cp, cp.getRandomRecipe().name); //ToDo
+            Context con = this;
+            cp=new ControlPanel(con);
+            new RecipeDialog(con , cp, cp.getRandomRecipe().name);
     }
 
     //Stops the onShake method
