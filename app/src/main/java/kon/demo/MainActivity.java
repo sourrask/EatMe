@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
                     shake = new Intent(MainActivity.this,onShake.class);
                     startService(shake);
+                    for (int i = 0;i < Integer.MAX_VALUE; i++){
+
+                    }
                     new RecipeDialog(MainActivity.this, cp, cp.getRandomRecipe().name);
                     toggleButton.setChecked(false);
 
