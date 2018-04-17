@@ -26,7 +26,7 @@ public class RecipeDialog {
             needAmount[i]= ings.amountNeed;
             haveAmount[i]=((Ingredient)cp.ings.get(ings.name)).amountHave;
 
-            int size=65-ingredient.length()- needAmount[i].toString().length();
+            int size=50-ingredient.length()- needAmount[i].toString().length();
             String gap= "";
             int index=0;
             while (index!=size) {
