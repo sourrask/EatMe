@@ -162,4 +162,8 @@ public class AddRecipe extends AppCompatActivity{
         cp.addRecipe(str);
         cp.save();
     }
+
+    public void back(View view) {
+        finish();
+    }
 }

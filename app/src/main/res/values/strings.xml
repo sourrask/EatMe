@@ -45,6 +45,8 @@
     <string name="have">Have:</string>
     <string name="need">Need:</string>
     <string name="editButton">Add/Remove Ingredients</string>
+    <string name="done">Done</string>
+    <string name="hint">If you want to add an ingredient to a recipe first type the recipe in.</string>
 
 </resources>
 

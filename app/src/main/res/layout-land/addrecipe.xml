@@ -18,15 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline5"
-        android:textStyle="italic"
-        android:text="@string/hint"/>
-
     <Button
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -70,6 +61,16 @@
         app:layout_constraintEnd_toEndOf="@id/guideline7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline4" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center_vertical|center_horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline5"
+        android:textStyle="italic"
+        android:text="@string/hint"/>
 
     <EditText
         android:id="@+id/ingredientAmount"
@@ -123,6 +124,7 @@
 
 
     </ListView>
+
 
 
     <Button
