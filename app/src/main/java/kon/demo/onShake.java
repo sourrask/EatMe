@@ -1,9 +1,12 @@
 package kon.demo;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -17,6 +20,7 @@ import com.squareup.seismic.ShakeDetector;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 import data.ControlPanel;
 import data.Ingredient;
@@ -36,6 +40,10 @@ public class onShake extends Service implements ShakeDetector.Listener {
     ShakeDetector shakeDetector;        //variable that consists of a Shake detector
     SensorManager manager;              //variable sensor manager
     ListView listView;
+    private static final String Locale_Preference = "ONSHAKE"; //saves the prefered language
+    private static final String Locale_KeyValue = "ONSHAKE_PRESSED"; //save the key of the prefered language
+    private static SharedPreferences sharedPreferences;
+
 
     //creating the shake detector
     @Override
@@ -44,7 +52,6 @@ public class onShake extends Service implements ShakeDetector.Listener {
         shakeDetector = new ShakeDetector(this);
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         shakeDetector.start(manager);
-        hearShake();
     }
 
 
@@ -57,9 +64,10 @@ public class onShake extends Service implements ShakeDetector.Listener {
     //If the shake is detected by the phone, it displays a random recipe
     @Override
     public void hearShake() {
-            //Intent random= new Intent(this,MainActivity.class);
-            //startActivity(random);
+        Intent random= new Intent(this,MainActivity.class);
+        startActivity(random);
     }
+
 
     //Stops the onShake method
     @Override

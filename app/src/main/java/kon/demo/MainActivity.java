@@ -1,6 +1,7 @@
 package kon.demo;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -44,18 +45,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("ONSHAKE_PRESSED", Activity.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("ONSHAKE", true);
+                    editor.apply();
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
                     shake = new Intent(MainActivity.this,onShake.class);
                     startService(shake);
-                    for (int i = 0;i < Integer.MAX_VALUE; i++){
-
-                    }
-                    new RecipeDialog(MainActivity.this, cp, cp.getRandomRecipe().name);
-                    toggleButton.setChecked(false);
 
                 } else {
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
                     stopService(shake);
+
                 }
             }
         });
@@ -63,11 +64,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        SharedPreferences sp = getSharedPreferences("ONSHAKE_PRESSED", Context.MODE_PRIVATE);
+        boolean bool = sp.getBoolean("ONSHAKE", false);
+        if (bool) {
+            new RecipeDialog(MainActivity.this, cp, cp.getRandomRecipe().name);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean("ONSHAKE", false);
+            editor.apply();
+        }
+    }
+
 
     @Override
     protected void onPause() {
         super.onPause();
         toggleButton.setChecked(false);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPreferences sharedPreferences = getSharedPreferences("ONSHAKE_PRESSED", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("ONSHAKE", false);
+        editor.apply();
     }
 
     public void inventoryActivity(View view) {

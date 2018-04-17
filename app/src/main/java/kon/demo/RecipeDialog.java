@@ -15,6 +15,7 @@ import data.Recipe;
 
 public class RecipeDialog {
     RecipeDialog(Context con, final ControlPanel cp, String recName) {
+        System.out.println(recName);
         AlertDialog.Builder dialog = new AlertDialog.Builder(con);
         Recipe rec = (Recipe) cp.recs.get(recName);
         final List<Ingredient> ingredientList = cp.getIngredientsFromRecipe(rec.name);
@@ -80,14 +81,8 @@ public class RecipeDialog {
                 }
             }
         });
-
         dialog.setPositiveButton(R.string.cancel, null);
         dialog.create();
         dialog.show();
     }
-//    double roundTwoDecimals(double d)
-//    {
-//        DecimalFormat twoDForm = new DecimalFormat("#.#");
-//        return Double.valueOf(twoDForm.format(d));
-//    }
 }

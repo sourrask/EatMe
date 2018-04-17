@@ -46,7 +46,7 @@
     <string name="need">Need:</string>
     <string name="editButton">Add/Remove Ingredients</string>
     <string name="done">Done</string>
-    <string name="hint">If you want to add an ingredient to a recipe first type the recipe in. To add an ingredient leave recipe empty.</string>
+    <string name="hint">If you want to add an ingredient to a recipe first type the recipe in. To add an ingredient leave recipe empty. To remove ingredient from a recipe, set amount to 0.</string>
     <string name="addNew">Add new ingredients</string>
     <string name="back">back</string>
 
