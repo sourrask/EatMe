@@ -16,7 +16,7 @@
     <string name="addAllToInventory">Προσθηκη ολων στα συστατικα</string>
     <string name="removeAllIνgredients">διαγραφη λιστας αγορων</string>
     <string name="addIngredients">προσθηκη υλικων</string>
-    <string name="back">Πισω</string>
+    <string name="back">Πίσω</string>
     <string name="number" >Νούμερο</string>
     <string name="cancel">Πίσω</string>
     <string name="finish">Τέλος</string>
@@ -29,4 +29,19 @@
     <string name="removeFromFavorites">Αφαίρεση από αγαπημένα</string>
     <string name="randomRecipe">Η τυχαία σου συνταγή:</string>
     <string name="tryAgain">Shake πάλι</string>
+    <string name="addmore">Προσθήκη Περισσότερων</string>
+    <string name="recipename">Όνομα συνταγής</string>
+    <string name="ingredientName">Όνομα συστατικού</string>
+    <string name="amount">Ποσό</string>
+    <string name="deleteAlert">Θέλετε να διαγράψετε τη συνταγή;</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="removeRecipe">Διαγραφή Συνταγής</string>
+    <string name="useWhatIHave">Χρήση διαθέσιμων υλικών</string>
+    <string name="addMissingToList">Προσθήκη ελλειπών στο καλάθι</string>
+    <string name="have">Έχετε</string>
+    <string name="need">Χρειάζεστε</string>
+    <string name="editButton">Προσθαφαίρεση υλικών</string>
+    <string name="done">Τέλος</string>
+    <string name="addNew">Προσθηκη</string>
+    <string name="hint">Για να προσθέσετε υλικό σε συνταγή, πρώτα πληκτρολογήστε τη συνταγή.</string>
 </resources>

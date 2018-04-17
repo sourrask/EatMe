@@ -100,7 +100,7 @@ public class ControlPanel {
     }
     //Only use when the ingredient already exists
     public void addIngredientToInventory(String name, Double amount) {
-        ings.add(new Ingredient(name, "x", amount, 0.0, "x"));
+        ings.add(new Ingredient(name, "x", 0.0, amount, "x"));
     }
 
 

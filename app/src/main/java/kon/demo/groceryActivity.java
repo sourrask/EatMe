@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -53,7 +54,7 @@ public class groceryActivity extends AppCompatActivity {
         final ListView groceryView= (ListView) findViewById(R.id.groceryList);
         List<Ingredient> shoppingList;
         shoppingList = cp.getShoppingList();
-        String[] shIngName = new String[shoppingList.size()];
+        final String[] shIngName = new String[shoppingList.size()];
         int index = 0;
 
         for (Ingredient ing: shoppingList) {

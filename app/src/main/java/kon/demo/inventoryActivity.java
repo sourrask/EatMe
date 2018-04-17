@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -171,5 +172,10 @@ public class inventoryActivity extends AppCompatActivity{
     }
 
     public void showText(View view) {
+    }
+
+    public void addNewIngredient(View view) {
+        Intent add= new Intent (this,AddRecipe.class);
+        startActivity(add);
     }
 }

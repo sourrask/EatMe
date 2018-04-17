@@ -97,7 +97,7 @@ public class AddRecipe extends AppCompatActivity{
         if (ingredientName.length()!=0) {
             //checks if it should be added to a recipe
             if (str.length() != 0) {
-
+                saverecipe(view);
                 String unit = "NONE";
                 Unit units = getUnit(unit);
 
@@ -126,10 +126,12 @@ public class AddRecipe extends AppCompatActivity{
             } else {
                 add.setClickable(true);
                 String unit = "NONE";
+                Unit units = getUnit(unit);
                 //if amount is not given just adds the ingredient in the ingredientList
                 if (amount.getText().toString().length()==0) amount.setText("0");
                 amountOf = Double.valueOf(amount.getText().toString());
                 cp.addIngredient(ingredientName, "none", unit);
+                cp.addIngredientToInventory(ingredientName, amountOf);
                 ingredient.setText("");
                 amount.setText("");
 
