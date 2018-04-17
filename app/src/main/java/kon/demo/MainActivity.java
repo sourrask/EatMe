@@ -1,18 +1,26 @@
 package kon.demo;
 
 
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.hardware.SensorManager;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.squareup.seismic.ShakeDetector;
+
 import java.util.Locale;
 
 import data.ControlPanel;
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
-                    shake = new Intent(MainActivity.this,onShake.class);
+                    shake = new Intent(MainActivity.this,onShake2.class);
                     startService(shake);
                     new RecipeDialog(MainActivity.this , cp, cp.getRandomRecipe().name);
                 } else {
@@ -113,4 +121,48 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    public class onShake2 extends Service implements ShakeDetector.Listener {
+        ControlPanel cp;
+        ShakeDetector shakeDetector;        //variable that consists of a Shake detector
+        SensorManager manager;              //variable sensor manager
+        ListView listView;
+
+        //creating the shake detector
+        @Override
+        public void onCreate(){
+            super.onCreate();
+            shakeDetector = new ShakeDetector(this);
+            manager = (SensorManager) getSystemService(SENSOR_SERVICE);
+            shakeDetector.start(manager);
+            hearShake();
+
+        }
+
+
+        @Nullable
+        @Override
+        public IBinder onBind(Intent intent) {
+            return null;
+        }
+
+        //If the shake is detected by the phone, it displays a random recipe
+        @Override
+        public void hearShake() {
+            Intent random= new Intent(this,MainActivity.class);
+            startActivity(random);
+
+            Context con = this;
+            cp=new ControlPanel(con);
+            new RecipeDialog(con , cp, cp.getRandomRecipe().name);
+        }
+
+        //Stops the onShake method
+        @Override
+        public void onDestroy() {
+            shakeDetector.stop();
+        }
+
+    }
+
 }

@@ -8,6 +8,7 @@ import android.hardware.SensorManager;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ToggleButton;
@@ -43,6 +44,7 @@ public class onShake extends Service implements ShakeDetector.Listener {
         shakeDetector = new ShakeDetector(this);
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         shakeDetector.start(manager);
+
     }
 
 
@@ -55,11 +57,12 @@ public class onShake extends Service implements ShakeDetector.Listener {
     //If the shake is detected by the phone, it displays a random recipe
     @Override
     public void hearShake() {
-            //Intent random= new Intent(this,favoritesActivity.class);
-            //startActivity(random);
+            Intent random= new Intent(this,MainActivity.class);
+            startActivity(random);
+
             Context con = this;
             cp=new ControlPanel(con);
-            //new RecipeDialog(MainActivity.this , cp, cp.getRandomRecipe().name);
+            new RecipeDialog(con , cp, cp.getRandomRecipe().name);
     }
 
     //Stops the onShake method
