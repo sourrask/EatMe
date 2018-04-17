@@ -85,62 +85,7 @@ public class recipesActivity extends AppCompatActivity {
         recipesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(recipesActivity.this );
-                ingredientList=cp.getIngredientsFromRecipe(recipesName[position]);
-                amount= new Double[ingredientList.size()];
-                haveAmount =new Double [ingredientList.size()];
-                needAmount = new Double[ingredientList.size()];
-                i=0;
-                ingredientName=new String [ingredientList.size()];
-
-                for(Ingredient ings: ingredientList){
-                    String ingredient=ings.name;
-                    amount[i]= ings.amountNeed;
-                    haveAmount[i]=ings.amountHave;
-
-                    int size=65-ingredient.length()-amount[i].toString().length();
-                    String gap= "";
-                    int index=0;
-                    while (index!=size) {
-                        gap=gap + " ";
-                        index++;
-                    }
-                    ingredient=ingredient+ gap  + amount[i] +"  (Have: "+haveAmount[i]+" )";
-                    ingredientName[i]=ingredient;
-                    i++;
-                }
-                Arrays.sort(ingredientName);
-                dialog.setTitle(recipesName[position] + " :");
-
-
-
-
-
-
-                dialog.setItems(ingredientName,null);//todo add maybe another onclikc on each ingredient?
-                //what todo when using ings you have
-                dialog.setNegativeButton(R.string.useWhatIHave, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-//                        int index2=0;
-//                        for (Ingredient ing : ingredientList) {
-//                            cp.removeIngredientFromInventory(ingredientName[index2]);
-//                            index2++;
-//                        }
-                    }
-                });
-
-                //what todo when you want to add missing to SL
-                dialog.setNeutralButton(R.string.addMissingToList, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-
-                dialog.setPositiveButton(R.string.cancel, null);
-                dialog.create();
-                dialog.show();
+                new RecipeDialog(recipesActivity.this, cp, recipesName[position]);
 
             }
         });
