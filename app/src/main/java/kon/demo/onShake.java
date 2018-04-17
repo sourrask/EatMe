@@ -59,7 +59,7 @@ public class onShake extends Service implements ShakeDetector.Listener {
             //startActivity(random);
             Context con = this;
             cp=new ControlPanel(con);
-            new RecipeDialog(con , cp, cp.getRandomRecipe().name);
+            //new RecipeDialog(MainActivity.this , cp, cp.getRandomRecipe().name);
     }
 
     //Stops the onShake method

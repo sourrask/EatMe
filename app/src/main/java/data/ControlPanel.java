@@ -218,6 +218,7 @@ public class ControlPanel {
     public void addIngredientToRecipe(String recName, String name, String category, double amountN, double amountH, Unit unit) {
         Ingredient i = new Ingredient(name, category, 0.0, 0.0, unit);
         ings.add(i); //since amount is 0, nothing changes if ingredient already exists
+        i = (Ingredient) ings.get(i.name);
         Recipe r = (Recipe) recs.get(recName);
         i.amountNeed = amountN;
         i.amountHave = amountH;

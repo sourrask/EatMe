@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     ToggleButton toggleButton;
     Intent shake;
 
+    ControlPanel cp;
+
 
 
     //creating the view of the homepage, and adding a button
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         getCurrentLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        cp = new ControlPanel(this);
         toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
 
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
                     shake = new Intent(MainActivity.this,onShake.class);
                     startService(shake);
+                    new RecipeDialog(MainActivity.this , cp, cp.getRandomRecipe().name);
                 } else {
                     Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
                     stopService(shake);
