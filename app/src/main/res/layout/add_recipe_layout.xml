@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ingredientName"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="bottom|center_vertical"
+        android:textSize="23sp"
+        android:textColor="@color/TextColor"
+
+        />
+
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/addpng"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/numberAdding"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center_horizontal"
+        android:layout_toStartOf="@+id/add"
+        android:text="0"
+        android:textSize="30sp"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/minus"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@id/numberAdding"
+        android:adjustViewBounds="true"
+        android:src="@drawable/minuspng"
+        android:scaleType="fitXY" />
+
+</RelativeLayout>
