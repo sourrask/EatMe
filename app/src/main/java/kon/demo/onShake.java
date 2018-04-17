@@ -44,7 +44,7 @@ public class onShake extends Service implements ShakeDetector.Listener {
         shakeDetector = new ShakeDetector(this);
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         shakeDetector.start(manager);
-
+        hearShake();
     }
 
 
@@ -59,10 +59,6 @@ public class onShake extends Service implements ShakeDetector.Listener {
     public void hearShake() {
             Intent random= new Intent(this,MainActivity.class);
             startActivity(random);
-
-            Context con = this;
-            cp=new ControlPanel(con);
-            new RecipeDialog(con , cp, cp.getRandomRecipe().name);
     }
 
     //Stops the onShake method
