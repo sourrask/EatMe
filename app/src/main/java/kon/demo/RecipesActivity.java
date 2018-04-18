@@ -11,17 +11,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import data.ControlPanel;
 import data.Ingredient;
 import data.Name;
+import data.Recipe;
 import data.RecipeList;
 
-import java.text.ParsePosition;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,110 +27,90 @@ import java.util.List;
  * The back button of the phone will be available to click and will make the user return to the
  * home screen.
  */
-public class recipesActivity extends AppCompatActivity {
-    private Context context;
-    ControlPanel cp;
-    int i=0;
+public class RecipesActivity extends CPActivity {
+    //lists
+    List<Recipe> recipeList;
     String[] recipesName;
+    Double [] amount;
+
+    //adapter
     MyArrayAdapter adapter;
-    List<Ingredient> ingredientList;
-    Double [] amount,haveAmount,needAmount;
 
-
-
-    //search editText
+    //UI elements
     EditText searchText;
-    String[] ingredientName;
-
+    ListView recipesView;
 
     // Gets the template for the recipes activity by setting the content view to the desired layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipes_activity);
-        context = getApplicationContext();
-
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        cp = new ControlPanel(getApplicationContext());
-        update();
+        updateUI();
     }
 
     //update listview with recipes
-    public void update(){
-        final ListView recipesView= (ListView) findViewById(R.id.listRecipe);
-        RecipeList recipeList;
-        recipeList = cp.recs;
-        recipesName = new String[recipeList.size()];
+    public void updateUI(){
+        //UI elements
+        recipesView = (ListView) findViewById(R.id.listRecipe);
+        searchText= (EditText) findViewById(R.id.searchText);
 
-
-        i = 0;
-        for (Name recipe: recipeList){
-            String name = recipe.getName();
-            recipesName[i]=name;
-            i++;
-        }
+        //get lists
+        recipeList = cp.getAllRecipe();
+        recipesName = EatMeTools.listToRecipeNameArray(recipeList);
         Arrays.sort(recipesName);
+
+        //get adapter
         adapter = new MyArrayAdapter(this, recipesName, cp,false);
         recipesView.setAdapter(adapter);
 
-        //set a pop up view wih the ingredients for every recipe
+        //add listeners
         recipesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                new RecipeDialog(recipesActivity.this, cp, recipesName[position]);
+                (new RecipeDialog(RecipesActivity.this, cp, recipesName[position])).build();
+            }
+        });
+
+        //enable search
+        searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            //when text is entered
+            @Override
+            public void onTextChanged(CharSequence cs, int start, int before, int count) {
+                RecipesActivity.this.adapter.getFilter().filter(cs);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
-        searchText= (EditText) findViewById(R.id.searchText);
-
         cp.save();
-
-
-
-
-
-                //enable search
-                searchText.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    //when text is entered
-                    @Override
-                    public void onTextChanged(CharSequence cs, int start, int before, int count) {
-                        recipesActivity.this.adapter.getFilter().filter(cs);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-
-
     }
 
-
-    // Back button that returns to the homescreen
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        finish();
-    }
-
+    /**
+     * listener for the addrecipe button
+     * opens the addrecipe dialog for making a new recipe
+     */
     public void addrecipe(View view) {
         Intent add = new Intent(this, AddRecipe.class);
         startActivity(add);
     }
 
 
-    //pop up dialog to delete a recipe
+    /**
+     * listener for the deleterecipe button
+     * shows the pop up dialog to delete a recipe
+     */
     public void deleteRecipe(View view) {
         AlertDialog.Builder builder= new AlertDialog.Builder(this);
         builder.setTitle(R.string.removeRecipe);
@@ -149,9 +126,12 @@ public class recipesActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    //deleting selected recipe from the dialog
+    /**
+     * deleting selected recipe from the dialog
+     * @param which position of the recipe
+     */
     private void updateDeleteRecommended(int which) {
         cp.deleteRecipe(recipesName[which]);
-        update();
+        updateUI();
     }
 }

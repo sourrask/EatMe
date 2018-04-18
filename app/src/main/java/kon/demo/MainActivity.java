@@ -7,30 +7,27 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 import java.util.Locale;
-
-import data.ControlPanel;
 
 /*
  * Main class that renders the homepage. and includes the links to the other activities.
  * The main activity also has the shake method, that will return a random recipe when one shakes the
  * phone.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CPActivity {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+    //shake button and intent
     ToggleButton toggleButton;
     Intent shake;
 
-    ControlPanel cp;
-
-
+    //shared preferences
+    SharedPreferences sp;
 
     //creating the view of the homepage, and adding a button
     @Override
@@ -38,26 +35,28 @@ public class MainActivity extends AppCompatActivity {
         getCurrentLocale();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        cp = new ControlPanel(this);
-        toggleButton= (ToggleButton)findViewById(R.id.shakeButton);
 
+        //get the shared preferences
+        sp = getSharedPreferences("ONSHAKE_PRESSED", Context.MODE_PRIVATE);
+
+        //get toggle button
+        toggleButton = (ToggleButton)findViewById(R.id.shakeButton);
+
+        //add listener
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    SharedPreferences sharedPreferences = getSharedPreferences("ONSHAKE_PRESSED", Activity.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("ONSHAKE", true);
-                    editor.apply();
-                    Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the onShake
-                    shake = new Intent(MainActivity.this,onShake.class);
-                    startService(shake);
+            if (isChecked) {
+                setOnShake(true);
+                Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the OnShake
+                shake = new Intent(MainActivity.this,OnShake.class);
+                startService(shake);
 
-                } else {
-                    Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
-                    stopService(shake);
+            } else {
+                Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
+                stopService(shake);
 
-                }
+            }
             }
         });
         toggleButton.setChecked(false);
@@ -67,13 +66,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        SharedPreferences sp = getSharedPreferences("ONSHAKE_PRESSED", Context.MODE_PRIVATE);
-        boolean bool = sp.getBoolean("ONSHAKE", false);
-        if (bool) {
-            new RecipeDialog(MainActivity.this, cp, cp.getRandomRecipe().name);
-            SharedPreferences.Editor editor = sp.edit();
-            editor.putBoolean("ONSHAKE", false);
-            editor.apply();
+        if (getOnShake()) {
+            (new RecipeDialog(MainActivity.this, cp, cp.getRandomRecipe().name)).build();
+            setOnShake(false);
         }
     }
 
@@ -87,49 +82,47 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        SharedPreferences sharedPreferences = getSharedPreferences("ONSHAKE_PRESSED", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("ONSHAKE", false);
-        editor.apply();
+        setOnShake(false);
     }
 
+    //Below the listeners for al sub-activities accessible from the home screen
     public void inventoryActivity(View view) {
         Log.d(LOG_TAG, "Inventory Loading!");
-        Intent inventory = new Intent(this, inventoryActivity.class);
+        Intent inventory = new Intent(this, InventoryActivity.class);
         startActivity(inventory);
 
     }
 
     public void settingsActivity(View view) {
         Log.d(LOG_TAG, "Settings loading!");
-        Intent settings = new Intent(this, settingsActivity.class);
+        Intent settings = new Intent(this, SettingsActivity.class);
         startActivity(settings);
     }
 
     public void RecipesActivity(View view) {
         Log.d(LOG_TAG, "Recipes loading!");
-        Intent recipes = new Intent(this, recipesActivity.class);
+        Intent recipes = new Intent(this, RecipesActivity.class);
         startActivity(recipes);
     }
 
     public void GroceryActivity(View view) {
         Log.d(LOG_TAG, "Groceries loading!");
-        Intent groceries = new Intent(this, groceryActivity.class);
+        Intent groceries = new Intent(this, GroceryActivity.class);
         startActivity(groceries);
     }
 
     public void FavoritesActivity(View view) {
         Log.d(LOG_TAG, "Favorites loading!");
-        Intent favorites = new Intent(this, favoritesActivity.class);
+        Intent favorites = new Intent(this, FavoritesActivity.class);
         startActivity(favorites);
     }
 
-    public void shake(final View view) {
-
-    }
-
+    /**
+     * gets the current locale
+     */
     private void getCurrentLocale() {
-        SharedPreferences sharedPreferences = getSharedPreferences("LANGUAGE", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences =
+                getSharedPreferences("LANGUAGE", Context.MODE_PRIVATE);
         String locale = sharedPreferences.getString("LANGUAGE_KEY", "");
         if (locale.equals("en")){
         } else {
@@ -137,8 +130,28 @@ public class MainActivity extends AppCompatActivity {
             Locale myLocale = new Locale(locale);
             Locale.setDefault(myLocale);
             configuration.locale = myLocale;
-            getBaseContext().getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+            getBaseContext().getResources().updateConfiguration(
+                    configuration, getBaseContext().getResources().getDisplayMetrics());
         }
 
+    }
+
+    /**
+     * sets the onshake shared preferences boolean
+     * @param shake whether waiting for a shake
+     */
+    private void setOnShake(boolean shake) {
+        SharedPreferences sharedPreferences = getSharedPreferences("ONSHAKE_PRESSED", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("ONSHAKE", shake);
+        editor.apply();
+    }
+
+    /**
+     * gets the shared preference for shaking
+     * @return
+     */
+    private boolean getOnShake() {
+        return sp.getBoolean("ONSHAKE", false);
     }
 }

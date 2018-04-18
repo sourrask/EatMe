@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import java.util.Locale;
 
-public class settingsActivity extends AppCompatActivity implements View.OnClickListener{
+public class SettingsActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static Button english, dutch, greek; //buttons for possible languages in the app
 
@@ -22,8 +22,6 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
     private static final String Locale_Preference = "LANGUAGE"; //saves the prefered language
     private static final String Locale_KeyValue = "LANGUAGE_KEY"; //save the key of the prefered language
     private static SharedPreferences sharedPreferences;
-
-    //todo onStop() / i na valw fnish meta to patima koubiou gia na kleisei i kai restart
 
     // Gets the template for the settings activity by setting the content view to the desired layout
     // Also sets the onClickListeners
@@ -35,8 +33,6 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         setListeners();
         loadLocale();
         updateViews();
-
-
     }
 
     //Onclicklisteners for the buttons that change the language of the application.
@@ -110,6 +106,10 @@ public class settingsActivity extends AppCompatActivity implements View.OnClickL
         super.onBackPressed();
         finish();
     }
+
+    /**
+     * updates all views based on the language selected
+     */
     private void updateViews() {
         SharedPreferences sharedPreferences = getSharedPreferences("LANGUAGE", Context.MODE_PRIVATE);
         String locale = sharedPreferences.getString("LANGUAGE_KEY", "");

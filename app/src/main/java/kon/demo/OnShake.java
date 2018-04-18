@@ -32,17 +32,13 @@ import data.Recipe;
  */
 
 /*
- * Main class for the onShake activity. When the user presses the button, the onShake listener will
+ * Main class for the OnShake activity. When the user presses the button, the OnShake listener will
  * become active and when the user shakes the phone they will get a random recipe.
  */
-public class onShake extends Service implements ShakeDetector.Listener {
+public class OnShake extends Service implements ShakeDetector.Listener {
     ControlPanel cp;
     ShakeDetector shakeDetector;        //variable that consists of a Shake detector
     SensorManager manager;              //variable sensor manager
-    ListView listView;
-    private static final String Locale_Preference = "ONSHAKE"; //saves the prefered language
-    private static final String Locale_KeyValue = "ONSHAKE_PRESSED"; //save the key of the prefered language
-    private static SharedPreferences sharedPreferences;
 
 
     //creating the shake detector
@@ -69,7 +65,7 @@ public class onShake extends Service implements ShakeDetector.Listener {
     }
 
 
-    //Stops the onShake method
+    //Stops the OnShake method
     @Override
     public void onDestroy() {
         shakeDetector.stop();

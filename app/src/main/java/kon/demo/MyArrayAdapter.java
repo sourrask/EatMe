@@ -25,92 +25,88 @@ import data.Recipe;
 
 public class MyArrayAdapter extends ArrayAdapter<String> {
 
-    private final String[] recipes;
-    private Activity context;
-    private ListView listView;
+    //control panel
     ControlPanel cp;
-    String string,str;
-    Boolean bool;
 
+    //recipe names
+    private final String[] recipes;
 
-    //boolean used to make layout choices such as buttons (in some cases not used)
-    //if true makes send, delete, edit invisible
+    //context
+    private Activity context;
 
-    public MyArrayAdapter(Activity context, String[] recipes, ControlPanel cp, boolean bool) {
+    //add extra stuff
+    Boolean noSendDeleteEdit;
+
+    public MyArrayAdapter(
+            Activity context, String[] recipes, ControlPanel cp, boolean noSendDeleteEdit) {
         super(context,R.layout.rowlayout, recipes);
-        this.recipes=recipes;
-        this.context=context;
-        this.cp=cp;
-        this.bool=bool;
-
-
+        this.recipes = recipes;
+        this.context = context;
+        this.cp = cp;
+        this.noSendDeleteEdit = noSendDeleteEdit;
 
     }
+
+    /**
+     * view holder
+     */
     static class ViewHolder {
         public TextView text;
         public ImageView send;
         public ImageView delete;
         public ImageView edit;
         ViewHolder(View v){
-            text=(TextView)v.findViewById(R.id.recipeText);
-            send=(ImageView) v.findViewById(R.id.send);
-            edit=(ImageView) v.findViewById(R.id.edit);
-            delete=(ImageView) v.findViewById(R.id.delete);
+            text = (TextView)v.findViewById(R.id.recipeText);
+            send = (ImageView) v.findViewById(R.id.send);
+            edit = (ImageView) v.findViewById(R.id.edit);
+            delete = (ImageView) v.findViewById(R.id.delete);
 
         }
     }
-
 
     //get listView row and set buttons
     @NonNull
     @Override
     public View getView(final int position, View convertView, @NonNull ViewGroup parent){
-        View row=convertView;
-        ViewHolder viewHolder=null;
-        if (row==null) {
+        View row = convertView;
+        ViewHolder viewHolder;
+        if (row == null) {
             LayoutInflater inflater = context.getLayoutInflater();
             row = inflater.inflate(R.layout.rowlayout, null,true);
-            viewHolder=new ViewHolder(row);
-            viewHolder.text=(TextView)row.findViewById(R.id.recipeName);
-            viewHolder.send=(ImageView)row.findViewById(R.id.send);
-            viewHolder.delete=(ImageView)row.findViewById(R.id.delete);
-            viewHolder.edit=(ImageView)row.findViewById(R.id.edit);
+            viewHolder = new ViewHolder(row);
+            viewHolder.text = (TextView)row.findViewById(R.id.recipeName);
+            viewHolder.send = (ImageView)row.findViewById(R.id.send);
+            viewHolder.delete = (ImageView)row.findViewById(R.id.delete);
+            viewHolder.edit = (ImageView)row.findViewById(R.id.edit);
             row.setTag(viewHolder);
             row.setTag(viewHolder);
-
-
         }else{
-            viewHolder=(ViewHolder) row.getTag();
+            viewHolder = (ViewHolder) row.getTag();
         }
         viewHolder.text.setText(recipes[position]);
 
-        if (bool=true){
+        //whether to add extra buttons
+        if (noSendDeleteEdit=true){
             viewHolder.send.setVisibility(View.INVISIBLE);
             viewHolder.edit.setVisibility(View.INVISIBLE);
             viewHolder.delete.setVisibility(View.INVISIBLE);
         }
-//        row.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
+        //ToDo remove
+//      row.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
 //
-//                            AlertDialog.Builder recipeDialog = new AlertDialog.Builder(getContext());
-//                            recipeDialog.setTitle(recipes[position]);
-//                            recipeDialog.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    cp.deleteRecipe(recipes[position]);
-//                                }
-//                            });
-//                            recipeDialog.setNegativeButton(R.string.cancel,null);
-//                        }
-//                    });
-
-
-
-
-
+//              AlertDialog.Builder recipeDialog = new AlertDialog.Builder(getContext());
+//              recipeDialog.setTitle(recipes[position]);
+//              recipeDialog.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+//                  @Override
+//                  public void onClick(DialogInterface dialog, int which) {
+//                      cp.deleteRecipe(recipes[position]);
+//                  }
+//              });
+//              recipeDialog.setNegativeButton(R.string.cancel,null);
+//          }
+//      });
         return row;
     }
-
-
 }

@@ -67,12 +67,15 @@ public class ControlPanel {
     }
 
     /**
-     * deletes all ingredients from the shopping list and adds them to the inventory
+     * deletes all ingredients from the shopping list and adds them to the inventory if specified
+     * @param toInventory whether or not all shoppinglist items should be put in the inventory
      */
 
-    public void removeAllIngredientFromShoppingList() {
+    public void removeAllIngredientFromShoppingList(boolean toInventory) {
         for (Ingredient i : getShoppingList()) {
-            i.amountHave += i.amountNeed;
+            if (toInventory) {
+                i.amountHave += i.amountNeed;
+            }
             i.amountNeed = 0;
         }
     }
@@ -215,14 +218,13 @@ public class ControlPanel {
      * if the ingredient doesn't exist, then it creates it and puts it in the ingredients list
      * (amount in ingredients list is 0)
      */
-    public void addIngredientToRecipe(String recName, String name, String category, double amountN, double amountH, Unit unit) {
+    public void addIngredientToRecipe(String recName, String name, String category, double amountN, String unit) {
         Ingredient i = new Ingredient(name, category, 0.0, 0.0, unit);
         ings.add(i); //since amount is 0, nothing changes if ingredient already exists
         Recipe r = (Recipe) recs.get(recName);
         r.ingredients.add(i);
         i = (Ingredient) r.ingredients.get(i.name);
         i.amountNeed = amountN;
-        i.amountHave = amountH;
 
 
     }
