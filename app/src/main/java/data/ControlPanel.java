@@ -188,6 +188,10 @@ public class ControlPanel {
         i.amountHave = 0.0;
     }
 
+    public boolean isValidName(String name) {
+        return Name.isValid(name);
+    }
+
     //----------------------------RECIPE----------------------------
 
     public List<Recipe> getAllRecipe() {

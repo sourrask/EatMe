@@ -19,7 +19,6 @@ import java.util.List;
 
 import data.ControlPanel;
 import data.Ingredient;
-import data.Name;
 import data.Recipe;
 
 

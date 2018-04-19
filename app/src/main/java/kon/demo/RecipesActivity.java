@@ -15,7 +15,6 @@ import android.widget.ListView;
 
 import data.ControlPanel;
 import data.Ingredient;
-import data.Name;
 import data.Recipe;
 import data.RecipeList;
 

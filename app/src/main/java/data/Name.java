@@ -4,7 +4,7 @@ package data;
  * Created by s158270 on 14-3-2018.
  */
 
-public class Name {
+class Name {
 
     public final String name;
 
@@ -36,7 +36,7 @@ public class Name {
      * @param x string to be checked
      * @return if x has a '#' or '*' or '&'
      */
-    public static boolean isValid(String x) {
+    static boolean isValid(String x) {
         return !x.equals("") && !x.contains("#") && !x.contains("*") && !x.contains("&");
     }
 }

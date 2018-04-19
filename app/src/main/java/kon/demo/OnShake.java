@@ -24,7 +24,6 @@ import java.util.Locale;
 
 import data.ControlPanel;
 import data.Ingredient;
-import data.Name;
 import data.Recipe;
 
 /**

@@ -1,33 +1,14 @@
 package kon.demo;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import java.util.Arrays;
-import java.util.List;
-
-import data.ControlPanel;
-import data.Ingredient;
-import data.Name;
-import data.Unit;
-
-import static data.Unit.getUnit;
-
 public class AddRecipe extends CPActivity{
-
-    String[] ingredientsName; //Todo remove if other todo is redundant
-
-    //adapter
-    MyArrayAdapter adapter2;
 
     //UI elements
     EditText recipe,ingredient,amount;
@@ -101,61 +82,45 @@ public class AddRecipe extends CPActivity{
                 if (recName.length() != 0) {
                     saverecipe(view);
 
-                    if (amountString.length() == 0) {
-                        amount.setBackground(getDrawable(R.drawable.roundedred));
+                    if (!cp.isValidName(ingName)) {
+                        ingredient.setBackground(getDrawable(R.drawable.roundedred));
                     } else {
-                        if (Name.isValid(ingName)) {
-                            ingredient.setBackground(getDrawable(R.drawable.roundedred));
+                        if (amountString.length() == 0) {
+                            amount.setBackground(getDrawable(R.drawable.roundedred));
                         } else {
                             amount.setBackground(getDrawable(R.drawable.rounded));
-                            ingredient.setBackground(getDrawable(R.drawable.roundedred));
+                            ingredient.setBackground(getDrawable(R.drawable.rounded));
                             am = Double.valueOf(amountString);
 
-                            //no categories yet, so add ingredient without a unit
+                            //no categories/units yet, so add ingredient without a category/unit
                             cp.addIngredient(ingName, "none", "NONE");
                             cp.addIngredientToRecipe(
                                     recName, ingName, "none", am, "NONE");
                             ingredient.setText("");
                             amount.setText("");
-
-                            /*ToDo remove, is reduntant (not sure)
-                            int index = 0;
-                            List<Ingredient> ingrs = cp.getIngredientsFromRecipe(recName);
-                            ingredientsName = new String[ingrs.size()];
-                            for (Ingredient ings : ingrs) {
-                                String ingrName = ings.name;
-                                ingredientsName[index] = ingrName;
-                                index++;
-                            }
-                            Arrays.sort(ingredientsName);
-                            adapter2 = new MyArrayAdapter(this, ingredientsName, cp, true);
-                            */
                         }
                     }
 
                 } else { //when no recipe is given
                     add.setClickable(true);
                     //if amount is not given just adds the ingredient in the ingredientList
-                    if (amountString == null || amountString.length() == 0) {
-                        amountString = "0";
+                    if (!cp.isValidName(ingName)) {
+                        ingredient.setBackground(getDrawable(R.drawable.roundedred));
+                    } else {
+                        ingredient.setBackground(getDrawable(R.drawable.rounded));
+                        if (amountString == null || amountString.length() == 0) {
+                            amountString = "0";
+                        }
+                        am = Double.valueOf(amountString);
+                        cp.addIngredient(ingName, "none", "NONE");
+                        cp.addIngredientToInventory(ingName, am);
+                        ingredient.setText("");
+                        amount.setText("");
                     }
-                    am = Double.valueOf(amountString);
-                    cp.addIngredient(ingName, "none", "NONE");
-                    cp.addIngredientToInventory(ingName, am);
-                    ingredient.setText("");
-                    amount.setText("");
 
                 }
             }
-            updateUI();
-    }
-
-    /**
-     * updates the listview that represents all recipes
-     */
-    private void updateUI() {
-        list.setAdapter(adapter2);
-        cp.save();
+            cp.save();
     }
 
     /**
@@ -168,7 +133,7 @@ public class AddRecipe extends CPActivity{
 
         //if a recipe name is present and does not contain illegal characters
         //add and lock recipe
-        if (Name.isValid(recName)) {
+        if (cp.isValidName(recName)) {
             recipe.setBackground(getDrawable(R.drawable.rounded));
             recipe.setClickable(false);
             recipe.setFocusable(false);
