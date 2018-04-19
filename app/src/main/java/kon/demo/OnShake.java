@@ -59,8 +59,9 @@ public class OnShake extends Service implements ShakeDetector.Listener {
     //If the shake is detected by the phone, it displays a random recipe
     @Override
     public void hearShake() {
-        Intent random= new Intent(this,MainActivity.class);
-        startActivity(random);
+        Intent i = new Intent(this, MainActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(i);
     }
 
 
