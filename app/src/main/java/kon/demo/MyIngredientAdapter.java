@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -103,21 +104,50 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
 
         });
 
+        viewHolder.add.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                //add amount
+                ingredientsAmount[position]+= 10;
+                String amountString = Double.toString(ingredientsAmount[position]);
+                viewHolder.amount.setText(amountString);
+                viewHolder.minus.setClickable(true);
+                return true;
+            }
+        });
+
         viewHolder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //decrease amount
                 if (ingredientsAmount[position] > 0) {
                     ingredientsAmount[position]--;
-                    String amountString = Double.toString(ingredientsAmount[position]);
-                    viewHolder.amount.setText(amountString);
                 } else {
                     viewHolder.minus.setClickable(false);
                 }
+                String amountString = Double.toString(ingredientsAmount[position]);
+                viewHolder.amount.setText(amountString);
             }
 
 
         });
+
+        viewHolder.minus.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                //decrease amount
+                if (ingredientsAmount[position] > 9) {
+                    ingredientsAmount[position] -= 10;
+                } else {
+                    ingredientsAmount[position] = 0;
+                    viewHolder.minus.setClickable(false);
+                }
+                String amountString = Double.toString(ingredientsAmount[position]);
+                viewHolder.amount.setText(amountString);
+                return true;
+            }
+        });
+
         viewHolder.text.setText(ingredients[position]);
 
         return row;
