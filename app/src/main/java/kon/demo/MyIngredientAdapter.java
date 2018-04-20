@@ -120,9 +120,10 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             @Override
             public void onClick(View v) {
                 //decrease amount
-                if (ingredientsAmount[position] > 0) {
+                if (ingredientsAmount[position] >= 1) {
                     ingredientsAmount[position]--;
                 } else {
+                    ingredientsAmount[position] = 0;
                     viewHolder.minus.setClickable(false);
                 }
                 String amountString = Double.toString(ingredientsAmount[position]);
@@ -136,7 +137,7 @@ public class MyIngredientAdapter extends ArrayAdapter<String> {
             @Override
             public boolean onLongClick(View view) {
                 //decrease amount
-                if (ingredientsAmount[position] > 9) {
+                if (ingredientsAmount[position] >= 10) {
                     ingredientsAmount[position] -= 10;
                 } else {
                     ingredientsAmount[position] = 0;
