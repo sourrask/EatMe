@@ -51,15 +51,15 @@ public class RecipeDialog {
         dialog.setNegativeButton(R.string.useWhatIHave, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-            int index2=0;
+            int index = 0;
             for (Ingredient ing : ingredientList) {
-                calculatedAmount[index2]=haveAmount[index2]-needAmount[index2];
-                cp.removeIngredientFromInventory(ingredientRemove[index2]);
-                if (calculatedAmount[index2]>0){
-                    cp.addIngredientToInventory(ingredientRemove[index2],calculatedAmount[index2]);
-                    cp.save();
+                calculatedAmount[index] = haveAmount[index] - needAmount[index];
+                cp.removeIngredientFromInventory(ingredientRemove[index]);
+                if (calculatedAmount[index]>0){
+                    cp.addIngredientToInventory(ingredientRemove[index],calculatedAmount[index]);
                 }
-                index2++;
+                cp.save();
+                index++;
             }
             }
         });
