@@ -96,6 +96,9 @@ public class AddRecipe extends CPActivity{
                             cp.addIngredient(ingName, "none", "NONE");
                             cp.addIngredientToRecipe(
                                     recName, ingName, "none", am, "NONE");
+                            if (am == 0.0) {
+                                cp.removeIngredientFromRecipe(recName, ingName);
+                            }
                             ingredient.setText("");
                             amount.setText("");
                         }
