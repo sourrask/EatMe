@@ -10,8 +10,22 @@ import android.support.design.widget.Snackbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 
 /*
@@ -25,6 +39,7 @@ public class MainActivity extends CPActivity {
     //shake button and intent
     ToggleButton toggleButton;
     Intent shake;
+    TextView button;
 
     //shared preferences
     SharedPreferences sp;
@@ -42,12 +57,16 @@ public class MainActivity extends CPActivity {
         //get toggle button
         toggleButton = (ToggleButton)findViewById(R.id.shakeButton);
 
+        //get decision button
+        button=(TextView)findViewById(R.id.decisionButton);
+
         //add listener
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
                 setOnShake(true);
+                toggleButton.setBackground(getDrawable(R.drawable.roundedblue));
                 Snackbar.make(findViewById(R.id.mainActivity), "Shaking enabled", Snackbar.LENGTH_SHORT).show(); //todo use the OnShake
                 shake = new Intent(MainActivity.this,OnShake.class);
                 startService(shake);
@@ -55,6 +74,7 @@ public class MainActivity extends CPActivity {
             } else {
                 Snackbar.make(findViewById(R.id.mainActivity), "Shaking disabled", Snackbar.LENGTH_SHORT).show();//todo set onShakeListener off
                 stopService(shake);
+                toggleButton.setBackground(getDrawable(R.drawable.rounded));
 
             }
             }
@@ -154,4 +174,35 @@ public class MainActivity extends CPActivity {
     private boolean getOnShake() {
         return sp.getBoolean("ONSHAKE", false);
     }
+
+    public void cookOrDelivery(View view) {
+        String URL = "https://yesno.wtf/api/";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET, URL, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                String solution = null;
+                try {
+                    solution = response.getString("answer");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                if (solution.equals("yes")) {
+                    button.setText(R.string.cooking); //Display the cooking result
+                } else if (solution.equals("no")) {
+
+                    button.setText(R.string.delivery); // Display the no result
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                button.setText(R.string.error);
+            }
+        }
+        );
+        requestQueue.add(objectRequest);
+    }
+
 }

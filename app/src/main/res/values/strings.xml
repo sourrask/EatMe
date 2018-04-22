@@ -50,6 +50,10 @@
     <string name="addNew">Add new ingredients</string>
     <string name="back">back</string>
     <string name="inputRestriction"><![CDATA[Special characters: #, *, & should not be used]]></string>
+    <string name="cook">Cook/Delivery?</string>
+    <string name="cooking">Cook!</string>
+    <string name="delivery">Delivery!</string>
+    <string name="error">Connection error!</string>
 
 </resources>
 

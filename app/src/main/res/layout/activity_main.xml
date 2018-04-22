@@ -132,6 +132,7 @@
 
     <ToggleButton
         android:id="@+id/shakeButton"
+        android:background="@drawable/rounded"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/hor7"
@@ -290,6 +291,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.8004866" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded"
+        android:gravity="center_horizontal|center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/ver5"
+        android:text="@string/cook"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hor8"
+        android:onClick="cookOrDelivery"
+        android:id="@+id/decisionButton"/>
 
 
 </android.support.constraint.ConstraintLayout>

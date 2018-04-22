@@ -44,4 +44,8 @@
     <string name="done">Τέλος</string>
     <string name="addNew">Προσθηκη</string>
     <string name="hint">Για να προσθέσετε υλικό σε συνταγή, πρώτα πληκτρολογήστε τη συνταγή.</string>
+    <string name="cook">Μαγείρεμα/Ντελίβερι;</string>
+    <string name="cooking">Μαγείρεμα!</string>
+    <string name="delivery">Ντελίβερι!:</string>
+    <string name="error">Σφάλμα!</string>
 </resources>
