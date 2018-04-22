@@ -34,21 +34,7 @@ public class AddRecipe extends CPActivity{
         save = (Button) findViewById(R.id.addRecipe);
 
         //adding listeners
-        //ToDo remove, is reduntant
-        recipe.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
+        //changes background resource when amount is not empty
 
         amount.addTextChangedListener(new TextWatcher() {
             @Override
@@ -76,7 +62,7 @@ public class AddRecipe extends CPActivity{
         String amountString = amount.getText().toString();
         Double am;
 
-        //if ingredient filed is not empty it sets add button to clickable
+        //if ingredient filled is not empty it sets add button to clickable
         if (ingName.length()!=0) {
                 //checks if it should be added to a recipe
                 if (recName.length() != 0) {

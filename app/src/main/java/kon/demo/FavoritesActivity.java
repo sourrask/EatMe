@@ -86,7 +86,7 @@ public class FavoritesActivity extends CPActivity {
 
             @Override
             public void onTextChanged(CharSequence cs, int start, int before, int count) {
-                FavoritesActivity.this.adapter.getFilter();
+                (FavoritesActivity.this).adapter.getFilter().filter(cs.toString());
             }
 
             @Override

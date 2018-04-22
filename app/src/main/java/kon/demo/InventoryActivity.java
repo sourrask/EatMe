@@ -84,7 +84,7 @@ public class InventoryActivity extends CPActivity{
             //when text is entered
             @Override
             public void onTextChanged(CharSequence cs, int start, int before, int count) {
-                InventoryActivity.this.adapter.getFilter().filter(cs);
+                (InventoryActivity.this).adapter.getFilter().filter(cs.toString());
             }
 
             @Override

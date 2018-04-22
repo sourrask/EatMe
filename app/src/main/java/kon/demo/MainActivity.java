@@ -149,7 +149,7 @@ public class MainActivity extends CPActivity {
 
     /**
      * gets the shared preference for shaking
-     * @return
+     * @return true if shook
      */
     private boolean getOnShake() {
         return sp.getBoolean("ONSHAKE", false);

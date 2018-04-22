@@ -85,7 +85,7 @@ public class RecipesActivity extends CPActivity {
             //when text is entered
             @Override
             public void onTextChanged(CharSequence cs, int start, int before, int count) {
-                RecipesActivity.this.adapter.getFilter().filter(cs);
+                (RecipesActivity.this).adapter.getFilter().filter(cs);
             }
 
             @Override
@@ -133,4 +133,6 @@ public class RecipesActivity extends CPActivity {
         cp.deleteRecipe(recipesName[which]);
         updateUI();
     }
+
+
 }
